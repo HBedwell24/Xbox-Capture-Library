@@ -42,7 +42,7 @@ namespace XboxGameClipLibrary.API
             return content;
         }
 
-        private static async Task<List<GameClip>> DeserializeOptimizedFromStreamCallAsync(CancellationToken cancellationToken)
+        public static async Task<List<GameClip>> DeserializeOptimizedFromStreamCallAsync(CancellationToken cancellationToken)
         {
             using (var client = new HttpClient())
             {
@@ -67,7 +67,7 @@ namespace XboxGameClipLibrary.API
 
                     throw new ApiException
                     {
-                        StatusCode = (int)response.StatusCode,
+                        StatusCode = (int) response.StatusCode,
                         Content = content
                     };
                 }
