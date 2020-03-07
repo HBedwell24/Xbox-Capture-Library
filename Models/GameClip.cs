@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DashboardApplication.Models
+namespace XboxGameClipLibrary.Models
 {
     public class GameClip
     {

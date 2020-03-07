@@ -1,4 +1,4 @@
-﻿namespace DashboardApplication.Models
+﻿namespace XboxGameClipLibrary.Models
 {
     public class Thumbnail
     {

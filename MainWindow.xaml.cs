@@ -1,7 +1,6 @@
-﻿using DashboardApplication.API;
-using System.Windows;
+﻿using System.Windows;
 
-namespace DashboardApplication
+namespace XboxGameClipLibrary
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

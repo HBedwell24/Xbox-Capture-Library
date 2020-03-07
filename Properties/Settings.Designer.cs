@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DashboardApplication.Properties
+namespace XboxGameClipLibrary.Properties
 {
 
 

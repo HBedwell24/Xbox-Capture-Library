@@ -1,4 +1,4 @@
-﻿using DashboardApplication.Models;
+﻿using XboxGameClipLibrary.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DashboardApplication.API
+namespace XboxGameClipLibrary.API
 {
     public class Api
     {
@@ -67,7 +67,7 @@ namespace DashboardApplication.API
 
                     throw new ApiException
                     {
-                        StatusCode = (int) response.StatusCode,
+                        StatusCode = (int)response.StatusCode,
                         Content = content
                     };
                 }
