@@ -12,9 +12,10 @@ namespace XboxGameClipLibrary
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += new RoutedEventHandler(Page_Loaded);
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        void Page_Loaded(object sender, RoutedEventArgs e)
         {
             BindGameClipList();
         }
@@ -22,7 +23,10 @@ namespace XboxGameClipLibrary
         private async void BindGameClipList()
         {
             cancellationToken = new CancellationToken();
-            var gameClips = await Task.Run(() => Api.DeserializeOptimizedFromStreamCallAsync(cancellationToken));
+            var xuid = await Task.Run(() => Api.GetXuidFromStreamCallAsync(cancellationToken));
+            var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
+
+            // Bind the data to element 'gameClips' located in the XAML
             GameClips.ItemsSource = gameClips;
         }
     }
