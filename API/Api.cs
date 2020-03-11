@@ -43,7 +43,7 @@ namespace XboxGameClipLibrary.API
             return content;
         }
 
-        public static async Task<string> GetXuidFromStreamCallAsync(CancellationToken cancellationToken)
+        public static async Task<string> GetXuidFromStringCallAsync(CancellationToken cancellationToken)
         {
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/accountXuid"))
