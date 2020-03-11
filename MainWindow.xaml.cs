@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using XboxGameClipLibrary.API;
-using XboxGameClipLibrary.Models;
 
 namespace XboxGameClipLibrary
 {
@@ -23,10 +23,29 @@ namespace XboxGameClipLibrary
             BindGameClipList();
         }
 
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
         private async void BindGameClipList()
         {
             cancellationToken = new CancellationToken();
+
             var xuid = await Task.Run(() => Api.GetXuidFromStringCallAsync(cancellationToken));
+            //var profile = await Task.Run(() => Api.GetProfileFromStreamCallAsync(cancellationToken));
             var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
 
             // Debug Xuid response
@@ -37,7 +56,7 @@ namespace XboxGameClipLibrary
             Console.WriteLine(jsonString);
 
             // Bind the data to element 'gameClips' located in the XAML
-            GameClips.ItemsSource = gameClips;
+            //GameClips.ItemsSource = gameClips;
         }
     }
 }
