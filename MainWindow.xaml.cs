@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using XboxGameClipLibrary.API;
+using XboxGameClipLibrary.Models.Profile;
 
 namespace XboxGameClipLibrary
 {
@@ -48,6 +48,8 @@ namespace XboxGameClipLibrary
             var xuid = profile["userXuid"].ToString();
             var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
 
+            
+
             // Debug Xuid response
             Console.WriteLine("Xuid: " + xuid);
 
@@ -58,8 +60,17 @@ namespace XboxGameClipLibrary
             string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
             Console.WriteLine(jsonString);
 
-            // Bind the data to element 'gameClips' located in the XAML
-            //GameClips.ItemsSource = gameClips;
+            // Bind the username to element 'Username' located in the XAML
+            Username.DataContext = new Profile()
+            {
+                UserName = profile["gamerTag"].ToString()
+            };
+
+            // Bind the profile picture to element 'ProfileUri' located in the XAML
+            ProfileUri.DataContext = new Profile()
+            {
+                ProfilePicUri = profile["imageUrl"].ToString()
+            };
         }
     }
 }

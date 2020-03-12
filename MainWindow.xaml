@@ -347,18 +347,20 @@
                        Source="Assets/black-overlay.jpg"
                        Opacity="0.2"
                        Stretch="UniformToFill" />
-                <Ellipse Height="100"
+                <Ellipse Name="ProfileUri"
+                        Height="100"
                          Width="100"
                          VerticalAlignment="Top"
                          HorizontalAlignment="Right"
                          Margin="20 100"
                          Stroke="White">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="/Assets/pexels-photo-247885.jpeg"
+                        <ImageBrush ImageSource="{Binding ProfilePicUri}"
                                     Stretch="UniformToFill" />
                     </Ellipse.Fill>
                 </Ellipse>
-                <TextBlock Text="John"
+                <TextBlock Name="Username"
+                            Text="{Binding UserName}"
                            Foreground="White"
                            FontSize="28"
                            FontFamily="Segoe UI"
