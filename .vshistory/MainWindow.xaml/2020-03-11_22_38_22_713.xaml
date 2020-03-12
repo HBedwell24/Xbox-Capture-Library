@@ -347,37 +347,26 @@
                        Source="Assets/black-overlay.jpg"
                        Opacity="0.2"
                        Stretch="UniformToFill" />
-                <!-- Icon and username -->
-                <Grid Height="465"
-                      Margin="5 50 20 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                    </Grid.RowDefinitions>
-                    <Ellipse Name="ProfileUri"
-                             Height="50"
-                             Width="50"
-                             VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
-                             Stroke="White">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="{Binding ProfilePicUri}"
-                                        Stretch="UniformToFill" />
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <TextBlock Name="Username"
-                               Text="{Binding UserName}"
-                               Foreground="White"
-                               Margin="5"
-                               FontSize="24"
-                               FontFamily="Segoe UI"
-                               VerticalAlignment="Center"
-                               Grid.Column="1"/>
-                </Grid>
-                <StackPanel Margin="0 100">
+                <Ellipse Name="ProfileUri"
+                        Height="100"
+                         Width="100"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Right"
+                         Margin="20 100"
+                         Stroke="White">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding ProfilePicUri}"
+                                    Stretch="UniformToFill" />
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Name="Username"
+                            Text="{Binding UserName}"
+                           Foreground="White"
+                           FontSize="28"
+                           FontFamily="Segoe UI"
+                           Margin="10 100"
+                           VerticalAlignment="Top" />
+                <StackPanel Margin="0 150">
                     <Grid Height="60"
                           Margin="5 50 20 0">
                         <Grid.ColumnDefinitions>
@@ -414,6 +403,7 @@
                                    Margin="5 0"
                                    Grid.Column="1" />
                     </Grid>
+
                     <TextBlock TextWrapping="Wrap"
                                FontFamily="Segoe UI"
                                Margin="10"
