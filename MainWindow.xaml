@@ -348,7 +348,7 @@
                        Opacity="0.2"
                        Stretch="UniformToFill" />
                 <!-- Icon and username -->
-                <Grid Height="465"
+                <Grid Height="475"
                       Margin="5 50 20 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60" />
