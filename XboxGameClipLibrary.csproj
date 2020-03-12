@@ -84,8 +84,6 @@
     <Compile Include="Models\GameClips\GameClip.cs" />
     <Compile Include="Models\GameClips\GameClipUri.cs" />
     <Compile Include="Models\GameClips\Thumbnail.cs" />
-    <Compile Include="Models\Profile\HomeAddressInfo.cs" />
-    <Compile Include="Models\Profile\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

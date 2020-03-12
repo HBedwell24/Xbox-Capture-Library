@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using XboxGameClipLibrary.Models.Profile;
 
 namespace XboxGameClipLibrary.API
 {
@@ -44,35 +43,7 @@ namespace XboxGameClipLibrary.API
             return content;
         }
 
-        public static async Task<string> GetXuidFromStringCallAsync(CancellationToken cancellationToken)
-        {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/accountXuid"))
-            {
-                request.Headers.Add("X-Auth", "");
-
-                using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
-                {
-                    var jsonString = await response.Content.ReadAsStringAsync();
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var jsonObject = JObject.Parse(jsonString);
-                        return jsonObject.GetValue("xuid").ToString();
-                    }
-
-                    var content = jsonString;
-
-                    throw new ApiException
-                    {
-                        StatusCode = (int) response.StatusCode,
-                        Content = content
-                    };
-                }
-            }
-        }
-
-        public static async Task<List<Profile>> GetProfileFromStreamCallAsync(CancellationToken cancellationToken)
+        public static async Task<JObject> GetProfileFromStringCallAsync(CancellationToken cancellationToken)
         {
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/profile"))
@@ -81,14 +52,14 @@ namespace XboxGameClipLibrary.API
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    var stream = await response.Content.ReadAsStreamAsync();
+                    var stream = await response.Content.ReadAsStringAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return DeserializeJsonFromStream<List<Profile>>(stream);
+                        return JObject.Parse(stream);
                     }
 
-                    var content = await StreamToStringAsync(stream);
+                    var content = stream;
 
                     throw new ApiException
                     {

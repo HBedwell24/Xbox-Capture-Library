@@ -44,12 +44,15 @@ namespace XboxGameClipLibrary
         {
             cancellationToken = new CancellationToken();
 
-            var xuid = await Task.Run(() => Api.GetXuidFromStringCallAsync(cancellationToken));
-            //var profile = await Task.Run(() => Api.GetProfileFromStreamCallAsync(cancellationToken));
+            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(cancellationToken));
+            var xuid = profile["userXuid"].ToString();
             var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
 
             // Debug Xuid response
             Console.WriteLine("Xuid: " + xuid);
+
+            // Debug Profile response
+            Console.WriteLine(profile);
 
             // Debug GameClip response
             string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
