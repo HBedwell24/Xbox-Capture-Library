@@ -134,7 +134,7 @@
                              Storyboard="{StaticResource CloseMenu}" />
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="#0E7A0D">
+    <Grid Background="#107c10">
         <StackPanel x:Name="StackPanelMenu"
                     Width="250"
                     HorizontalAlignment="Left"
@@ -160,8 +160,8 @@
                         Height="50"
                         Margin="10">
                     <materialDesign:PackIcon Kind="Settings"
-                                             Width="40"
-                                             Height="40" />
+                                             Width="30"
+                                             Height="30" />
                 </Button>
                 <Button x:Name="button"
                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
@@ -192,8 +192,8 @@
                         Height="50"
                         Margin="10">
                     <materialDesign:PackIcon Kind="InformationOutline"
-                                             Width="40"
-                                             Height="40" />
+                                             Width="30"
+                                             Height="30" />
                 </Button>
             </StackPanel>
             <ListView>
@@ -216,6 +216,7 @@
                                                  VerticalAlignment="Center"
                                                  Margin="5" />
                         <TextBlock Text="Home"
+                                   FontFamily="Segoe UI"
                                    Margin="10"
                                    VerticalAlignment="Center" />
                     </StackPanel>
@@ -239,6 +240,7 @@
                                                  VerticalAlignment="Center"
                                                  Margin="5" />
                         <TextBlock Text="Search"
+                                   FontFamily="Segoe UI"
                                    Margin="10"
                                    VerticalAlignment="Center" />
                     </StackPanel>
@@ -262,6 +264,7 @@
                                                  VerticalAlignment="Center"
                                                  Margin="5" />
                         <TextBlock Text="Facebook"
+                                   FontFamily="Segoe UI"
                                    Margin="10"
                                    VerticalAlignment="Center" />
                     </StackPanel>
@@ -285,6 +288,7 @@
                                                  VerticalAlignment="Center"
                                                  Margin="5" />
                         <TextBlock Text="Twitter"
+                                   FontFamily="Segoe UI"
                                    Margin="10"
                                    VerticalAlignment="Center" />
                     </StackPanel>
@@ -308,6 +312,7 @@
                                                  VerticalAlignment="Center"
                                                  Margin="5" />
                         <TextBlock Text="Skype"
+                                   FontFamily="Segoe UI"
                                    Margin="10"
                                    VerticalAlignment="Center" />
                     </StackPanel>
@@ -332,10 +337,15 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="1"
-                  Background="#0E7A0D">
+                  Background="#107c10">
                 <Image Height="150"
                        VerticalAlignment="Top"
                        Source="Assets/back.jpg"
+                       Stretch="UniformToFill" />
+                <Image Height="150"
+                       VerticalAlignment="Top"
+                       Source="Assets/black-overlay.jpg"
+                       Opacity="0.2"
                        Stretch="UniformToFill" />
                 <Ellipse Height="100"
                          Width="100"
@@ -351,12 +361,12 @@
                 <TextBlock Text="John"
                            Foreground="White"
                            FontSize="28"
-                           FontFamily="Nirmala UI Semilight"
+                           FontFamily="Segoe UI"
                            Margin="10 100"
                            VerticalAlignment="Top" />
                 <StackPanel Margin="0 150">
                     <Grid Height="60"
-                          Margin="20 50 20 0">
+                          Margin="5 50 20 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -365,30 +375,35 @@
                             <RowDefinition Height="30" />
                             <RowDefinition Height="30" />
                         </Grid.RowDefinitions>
-                        <TextBlock Text="FOLLOWERS"
+                        <TextBlock Text="Followers"
+                                   FontFamily="Segoe UI"
                                    VerticalAlignment="Bottom"
                                    Foreground="#FFFBFBFB"
                                    Margin="5,0,5,5" />
                         <TextBlock Text="1.5K"
+                                   FontFamily="Segoe UI"
                                    VerticalAlignment="Top"
                                    Foreground="#FFFBFBFB"
                                    Grid.Row="1"
-                                   Margin="10 0" />
+                                   Margin="5 0" />
 
-                        <TextBlock Text="FOLLOWING"
+                        <TextBlock Text="Following"
+                                   FontFamily="Segoe UI"
                                    VerticalAlignment="Bottom"
                                    Foreground="#FFFBFBFB"
                                    Margin="5,0,5,5"
                                    Grid.Column="1" />
                         <TextBlock Text="2.3K"
+                                   FontFamily="Segoe UI"
                                    VerticalAlignment="Top"
                                    Foreground="#FFFBFBFB"
                                    Grid.Row="1"
-                                   Margin="10 0"
+                                   Margin="5 0"
                                    Grid.Column="1" />
                     </Grid>
 
                     <TextBlock TextWrapping="Wrap"
+                               FontFamily="Segoe UI"
                                Margin="10"
                                Foreground="#FFFBFBFB"
                                FontSize="14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat ligula et ornare rutrum. Suspendisse vel nibh massa. Sed maximus porta augue eget viverra. Sed ullamcorper interdum ligula. Aenean vitae.</TextBlock>
@@ -421,7 +436,7 @@
                         Click="ButtonCloseMenu_Click"
                         Visibility="Collapsed">
                     <materialDesign:PackIcon Kind="Menu"
-                                             Foreground="#FF3580BF" />
+                                             Foreground="#107c10" />
                 </Button>
                 <Button x:Name="ButtonOpenMenu"
                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
@@ -435,12 +450,13 @@
                         Margin="5"
                         Click="ButtonOpenMenu_Click">
                     <materialDesign:PackIcon Kind="Menu"
-                                             Foreground="#0E7A0D" />
+                                             Foreground="#3a3a3a" />
                 </Button>
-                <TextBlock Text="GAME CLIPS"
-                           Foreground="#0E7A0D"
-                           FontSize="30"
+                <TextBlock Text="Game Clips"
+                           FontFamily="Segoe UI"
+                           Foreground="#3a3a3a"
                            FontWeight="Bold"
+                           FontSize="30"
                            Margin="5"
                            Grid.Row="1" />
 
@@ -535,6 +551,7 @@
                     Width="30"
                     Height="30"
                     Padding="0"
+                    Margin="0 0 10 0"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="Bell" />
