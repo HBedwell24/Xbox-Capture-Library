@@ -372,6 +372,7 @@
                     </Ellipse>
                     <TextBlock Name="Username"
                                Text="{Binding UserName}"
+                               TextTrimming="CharacterEllipsis"
                                Foreground="White"
                                Margin="5"
                                FontSize="24"
@@ -379,7 +380,8 @@
                                VerticalAlignment="Center"
                                Grid.Column="1"/>
                 </Grid>
-                <StackPanel Margin="0 100">
+                <!-- Followers, following, and content -->
+                <StackPanel Margin="0 100 0 0">
                     <Grid Height="60"
                           Margin="5 50 20 0">
                         <Grid.ColumnDefinitions>
