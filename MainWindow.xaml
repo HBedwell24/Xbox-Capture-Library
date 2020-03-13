@@ -569,8 +569,19 @@
                     Padding="0"
                     Margin="0 0 10 0"
                     Background="{x:Null}"
-                    BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="Bell" />
+                    BorderBrush="{x:Null}"
+                    Click="ButtonMinimize_Click">
+                <materialDesign:PackIcon Kind="WindowMinimize" />
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                    Width="30"
+                    Height="30"
+                    Padding="0"
+                    Margin="0 0 10 0"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Click="ButtonMaximize_Click">
+                <materialDesign:PackIcon Kind="WindowMaximize" />
             </Button>
             <Button x:Name="ButtonClose"
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"

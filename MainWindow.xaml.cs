@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models.Profile;
 
@@ -16,11 +17,44 @@ namespace XboxGameClipLibrary
         {
             InitializeComponent();
             Loaded += new RoutedEventHandler(Page_Loaded);
+            MouseDown += new MouseButtonEventHandler(Window_MouseDown);
         }
 
         void Page_Loaded(object sender, RoutedEventArgs e)
         {
             BindGameClipList();
+        }
+
+        private void Window_MouseDown(object sender, RoutedEventArgs e)
+        {
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Minimized;
+            }
+        }
+
+        private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
