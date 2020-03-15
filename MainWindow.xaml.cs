@@ -1,110 +1,49 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
-using System.Windows.Input;
-using XboxGameClipLibrary.API;
-using XboxGameClipLibrary.Models.Profile;
-
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using MahApps.Metro.Controls;
+using XboxGameClipLibrary.ViewModels;
+using MenuItem = XboxGameClipLibrary.ViewModels.MenuItem;
 namespace XboxGameClipLibrary
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : MetroWindow
     {
-        CancellationToken cancellationToken;
-
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(Page_Loaded);
-            MouseDown += new MouseButtonEventHandler(Window_MouseDown);
+
+            Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
+            Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
+            this.HamburgerMenuControl.Content = Navigation.Navigation.Frame;
+
+            // Navigate to the home page.
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        void Page_Loaded(object sender, RoutedEventArgs e)
+        private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
-            BindGameClipList();
+            //            this.HamburgerMenuControl.Content = e.Content;
+            this.HamburgerMenuControl.SelectedItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetItem(e.Uri);
+            this.HamburgerMenuControl.SelectedOptionsItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetOptionsItem(e.Uri);
+            GoBackButton.Visibility = Navigation.Navigation.Frame.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void Window_MouseDown(object sender, RoutedEventArgs e)
+        private void GoBack_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            Navigation.Navigation.GoBack();
+        }
+
+        private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
+        {
+            var menuItem = e.InvokedItem as MenuItem;
+            if (menuItem != null && menuItem.IsNavigation)
             {
-                DragMove();
+                Navigation.Navigation.Navigate(menuItem.NavigationDestination, menuItem);
             }
-        }
-
-        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Minimized)
-            {
-                this.WindowState = WindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = WindowState.Minimized;
-            }
-        }
-
-        private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-            {
-                this.WindowState = WindowState.Maximized;
-            }
-            else if (this.WindowState == WindowState.Maximized)
-            {
-                this.WindowState = WindowState.Normal;
-            }
-        }
-
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-        }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-        }
-
-        private async void BindGameClipList()
-        {
-            cancellationToken = new CancellationToken();
-
-            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(cancellationToken));
-            var xuid = profile["userXuid"].ToString();
-            var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
-
-            
-
-            // Debug Xuid response
-            Console.WriteLine("Xuid: " + xuid);
-
-            // Debug Profile response
-            Console.WriteLine(profile);
-
-            // Debug GameClip response
-            string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
-            Console.WriteLine(jsonString);
-
-            // Bind the username to element 'Username' located in the XAML
-            Username.DataContext = new Profile()
-            {
-                UserName = profile["gamerTag"].ToString()
-            };
-
-            // Bind the profile picture to element 'ProfileUri' located in the XAML
-            ProfileUri.DataContext = new Profile()
-            {
-                ProfilePicUri = profile["imageUrl"].ToString()
-            };
         }
     }
 }
