@@ -30,13 +30,5 @@ namespace XboxGameClipLibrary.Navigation
             }
             return true;
         }
-
-        public static void GoBack()
-        {
-            if (_frame.CanGoBack)
-            {
-                _frame.GoBack();
-            }
-        }
     }
 }

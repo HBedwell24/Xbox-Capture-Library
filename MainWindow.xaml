@@ -13,22 +13,10 @@
                  Title="Xbox Game Clip Library"
                  WindowStartupLocation="CenterScreen"
                  WindowTransitionsEnabled="False">
-    
+
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
     </controls:MetroWindow.DataContext>
-
-    <controls:MetroWindow.LeftWindowCommands>
-        <controls:WindowCommands ShowSeparators="False">
-            <Button x:Name="GoBackButton"
-                    Width="{Binding ElementName=HamburgerMenuControl, Path=CompactPaneLength}"
-                    Click="GoBack_OnClick">
-                <iconPacks:PackIconMaterial Kind="ArrowLeft"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center" />
-            </Button>
-        </controls:WindowCommands>
-    </controls:MetroWindow.LeftWindowCommands>
 
     <Grid>
         <Grid.Resources>

@@ -159,25 +159,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AboutPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Page Include="Views\AwesomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Page Include="Views\BreakPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Page Include="Views\BugsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Page Include="Views\MainPage.xaml">
+    <Page Include="Views\CapturesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
     <Page Include="Views\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Page Include="Views\UserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
   </ItemGroup>
@@ -213,29 +198,5 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Assets\back.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-247885.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-374592.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-701026.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-701337.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-701449.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\pexels-photo-701762.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\black-overlay.jpg" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

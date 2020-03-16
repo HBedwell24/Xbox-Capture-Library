@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
+using Newtonsoft.Json;
+using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.ViewModels;
 using MenuItem = XboxGameClipLibrary.ViewModels.MenuItem;
 namespace XboxGameClipLibrary
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        CancellationToken cancellationToken;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,20 +24,19 @@ namespace XboxGameClipLibrary
             this.HamburgerMenuControl.Content = Navigation.Navigation.Frame;
 
             // Navigate to the home page.
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            this.Loaded += new RoutedEventHandler(Page_Loaded);
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //BindGameClipList();
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
-            //            this.HamburgerMenuControl.Content = e.Content;
             this.HamburgerMenuControl.SelectedItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetItem(e.Uri);
             this.HamburgerMenuControl.SelectedOptionsItem = e.ExtraData ?? ((ShellViewModel)this.DataContext).GetOptionsItem(e.Uri);
-            GoBackButton.Visibility = Navigation.Navigation.Frame.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        private void GoBack_OnClick(object sender, RoutedEventArgs e)
-        {
-            Navigation.Navigation.GoBack();
         }
 
         private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
@@ -44,6 +46,25 @@ namespace XboxGameClipLibrary
             {
                 Navigation.Navigation.Navigate(menuItem.NavigationDestination, menuItem);
             }
+        }
+
+        private async void BindGameClipList()
+        {
+            cancellationToken = new CancellationToken();
+
+            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(cancellationToken));
+            var xuid = profile["userXuid"].ToString();
+            var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
+
+            // Debug Xuid response
+            Console.WriteLine("Xuid: " + xuid);
+
+            // Debug Profile response
+            Console.WriteLine(profile);
+
+            // Debug GameClip response
+            string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
+            Console.WriteLine(jsonString);
         }
     }
 }
