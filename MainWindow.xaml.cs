@@ -1,36 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 using XboxGameClipLibrary.API;
+using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.ViewModels;
+using XboxGameClipLibrary.Views;
 using MenuItem = XboxGameClipLibrary.ViewModels.MenuItem;
 namespace XboxGameClipLibrary
 {
     public partial class MainWindow : MetroWindow
     {
-        CancellationToken cancellationToken;
-
         public MainWindow()
         {
             InitializeComponent();
-
+            
             Navigation.Navigation.Frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
             this.HamburgerMenuControl.Content = Navigation.Navigation.Frame;
 
-            // Navigate to the home page.
-            this.Loaded += new RoutedEventHandler(Page_Loaded);
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
-        }
+            // Create a CancellationTokenSource object
+            CancellationTokenSource cts = new CancellationTokenSource();
 
-        void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            //BindGameClipList();
+            // Navigate to the home page.
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new CapturesPage(GetGameClips(cts.Token)));
+
+            // Request cancellation.
+            cts.Cancel();
+
+            // Cancellation should have happened, so call Dispose.
+            cts.Dispose();
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
@@ -48,23 +51,30 @@ namespace XboxGameClipLibrary
             }
         }
 
-        private async void BindGameClipList()
+        private async Task<string> GetXuid(CancellationToken token)
         {
-            cancellationToken = new CancellationToken();
-
-            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(cancellationToken));
+            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(token));
             var xuid = profile["userXuid"].ToString();
-            var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(cancellationToken, xuid));
-
-            // Debug Xuid response
-            Console.WriteLine("Xuid: " + xuid);
 
             // Debug Profile response
             Console.WriteLine(profile);
 
+            // Debug Xuid response
+            Console.WriteLine("Xuid: " + xuid);
+
+            return xuid;
+        }
+
+        private async Task<List<GameClip>> GetGameClips(CancellationToken token)
+        {
+            var xuid = await GetXuid(token);
+            var gameClips = await Task.Run(() => Api.GetGameClipsFromStreamCallAsync(token, xuid));
+      
             // Debug GameClip response
             string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
             Console.WriteLine(jsonString);
+
+            return gameClips;
         }
     }
 }

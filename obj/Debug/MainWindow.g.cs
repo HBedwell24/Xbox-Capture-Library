@@ -12,8 +12,6 @@
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using MahApps.Metro.IconPacks;
-using MahApps.Metro.IconPacks.Converter;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -46,7 +44,7 @@ namespace XboxGameClipLibrary {
     public partial class MainWindow : MahApps.Metro.Controls.MetroWindow, System.Windows.Markup.IComponentConnector {
         
         
-        #line 43 "..\..\MainWindow.xaml"
+        #line 42 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal MahApps.Metro.Controls.HamburgerMenu HamburgerMenuControl;
         
@@ -86,7 +84,7 @@ namespace XboxGameClipLibrary {
             case 1:
             this.HamburgerMenuControl = ((MahApps.Metro.Controls.HamburgerMenu)(target));
             
-            #line 47 "..\..\MainWindow.xaml"
+            #line 46 "..\..\MainWindow.xaml"
             this.HamburgerMenuControl.ItemInvoked += new MahApps.Metro.Controls.HamburgerMenuItemInvokedRoutedEventHandler(this.HamburgerMenuControl_OnItemInvoked);
             
             #line default

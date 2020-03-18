@@ -146,6 +146,9 @@
     <Compile Include="ViewModels\MenuItem.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelCase.cs" />
+    <Compile Include="Views\CapturesPage.xaml.cs">
+      <DependentUpon>CapturesPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,7 +173,7 @@
     <Compile Include="Models\GameClips\GameClip.cs" />
     <Compile Include="Models\GameClips\GameClipUri.cs" />
     <Compile Include="Models\GameClips\Thumbnail.cs" />
-    <Compile Include="Models\Profile\Profile.cs" />
+    <Compile Include="ViewModels\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -6,6 +6,7 @@ namespace XboxGameClipLibrary.Navigation
     public static class Navigation
     {
         private static Frame _frame;
+        private static object _data = null;
 
         public static Frame Frame
         {
@@ -13,7 +14,7 @@ namespace XboxGameClipLibrary.Navigation
             set { _frame = value; }
         }
 
-        public static bool Navigate(Uri sourcePageUri, object extraData = null)
+        public static bool Navigate(Uri sourcePageUri, object extraData)
         {
             if (_frame.CurrentSource != sourcePageUri)
             {

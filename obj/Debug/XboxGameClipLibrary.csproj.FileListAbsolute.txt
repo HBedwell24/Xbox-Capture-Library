@@ -220,3 +220,4 @@ C:\Users\chris\Xbox-Game-Clip-Library\obj\Debug\Views\CapturesPage.g.cs
 C:\Users\chris\Xbox-Game-Clip-Library\obj\Debug\Views\SettingsPage.g.cs
 C:\Users\chris\Xbox-Game-Clip-Library\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\chris\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary_MarkupCompile.lref
+C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csprojAssemblyReference.cache
