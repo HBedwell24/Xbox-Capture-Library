@@ -7,8 +7,8 @@
       d:DesignHeight="300"
       d:DesignWidth="300"
       mc:Ignorable="d">
-    <StackPanel Orientation="Vertical" Margin="10">
-        <TextBlock FontSize="20">Captures</TextBlock>
+    <StackPanel Orientation="Vertical">
+        <TextBlock>Captures</TextBlock>
         <Separator  Height="12"></Separator>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical"
