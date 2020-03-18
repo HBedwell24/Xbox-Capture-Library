@@ -8,7 +8,7 @@ using XboxGameClipLibrary.Mvvm;
 
 namespace XboxGameClipLibrary.ViewModels
 {
-    internal class MenuItem : HamburgerMenuItem, INotifyPropertyChanged
+    internal class MenuItemViewModel : HamburgerMenuItem, INotifyPropertyChanged
     {
         private object _icon;
         private string _text;

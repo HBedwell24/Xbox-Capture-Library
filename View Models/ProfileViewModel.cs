@@ -2,7 +2,7 @@
 
 namespace XboxGameClipLibrary.Models.Profile
 {
-    public class Profile : INotifyPropertyChanged
+    public class ProfileViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string userName;

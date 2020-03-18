@@ -13,6 +13,7 @@ namespace XboxGameClipLibrary.Views
         public CapturesPage(Task<List<GameClip>> gameClips)
         {
             Console.WriteLine(gameClips.ToString());
+            DataContext = gameClips;
         }
 
         public CustomContentState GetContentState()

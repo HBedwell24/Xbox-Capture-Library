@@ -6,11 +6,12 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.ViewModels;
 using XboxGameClipLibrary.Views;
-using MenuItem = XboxGameClipLibrary.ViewModels.MenuItem;
+using MenuItemViewModel = XboxGameClipLibrary.ViewModels.MenuItemViewModel;
 namespace XboxGameClipLibrary
 {
     public partial class MainWindow : MetroWindow
@@ -30,10 +31,10 @@ namespace XboxGameClipLibrary
             this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new CapturesPage(GetGameClips(cts.Token)));
 
             // Request cancellation.
-            cts.Cancel();
+            //cts.Cancel();
 
             // Cancellation should have happened, so call Dispose.
-            cts.Dispose();
+            //cts.Dispose();
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
@@ -44,7 +45,7 @@ namespace XboxGameClipLibrary
 
         private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
         {
-            var menuItem = e.InvokedItem as MenuItem;
+            var menuItem = e.InvokedItem as MenuItemViewModel;
             if (menuItem != null && menuItem.IsNavigation)
             {
                 Navigation.Navigation.Navigate(menuItem.NavigationDestination, menuItem);
@@ -63,6 +64,17 @@ namespace XboxGameClipLibrary
             Console.WriteLine("Xuid: " + xuid);
 
             return xuid;
+        }
+
+        private async Task<JObject> GetScreenshots(CancellationToken token)
+        {
+            var xuid = await GetXuid(token);
+            var screenshots = await Task.Run(() => Api.GetScreenshotsFromStringCallAsync(token, xuid));
+
+            // Debug Screenshot response
+            Console.WriteLine(screenshots);
+
+            return screenshots;
         }
 
         private async Task<List<GameClip>> GetGameClips(CancellationToken token)

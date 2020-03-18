@@ -29,7 +29,7 @@
         </StackPanel>
         <Grid>
             <!-- List of capture items -->
-            <ListView>
+            <ListView Name="gameClipListView">
 
             </ListView>
 

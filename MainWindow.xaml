@@ -20,7 +20,7 @@
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="MenuItemTemplate"
-                          DataType="{x:Type viewModels:MenuItem}">
+                          DataType="{x:Type viewModels:MenuItemViewModel}">
                 <Grid Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48" />

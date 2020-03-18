@@ -70,6 +70,33 @@ namespace XboxGameClipLibrary.API
             }
         }
 
+        public static async Task<JObject> GetScreenshotsFromStringCallAsync(CancellationToken cancellationToken, string xuid)
+        {
+            using (var client = new HttpClient())
+            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/screenshots"))
+            {
+                request.Headers.Add("X-Auth", "");
+
+                using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
+                {
+                    var stream = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return JObject.Parse(stream);
+                    }
+
+                    var content = stream;
+
+                    throw new ApiException
+                    {
+                        StatusCode = (int) response.StatusCode,
+                        Content = content
+                    };
+                }
+            }
+        }
+
         public static async Task<List<GameClip>> GetGameClipsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
             using (var client = new HttpClient())

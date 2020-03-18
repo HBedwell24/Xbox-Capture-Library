@@ -140,12 +140,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Screenshots\Screenshot.cs" />
+    <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
+    <Compile Include="Models\Screenshots\Thumbnail.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
-    <Compile Include="ViewModels\MenuItem.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelCase.cs" />
+    <Compile Include="View Models\GameClipViewModel.cs" />
+    <Compile Include="View Models\MenuItemViewModel.cs" />
+    <Compile Include="View Models\ScreenshotViewModel.cs" />
+    <Compile Include="View Models\ShellViewModel.cs" />
+    <Compile Include="View Models\ViewModelCase.cs" />
     <Compile Include="Views\CapturesPage.xaml.cs">
       <DependentUpon>CapturesPage.xaml</DependentUpon>
     </Compile>
@@ -170,10 +175,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\GameClips\GameClip.cs" />
-    <Compile Include="Models\GameClips\GameClipUri.cs" />
-    <Compile Include="Models\GameClips\Thumbnail.cs" />
-    <Compile Include="ViewModels\Profile.cs" />
+    <Compile Include="Models\Game Clips\GameClip.cs" />
+    <Compile Include="Models\Game Clips\GameClipUri.cs" />
+    <Compile Include="Models\Game Clips\Thumbnail.cs" />
+    <Compile Include="View Models\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
