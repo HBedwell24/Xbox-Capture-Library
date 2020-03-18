@@ -4,13 +4,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Title="Captures"
-      d:DesignHeight="400"
-      d:DesignWidth="700"
+      d:DesignHeight="300"
+      d:DesignWidth="300"
       mc:Ignorable="d">
-    <StackPanel Orientation="Vertical" Margin="15">
-        <TextBlock FontSize="30">Captures</TextBlock>
+    <StackPanel Orientation="Vertical" Margin="10">
+        <TextBlock FontSize="20">Captures</TextBlock>
         <Separator  Height="12"></Separator>
-        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+        <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical"
                         Margin="0 0 10 0">
                 <Label Content="Filter" />
@@ -28,18 +28,13 @@
             </StackPanel>
         </StackPanel>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
             <!-- List of capture items -->
-            <ListView Grid.Column="0" Name="gameClipListView"></ListView>
+            <ListView>
+
+            </ListView>
 
             <!-- Capture feed and capture details -->
-            <MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>
+            <MediaElement Source=""></MediaElement>
         </Grid>
     </StackPanel>
 

@@ -39,7 +39,7 @@
             <ListView Grid.Column="0" Name="gameClipListView"></ListView>
 
             <!-- Capture feed and capture details -->
-            <MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>
+            <MediaElement Grid.Column="1" Name="VideoControl" Width="426" Height="240" Source=""></MediaElement>
         </Grid>
     </StackPanel>
 
