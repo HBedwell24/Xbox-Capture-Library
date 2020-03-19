@@ -146,9 +146,8 @@
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Navigation\Navigation.cs" />
-    <Compile Include="View Models\GameClipViewModel.cs" />
+    <Compile Include="View Models\CapturesViewModel.cs" />
     <Compile Include="View Models\MenuItemViewModel.cs" />
-    <Compile Include="View Models\ScreenshotViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />
     <Compile Include="View Models\ViewModelCase.cs" />
     <Compile Include="Views\CapturesPage.xaml.cs">

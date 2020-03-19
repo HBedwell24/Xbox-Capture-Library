@@ -220,3 +220,4 @@ C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.cs
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csproj.CopyComplete
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.exe
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.pdb
+C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csprojAssemblyReference.cache
