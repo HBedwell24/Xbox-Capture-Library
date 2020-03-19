@@ -36,10 +36,10 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!-- List of capture items -->
-            <ListView Grid.Column="0" Name="gameClipListView"></ListView>
+            <ListView Grid.Column="0"></ListView>
 
             <!-- Capture feed and capture details -->
-            <MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>
+            <MediaElement Grid.Column="1" Name="VideoControl" Width="426" Height="240" Source=""></MediaElement>
         </Grid>
     </StackPanel>
 
