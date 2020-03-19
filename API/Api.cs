@@ -49,7 +49,7 @@ namespace XboxGameClipLibrary.API
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/profile"))
             {
-                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
+                request.Headers.Add("X-Auth", ApiKeys.XboxAPIKey);
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
@@ -76,7 +76,7 @@ namespace XboxGameClipLibrary.API
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/screenshots"))
             {
-                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
+                request.Headers.Add("X-Auth", ApiKeys.XboxAPIKey);
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
@@ -103,7 +103,7 @@ namespace XboxGameClipLibrary.API
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/game-clips"))
             {
-                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
+                request.Headers.Add("X-Auth", ApiKeys.XboxAPIKey);
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {

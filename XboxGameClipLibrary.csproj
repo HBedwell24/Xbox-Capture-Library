@@ -140,12 +140,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\ApiKeys.cs" />
     <Compile Include="Models\Screenshots\Screenshot.cs" />
     <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
     <Compile Include="Models\Screenshots\Thumbnail.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
-    <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="Extensions\NavigationExtension.cs" />
     <Compile Include="View Models\CapturesViewModel.cs" />
     <Compile Include="View Models\MenuItemViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />

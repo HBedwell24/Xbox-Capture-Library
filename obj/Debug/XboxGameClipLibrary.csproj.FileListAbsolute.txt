@@ -203,6 +203,7 @@ C:\Users\bagge\Documents\Xbox-Game-Clip-Library\bin\Debug\MahApps.Metro.IconPack
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\bin\Debug\Microsoft.Xaml.Behaviors.xml
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csprojAssemblyReference.cache
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\Views\CapturesPage.baml
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\Views\SettingsPage.baml
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\App.baml
@@ -220,4 +221,3 @@ C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.cs
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csproj.CopyComplete
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.exe
 C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.pdb
-C:\Users\bagge\Documents\Xbox-Game-Clip-Library\obj\Debug\XboxGameClipLibrary.csprojAssemblyReference.cache
