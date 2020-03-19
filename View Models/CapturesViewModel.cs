@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using XboxGameClipLibrary.Models;
+using XboxGameClipLibrary.Models.Screenshots;
 
 namespace XboxGameClipLibrary.ViewModels.CapturesPage
 {
@@ -9,7 +10,7 @@ namespace XboxGameClipLibrary.ViewModels.CapturesPage
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private List<GameClip> _GameClips;
-        private JObject _Screenshots;
+        private List<Screenshot> _Screenshots;
 
         public List<GameClip> GameClips
         {
@@ -24,7 +25,7 @@ namespace XboxGameClipLibrary.ViewModels.CapturesPage
             }
         }
 
-        public JObject Screenshots
+        public List<Screenshot> Screenshots
         {
             get { return _Screenshots; }
             set

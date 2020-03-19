@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
+using XboxGameClipLibrary.Models.Screenshots;
 using XboxGameClipLibrary.ViewModels.CapturesPage;
 
 namespace XboxGameClipLibrary.Views
@@ -41,12 +42,13 @@ namespace XboxGameClipLibrary.Views
             return new RestoreModelContentState(DataContext);
         }
 
-        private async Task<JObject> GetScreenshots(CancellationToken token)
+        private async Task<List<Screenshot>> GetScreenshots(CancellationToken token)
         {
             var xuid = await GetXuid(token);
-            var screenshots = Task.Run(() => Api.GetScreenshotsFromStringCallAsync(token, xuid)).Result;
+            var screenshots = Task.Run(() => Api.GetScreenshotsFromStreamCallAsync(token, xuid)).Result;
 
             // Debug Screenshot response
+            string jsonString = JsonConvert.SerializeObject(screenshots, Formatting.Indented);
             Console.WriteLine(screenshots);
 
             return screenshots;

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using XboxGameClipLibrary.Models.Screenshots;
 
 namespace XboxGameClipLibrary.API
 {
@@ -48,7 +49,7 @@ namespace XboxGameClipLibrary.API
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/profile"))
             {
-                request.Headers.Add("X-Auth", "");
+                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
@@ -70,27 +71,27 @@ namespace XboxGameClipLibrary.API
             }
         }
 
-        public static async Task<JObject> GetScreenshotsFromStringCallAsync(CancellationToken cancellationToken, string xuid)
+        public static async Task<List<Screenshot>> GetScreenshotsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/screenshots"))
             {
-                request.Headers.Add("X-Auth", "");
+                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    var stream = await response.Content.ReadAsStringAsync();
+                    var stream = await response.Content.ReadAsStreamAsync();
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return JObject.Parse(stream);
+                        return DeserializeJsonFromStream<List<Screenshot>>(stream);
                     }
 
-                    var content = stream;
+                    var content = await StreamToStringAsync(stream);
 
                     throw new ApiException
                     {
-                        StatusCode = (int) response.StatusCode,
+                        StatusCode = (int)response.StatusCode,
                         Content = content
                     };
                 }
@@ -102,7 +103,7 @@ namespace XboxGameClipLibrary.API
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/game-clips"))
             {
-                request.Headers.Add("X-Auth", "");
+                request.Headers.Add("X-Auth", "0f812042ee53ea6e58fdb45b947a863eaf8957f7");
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
