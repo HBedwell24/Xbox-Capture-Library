@@ -38,3 +38,4 @@ msbuild.wrn
 obj/
 
 bin/
+.vshistory/
