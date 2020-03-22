@@ -6,11 +6,11 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:viewModels="clr-namespace:XboxGameClipLibrary.ViewModels"
                       mc:Ignorable="d"
-                      GlowBrush="{DynamicResource MahApps.Brushes.AccentBase}"
                       Height="600"
                       Width="1024"
                       Title="Xbox Game Clip Library"
                       WindowStartupLocation="CenterScreen"
+                      Icon="C:\Users\bagge\Documents\Xbox-Game-Clip-Library\Resources\Images\logo.ico"
                       WindowTransitionsEnabled="False">
 
     <controls:MetroWindow.DataContext>
