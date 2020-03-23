@@ -12,7 +12,7 @@
     <!--  60%  -->
     <Color x:Key="AccentColor2">#3A3A3A</Color>
     <!--  40%  -->
-    <Color x:Key="AccentColor3">#66D80073</Color>
+    <Color x:Key="AccentColor3">#FFFFFF</Color>
     <!--  20%  -->
     <Color x:Key="AccentColor4">#33D80073</Color>
 
@@ -31,6 +31,7 @@
                      options:Freeze="True" />
     <SolidColorBrush x:Key="AccentColorBrush3"
                      Color="{StaticResource AccentColor3}"
+                     Opacity="0.15"
                      options:Freeze="True" />
     <SolidColorBrush x:Key="AccentColorBrush4"
                      Color="{StaticResource AccentColor4}"

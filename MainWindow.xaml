@@ -8,6 +8,8 @@
                       mc:Ignorable="d"
                       Height="600"
                       Width="1024"
+                      TitleCaps="False"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
                       Title="Xbox Game Clip Library"
                       WindowStartupLocation="CenterScreen"
                       Icon="C:\Users\bagge\Documents\Xbox-Game-Clip-Library\Resources\Images\logo.ico"
