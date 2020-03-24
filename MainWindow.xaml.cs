@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using XboxGameClipLibrary.ViewModels;
@@ -17,7 +18,7 @@ namespace XboxGameClipLibrary
             this.HamburgerMenuControl.Content = Navigation.Navigation.Frame;
 
             // Navigate to the home page.
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new CapturesPage());
+            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)

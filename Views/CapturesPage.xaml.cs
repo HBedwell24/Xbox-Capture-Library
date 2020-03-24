@@ -17,6 +17,9 @@ namespace XboxGameClipLibrary.Views
     {
         public CapturesPage()
         {
+            // Initialize the CapturesPage component
+            InitializeComponent();
+
             // Create a CancellationTokenSource object
             CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -26,14 +29,11 @@ namespace XboxGameClipLibrary.Views
                 Screenshots = Task.Run(() => GetScreenshots(cts.Token)).Result
             };
 
-            // Request cancellation.
-            cts.Cancel();
-
             // Cancellation should have happened, so call Dispose.
             cts.Dispose();
 
             // Bind the CapturesViewModel to DataContext
-            DataContext = cvm;
+            gameClipListView.ItemsSource = cvm.GameClips;
         }
 
         public CustomContentState GetContentState()
@@ -48,7 +48,7 @@ namespace XboxGameClipLibrary.Views
 
             // Debug Screenshot response
             string jsonString = JsonConvert.SerializeObject(screenshots, Formatting.Indented);
-            Console.WriteLine(screenshots);
+            Console.WriteLine(jsonString);
 
             return screenshots;
         }
