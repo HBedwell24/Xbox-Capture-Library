@@ -38,9 +38,32 @@
             <!-- List of capture items -->
             <DataGrid Name="gameClipListView"
                       Margin="10,20,10,0"
-                      AutoGenerateColumns="True"
+                      AutoGenerateColumns="False"
                       Style="{StaticResource AzureDataGrid}">
-
+                <DataGrid.Columns>
+                    <!--<DataGridTemplateColumn Header="Thumbnail"
+                                            Width="SizeToCells"
+                                            IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Thumbnail}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header="Game Clip ID"
+                                        Binding="{Binding GameClipId}"
+                                        SortMemberPath="Game Clip ID"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Game"
+                                        Binding="{Binding TitleName}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Duration (In Seconds)"
+                                        Binding="{Binding DurationInSeconds}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Date Published"
+                                        Binding="{Binding DatePublished}"
+                                        IsReadOnly="True" />
+                </DataGrid.Columns>
             </DataGrid>
 
             <!-- Capture feed and capture details -->

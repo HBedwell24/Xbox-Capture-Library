@@ -44,7 +44,7 @@ namespace XboxGameClipLibrary.Views
         private async Task<List<Screenshot>> GetScreenshots(CancellationToken token)
         {
             var xuid = await GetXuid(token);
-            var screenshots = Task.Run(() => Api.GetScreenshotsFromStreamCallAsync(token, xuid)).Result;
+            var screenshots = Task.Run(() => XboxApiService.GetScreenshotsFromStreamCallAsync(token, xuid)).Result;
 
             // Debug Screenshot response
             string jsonString = JsonConvert.SerializeObject(screenshots, Formatting.Indented);
@@ -56,7 +56,7 @@ namespace XboxGameClipLibrary.Views
         private async Task<List<GameClip>> GetGameClips(CancellationToken token)
         {
             var xuid = await GetXuid(token);
-            var gameClips = Task.Run(() => Api.GetGameClipsFromStreamCallAsync(token, xuid)).Result;
+            var gameClips = Task.Run(() => XboxApiService.GetGameClipsFromStreamCallAsync(token, xuid)).Result;
 
             // Debug GameClip response
             string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
@@ -67,7 +67,7 @@ namespace XboxGameClipLibrary.Views
 
         private async Task<string> GetXuid(CancellationToken token)
         {
-            var profile = await Task.Run(() => Api.GetProfileFromStringCallAsync(token));
+            var profile = await Task.Run(() => XboxApiService.GetProfileFromStringCallAsync(token));
             var xuid = profile["userXuid"].ToString();
 
             // Debug Profile response

@@ -5,6 +5,8 @@ namespace XboxGameClipLibrary.Models
 {
     public class GameClip
     {
+        private int durationInSeconds;
+
         public string GameClipId { get; set; }
         public string State { get; set; }
         public DateTime DatePublished { get; set; }
@@ -12,7 +14,20 @@ namespace XboxGameClipLibrary.Models
         public string LastModified { get; set; }
         public string UserCaption { get; set; }
         public string Type { get; set; }
-        public int DurationInSeconds { get; set; }
+        public string DurationInSeconds {
+            get
+            {
+                var span = new TimeSpan(0, 0, durationInSeconds);
+                var formattedDuration = string.Format("{0}:{1:00}",
+                                            (int)span.TotalMinutes,
+                                            span.Seconds);
+                return formattedDuration;
+            }
+            set
+            {
+                durationInSeconds = int.Parse(value);
+            }
+        }
         public string Scid { get; set; }
         public int TitleId { get; set; }
         public int Rating { get; set; }

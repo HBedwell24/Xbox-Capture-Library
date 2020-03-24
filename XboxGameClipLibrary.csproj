@@ -143,7 +143,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="API\ApiKeys.cs" />
+    <Compile Include="API\XboxApiKey.cs" />
     <Compile Include="Models\Screenshots\Screenshot.cs" />
     <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
     <Compile Include="Models\Screenshots\Thumbnail.cs" />
@@ -167,7 +167,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="API\Api.cs" />
+    <Compile Include="API\XboxApiService.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -79,6 +79,7 @@
                      options:Freeze="True" />
     <SolidColorBrush x:Key="MetroDataGrid.MouseOverHighlightBrush"
                      Color="{StaticResource AccentColor3}"
+                     Opacity="0.15"
                      options:Freeze="True" />
     <SolidColorBrush x:Key="MetroDataGrid.FocusBorderBrush"
                      Color="{StaticResource AccentColor}"
