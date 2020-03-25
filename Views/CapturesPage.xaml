@@ -14,8 +14,7 @@
         <TextBlock FontSize="30">Captures</TextBlock>
         <Separator  Height="12"></Separator>
         <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-            <StackPanel Orientation="Vertical"
-                        Margin="0 0 10 0">
+            <StackPanel Orientation="Vertical" Margin="0 0 10 0">
                 <Label Content="Filter" />
                 <ComboBox>
                     <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
@@ -37,16 +36,12 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <!-- Progress ring -->
             <Controls:ProgressRing IsActive="False" Visibility="Collapsed" Name="progressRing" Foreground="{DynamicResource AccentColorBrush}" />
-            
+
             <!-- List of capture items -->
-            <DataGrid Visibility="Collapsed"
-                      Name="gameClipListView"
-                      Margin="10,20,10,0"
-                      AutoGenerateColumns="False"
-                      Style="{StaticResource AzureDataGrid}">
+            <DataGrid Visibility="Collapsed" Name="gameClipListView" Margin="10,20,10,0" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" MouseUp="Row_Click">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Game Clip ID"
                                         Binding="{Binding GameClipId}"

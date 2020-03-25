@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.Models.Screenshots;
@@ -98,6 +100,36 @@ namespace XboxGameClipLibrary.Views
             Console.WriteLine("Xuid: " + xuid);
 
             return xuid;
+        }
+
+        // Click event handler for data grid rows
+        private void Row_Click(object sender, MouseButtonEventArgs e)
+        {
+            // Ensure row was clicked and not empty space
+            var row = ItemsControl.ContainerFromElement((DataGrid)sender,
+                                                e.OriginalSource as DependencyObject) as DataGridRow;
+            // If empty space was clicked exit method
+            if (row == null)
+            {
+                e.Handled = true;
+                return;
+            }            
+
+            // TODO: Open URI in MediaPlayer
+            Console.WriteLine("The index of the row for the clicked cell is " + FindRowIndex(row));
+        }
+
+        // Finds the row index corresponding to the data grid row clicked
+        private int FindRowIndex(DataGridRow row)
+        {
+            DataGrid dataGrid =
+                ItemsControl.ItemsControlFromItemContainer(row)
+                as DataGrid;
+
+            int index = dataGrid.ItemContainerGenerator.
+                IndexFromContainer(row);
+
+            return index;
         }
     }
 }
