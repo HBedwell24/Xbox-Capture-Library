@@ -14,9 +14,9 @@ namespace XboxGameClipLibrary.Navigation
             set { _frame = value; }
         }
 
-        public static bool Navigate(object sourcePageUri, object extraData)
+        public static bool Navigate(Uri sourcePageUri, object extraData)
         {
-            if (_frame.NavigationService.Content != sourcePageUri)
+            if (_frame.CurrentSource != sourcePageUri)
             {
                 return _frame.Navigate(sourcePageUri, extraData);
             }
@@ -28,15 +28,6 @@ namespace XboxGameClipLibrary.Navigation
             if (_frame.CurrentSource != sourcePageUri)
             {
                 return _frame.Navigate(sourcePageUri);
-            }
-            return true;
-        }
-
-        public static bool NavigateObject(object content)
-        {
-            if (_frame.NavigationService.Content != content)
-            {
-                return _frame.Navigate(content);
             }
             return true;
         }
