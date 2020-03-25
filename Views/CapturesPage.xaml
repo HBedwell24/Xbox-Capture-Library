@@ -41,20 +41,11 @@
                       AutoGenerateColumns="False"
                       Style="{StaticResource AzureDataGrid}">
                 <DataGrid.Columns>
-                    <!--<DataGridTemplateColumn Header="Thumbnail"
-                                            Width="SizeToCells"
-                                            IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Thumbnail}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
                     <DataGridTextColumn Header="Game Clip ID"
                                         Binding="{Binding GameClipId}"
                                         SortMemberPath="Game Clip ID"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="Game"
+                    <DataGridTextColumn Header="Game Recorded"
                                         Binding="{Binding TitleName}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Duration (In Seconds)"
@@ -62,6 +53,9 @@
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Published"
                                         Binding="{Binding DatePublished}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="URI"
+                                        Binding="{Binding GameClipUris.Uri}"
                                         IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
