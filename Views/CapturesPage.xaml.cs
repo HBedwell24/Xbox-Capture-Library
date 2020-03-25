@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.Models.Screenshots;
@@ -47,10 +46,10 @@ namespace XboxGameClipLibrary.Views
                 Screenshots = await GetScreenshots(cts.Token)
             };
 
-            // Request cancellation.
+            // Request cancellation
             cts.Cancel();
 
-            // Cancellation should have happened, so call Dispose.
+            // Cancellation should have happened, so call Dispose
             cts.Dispose();
 
             // The data bind has finished, so the ring can now be collapsed
@@ -130,6 +129,21 @@ namespace XboxGameClipLibrary.Views
                 IndexFromContainer(row);
 
             return index;
+        }
+
+        // Gets input from comboboxes
+        private void GetCaptureType()
+        {
+            string captureType = captureBox.SelectionBoxItem.ToString();
+
+            if (captureType.Equals("Screenshots"))
+            {
+                // TODO: get screenshots data
+            }
+            else if(captureType.Equals("Game clips"))
+            {
+                // TODO: get captures data
+            }
         }
     }
 }
