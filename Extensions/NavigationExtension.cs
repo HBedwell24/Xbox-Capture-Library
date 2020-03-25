@@ -23,11 +23,11 @@ namespace XboxGameClipLibrary.Navigation
             return true;
         }
 
-        public static bool Navigate(object content)
+        public static bool Navigate(Uri sourcePageUri)
         {
-            if (_frame.NavigationService.Content != content)
+            if (_frame.CurrentSource != sourcePageUri)
             {
-                return _frame.Navigate(content);
+                return _frame.Navigate(sourcePageUri);
             }
             return true;
         }

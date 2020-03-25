@@ -9,18 +9,18 @@ namespace XboxGameClipLibrary.ViewModels
         public ShellViewModel()
         {
             // Build the menus
-            this.Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CameraSolid }, Text = "Captures", NavigationDestination = new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute) });
-            this.OptionsMenu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Settings", NavigationDestination = new Uri("Views/SettingsPage.xaml", UriKind.RelativeOrAbsolute) });
+            Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CameraSolid }, Text = "Captures", NavigationDestination = new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute) });
+            OptionsMenu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Settings", NavigationDestination = new Uri("Views/SettingsPage.xaml", UriKind.RelativeOrAbsolute) });
         }
 
         public object GetItem(object uri)
         {
-            return null == uri ? null : this.Menu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
+            return null == uri ? null : Menu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
         }
 
         public object GetOptionsItem(object uri)
         {
-            return null == uri ? null : this.OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
+            return null == uri ? null : OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
         }
     }
 }

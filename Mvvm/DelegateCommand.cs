@@ -35,8 +35,8 @@ namespace XboxGameClipLibrary.Mvvm
                 throw new ArgumentNullException(nameof(execute));
             }
 
-            this._execute = execute;
-            this._canExecute = canExecute;
+            _execute = execute;
+            _canExecute = canExecute;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace XboxGameClipLibrary.Mvvm
         [SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate", Justification = "This cannot be an event")]
         public void RaiseCanExecuteChanged()
         {
-            this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace XboxGameClipLibrary.Mvvm
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
-            return this._canExecute == null || this._canExecute();
+            return _canExecute == null || _canExecute();
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace XboxGameClipLibrary.Mvvm
         /// <param name="parameter">This parameter will always be ignored.</param>
         public void Execute(object parameter)
         {
-            if (this.CanExecute(parameter))
+            if (CanExecute(parameter))
             {
-                this._execute();
+                _execute();
             }
         }
     }

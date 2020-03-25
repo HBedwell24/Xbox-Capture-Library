@@ -18,35 +18,35 @@ namespace XboxGameClipLibrary.ViewModels
 
         public object Icon
         {
-            get { return this._icon; }
-            set { this.SetProperty(ref this._icon, value); }
+            get { return _icon; }
+            set { SetProperty(ref _icon, value); }
         }
 
         public string Text
         {
-            get { return this._text; }
-            set { this.SetProperty(ref this._text, value); }
+            get { return _text; }
+            set { SetProperty(ref _text, value); }
         }
 
         public bool IsEnabled
         {
-            get { return this._isEnabled; }
-            set { this.SetProperty(ref this._isEnabled, value); }
+            get { return _isEnabled; }
+            set { SetProperty(ref _isEnabled, value); }
         }
 
         public ICommand Command
         {
-            get { return this._command; }
-            set { this.SetProperty(ref this._command, (DelegateCommand)value); }
+            get { return _command; }
+            set { SetProperty(ref _command, (DelegateCommand)value); }
         }
 
         public Uri NavigationDestination
         {
-            get { return this._navigationDestination; }
-            set { this.SetProperty(ref this._navigationDestination, value); }
+            get { return _navigationDestination; }
+            set { SetProperty(ref _navigationDestination, value); }
         }
 
-        public bool IsNavigation => this._navigationDestination != null;
+        public bool IsNavigation => _navigationDestination != null;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,7 +61,7 @@ namespace XboxGameClipLibrary.ViewModels
             if (Equals(storage, value)) return false;
 
             storage = value;
-            this.OnPropertyChanged(propertyName);
+            OnPropertyChanged(propertyName);
             return true;
         }
     }
