@@ -32,6 +32,11 @@ namespace XboxGameClipLibrary.Views
             // Create a CancellationTokenSource object
             CancellationTokenSource cts = new CancellationTokenSource();
 
+            // Display the progress ring
+            progressRing.IsActive = true;
+            progressRing.Visibility = Visibility.Visible;
+
+            // Bind the GameClip and Screenshot data to the view model
             var cvm = new CapturesViewModel
             {
                 GameClips = await GetGameClips(cts.Token),
@@ -41,8 +46,15 @@ namespace XboxGameClipLibrary.Views
             // Cancellation should have happened, so call Dispose.
             cts.Dispose();
 
+            // The data bind has finished, so the ring can now be collapsed
+            progressRing.IsActive = false;
+            progressRing.Visibility = Visibility.Collapsed;
+
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             gameClipListView.ItemsSource = cvm.GameClips;
+
+            // Display the DataGrid with the successfully loaded data
+            gameClipListView.Visibility = Visibility.Visible;
         }
 
         private async Task<List<Screenshot>> GetScreenshots(CancellationToken token)
