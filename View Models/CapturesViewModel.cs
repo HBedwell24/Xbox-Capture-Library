@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.Models.Screenshots;
 
-namespace XboxGameClipLibrary.ViewModels.CapturesPage
+namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
 {
     public class CapturesViewModel : INotifyPropertyChanged
     {

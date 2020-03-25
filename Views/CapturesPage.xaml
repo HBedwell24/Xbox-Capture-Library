@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       Title="Captures"
+      KeepAlive="True"
       d:DesignHeight="400"
       d:DesignWidth="700"
       mc:Ignorable="d"

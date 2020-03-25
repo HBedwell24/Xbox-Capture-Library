@@ -14,7 +14,7 @@ namespace XboxGameClipLibrary.ViewModels
         private string _text;
         private bool _isEnabled = true;
         private DelegateCommand _command;
-        private Uri _navigationDestination;
+        private object _navigationDestination;
 
         public object Icon
         {
@@ -40,7 +40,7 @@ namespace XboxGameClipLibrary.ViewModels
             set { SetProperty(ref _command, (DelegateCommand)value); }
         }
 
-        public Uri NavigationDestination
+        public object NavigationDestination
         {
             get { return _navigationDestination; }
             set { SetProperty(ref _navigationDestination, value); }

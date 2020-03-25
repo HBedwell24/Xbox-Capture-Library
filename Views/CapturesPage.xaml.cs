@@ -5,26 +5,28 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.Models.Screenshots;
-using XboxGameClipLibrary.ViewModels.CapturesPage;
+using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
-    public partial class CapturesPage : Page, IProvideCustomContentState
+    public partial class CapturesPage : Page
     {
         public CapturesPage()
         {
             // Initialize the CapturesPage component
             InitializeComponent();
-            BindCaptureDataToDataGrid();
+
+            // Bind the capture data to gameClipListView
+            Loaded += CapturesPage_Loaded;
         }
 
-        public CustomContentState GetContentState()
+        private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            return new RestoreModelContentState(DataContext);
+            BindCaptureDataToDataGrid();
+            Loaded -= CapturesPage_Loaded;
         }
 
         private async void BindCaptureDataToDataGrid()
@@ -42,6 +44,9 @@ namespace XboxGameClipLibrary.Views
                 GameClips = await GetGameClips(cts.Token),
                 Screenshots = await GetScreenshots(cts.Token)
             };
+
+            // Request cancellation.
+            cts.Cancel();
 
             // Cancellation should have happened, so call Dispose.
             cts.Dispose();
@@ -93,24 +98,6 @@ namespace XboxGameClipLibrary.Views
             Console.WriteLine("Xuid: " + xuid);
 
             return xuid;
-        }
-    }
-
-    [Serializable]
-    internal class RestoreModelContentState : CustomContentState
-    {
-        private readonly object _model;
-
-        public RestoreModelContentState(object model)
-        {
-            _model = model;
-        }
-
-        public override void Replay(NavigationService navigationService, NavigationMode mode)
-        {
-            var element = navigationService.Content as FrameworkElement;
-            if (element == null) return;
-            element.DataContext = _model;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using XboxGameClipLibrary.ViewModels;
+using XboxGameClipLibrary.Views;
 using MenuItemViewModel = XboxGameClipLibrary.ViewModels.MenuItemViewModel;
 namespace XboxGameClipLibrary
 {
@@ -17,7 +18,7 @@ namespace XboxGameClipLibrary
             HamburgerMenuControl.Content = Navigation.Navigation.Frame;
 
             // Navigate to the home page.
-            Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
+            Loaded += (sender, args) => Navigation.Navigation.NavigateObject(new CapturesPage());
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
