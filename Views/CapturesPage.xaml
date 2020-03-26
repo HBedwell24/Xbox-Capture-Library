@@ -23,14 +23,6 @@
             <Separator  Height="12"></Separator>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10">
-                <StackPanel Orientation="Vertical"
-                            Margin="0 0 10 0">
-                    <Label Content="Filter" />
-                    <ComboBox Name="filterBox">
-                        <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                        <ComboBoxItem>By game</ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <Label Content="Capture Type" />
                     <ComboBox Name="captureBox"
