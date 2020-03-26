@@ -18,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.Column="0">
             <TextBlock FontSize="30">Captures</TextBlock>
             <Separator  Height="12"></Separator>
             <StackPanel Orientation="Horizontal"
@@ -43,19 +43,23 @@
             </StackPanel>
         </StackPanel>
 
-        <Grid Grid.Row="1">
+        <!-- Progress ring -->
+        <Controls:ProgressRing Grid.Row="1" 
+                               Grid.Column="0" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               IsActive="False"
+                               Visibility="Collapsed"
+                               Name="progressRing"
+                               Foreground="{DynamicResource AccentColorBrush}" />
+
+        <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-            <!-- Progress ring -->
-            <Controls:ProgressRing IsActive="False"
-                                   Visibility="Collapsed"
-                                   Name="progressRing"
-                                   Foreground="{DynamicResource AccentColorBrush}" />
 
             <!-- List of capture items -->
             <DataGrid Visibility="Collapsed"
