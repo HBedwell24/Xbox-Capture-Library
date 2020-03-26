@@ -1,4 +1,4 @@
-﻿namespace XboxGameClipLibrary.API
+namespace XboxGameClipLibrary.API
 {
     public static partial class XboxApiKey
     {
