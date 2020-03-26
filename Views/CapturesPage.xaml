@@ -10,30 +10,40 @@
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
-    <StackPanel Orientation="Vertical" Margin="15">
-        <TextBlock FontSize="30">Captures</TextBlock>
-        <Separator  Height="12"></Separator>
-        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-            <StackPanel Orientation="Vertical" Margin="0 0 10 0">
-                <Label Content="Filter" />
-                <ComboBox Name="filterBox">
-                    <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                    <ComboBoxItem>By game</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <Label Content="Capture Type" />
-                <ComboBox Name="captureBox"
-                          SelectionChanged="CaptureTypeComboBox_SelectionChanged"
-                          DropDownClosed="CaptureTypeComboBox_DropDownClosed">
-                    <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
-                    <ComboBoxItem>Game clips</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock FontSize="30">Captures</TextBlock>
+            <Separator  Height="12"></Separator>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <StackPanel Orientation="Vertical"
+                            Margin="0 0 10 0">
+                    <Label Content="Filter" />
+                    <ComboBox Name="filterBox">
+                        <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
+                        <ComboBoxItem>By game</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Capture Type" />
+                    <ComboBox Name="captureBox"
+                              SelectionChanged="CaptureTypeComboBox_SelectionChanged"
+                              DropDownClosed="CaptureTypeComboBox_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
+                        <ComboBoxItem>Game clips</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Grid>
+
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -42,10 +52,18 @@
             </Grid.RowDefinitions>
 
             <!-- Progress ring -->
-            <Controls:ProgressRing IsActive="False" Visibility="Collapsed" Name="progressRing" Foreground="{DynamicResource AccentColorBrush}" />
+            <Controls:ProgressRing IsActive="False"
+                                   Visibility="Collapsed"
+                                   Name="progressRing"
+                                   Foreground="{DynamicResource AccentColorBrush}" />
 
             <!-- List of capture items -->
-            <DataGrid Visibility="Collapsed" Name="gameClipListView" Margin="10,20,10,0" AutoGenerateColumns="False" Style="{StaticResource AzureDataGrid}" MouseUp="Row_Click">
+            <DataGrid Visibility="Collapsed"
+                      Name="gameClipListView"
+                      Margin="10,20,10,0"
+                      AutoGenerateColumns="False"
+                      Style="{StaticResource AzureDataGrid}"
+                      MouseUp="Row_Click">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Game Clip ID"
                                         Binding="{Binding GameClipId}"
@@ -67,9 +85,9 @@
             </DataGrid>
 
             <!-- Capture feed and capture details -->
-            <TextBlock Visibility="Collapsed" Name="screenshotListView">Screenshots</TextBlock>
+            <TextBlock Visibility="Collapsed"
+                       Name="screenshotListView">Screenshots</TextBlock>
             <!--<MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>-->
         </Grid>
-    </StackPanel>
-
+    </Grid>
 </Page>
