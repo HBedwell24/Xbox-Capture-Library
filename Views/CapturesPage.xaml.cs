@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,8 @@ namespace XboxGameClipLibrary.Views
 {
     public partial class CapturesPage : Page
     {
+        private bool handle = true;
+
         public CapturesPage()
         {
             // Initialize the CapturesPage component
@@ -59,8 +62,8 @@ namespace XboxGameClipLibrary.Views
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             gameClipListView.ItemsSource = cvm.GameClips;
 
-            // Display the DataGrid with the successfully loaded data
-            gameClipListView.Visibility = Visibility.Visible;
+            // Display the correct type of capture data with respect to the ComboBox
+            Handle();
         }
 
         private async Task<List<Screenshot>> GetScreenshots(CancellationToken token)
@@ -105,8 +108,8 @@ namespace XboxGameClipLibrary.Views
         private void Row_Click(object sender, MouseButtonEventArgs e)
         {
             // Ensure row was clicked and not empty space
-            var row = ItemsControl.ContainerFromElement((DataGrid)sender,
-                                                e.OriginalSource as DependencyObject) as DataGridRow;
+            var row = ItemsControl.ContainerFromElement((DataGrid) sender, e.OriginalSource as DependencyObject) as DataGridRow;
+
             // If empty space was clicked exit method
             if (row == null)
             {
@@ -121,28 +124,39 @@ namespace XboxGameClipLibrary.Views
         // Finds the row index corresponding to the data grid row clicked
         private int FindRowIndex(DataGridRow row)
         {
-            DataGrid dataGrid =
-                ItemsControl.ItemsControlFromItemContainer(row)
-                as DataGrid;
-
-            int index = dataGrid.ItemContainerGenerator.
-                IndexFromContainer(row);
+            DataGrid dataGrid = ItemsControl.ItemsControlFromItemContainer(row) as DataGrid;
+            int index = dataGrid.ItemContainerGenerator.IndexFromContainer(row);
 
             return index;
         }
 
-        // Gets input from comboboxes
-        private void GetCaptureType()
+        private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            string captureType = captureBox.SelectionBoxItem.ToString();
+            if (handle) Handle();
+            handle = true;
+        }
 
-            if (captureType.Equals("Screenshots"))
+        private void CaptureTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            handle = !cmb.IsDropDownOpen;
+            Handle();
+        }
+
+        // Gets input from comboboxes
+        private void Handle()
+        {
+            switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
-                // TODO: get screenshots data
-            }
-            else if(captureType.Equals("Game clips"))
-            {
-                // TODO: get captures data
+                case "Screenshots":
+                    gameClipListView.Visibility = Visibility.Collapsed;
+                    screenshotListView.Visibility = Visibility.Visible;
+                    break;
+
+                case "Game clips":
+                    screenshotListView.Visibility = Visibility.Collapsed;
+                    gameClipListView.Visibility = Visibility.Visible;
+                    break;
             }
         }
     }

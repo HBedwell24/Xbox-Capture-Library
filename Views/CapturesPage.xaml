@@ -23,10 +23,14 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <Label Content="Capture Type" />
-                <ComboBox Name="captureBox">
+                <ComboBox Name="captureBox"
+                          SelectionChanged="CaptureTypeComboBox_SelectionChanged"
+                          DropDownClosed="CaptureTypeComboBox_DropDownClosed">
                     <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
                     <ComboBoxItem>Game clips</ComboBoxItem>
                 </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
             </StackPanel>
         </StackPanel>
         <Grid>
@@ -63,6 +67,7 @@
             </DataGrid>
 
             <!-- Capture feed and capture details -->
+            <TextBlock Visibility="Collapsed" Name="screenshotListView">Screenshots</TextBlock>
             <!--<MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>-->
         </Grid>
     </StackPanel>
