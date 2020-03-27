@@ -8,8 +8,36 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
     public class CapturesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private List<GameClipUri> _GameClipUris;
+        private List<Models.Thumbnail> _GameClipThumbnails;
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
+
+        public List<GameClipUri> GameClipUris
+        {
+            get { return _GameClipUris; }
+            set
+            {
+                if (value != _GameClipUris)
+                {
+                    _GameClipUris = value;
+                    OnNotifyPropertyChanged("GameClipUris");
+                }
+            }
+        }
+
+        public List<Models.Thumbnail> GameClipThumbnails
+        {
+            get { return _GameClipThumbnails; }
+            set
+            {
+                if (value != _GameClipThumbnails)
+                {
+                    _GameClipThumbnails = value;
+                    OnNotifyPropertyChanged("GameClipThumbnails");
+                }
+            }
+        }
 
         public List<GameClip> GameClips
         {

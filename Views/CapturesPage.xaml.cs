@@ -42,10 +42,14 @@ namespace XboxGameClipLibrary.Views
             progressRing.IsActive = true;
             progressRing.Visibility = Visibility.Visible;
 
+            var gameClipData = await GetGameClips(cts.Token);
+
             // Bind the GameClip and Screenshot data to the view model
             var cvm = new CapturesViewModel
             {
-                GameClips = await GetGameClips(cts.Token),
+                //GameClipUris = (List<GameClipUri>) GetType().GetProperty("Thumbnails").GetValue(gameClipData),
+                //GameClipThumbnails = (List<Models.Thumbnail>) GetType().GetProperty("GameClipUris").GetValue(gameClipData),
+                GameClips = gameClipData,
                 Screenshots = await GetScreenshots(cts.Token)
             };
 
@@ -61,6 +65,7 @@ namespace XboxGameClipLibrary.Views
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             gameClipListView.ItemsSource = cvm.GameClips;
+            screenshotListView.ItemsSource = cvm.Screenshots;
 
             // Display the correct type of capture data with respect to the ComboBox
             Handle();

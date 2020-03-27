@@ -57,33 +57,65 @@
             <DataGrid Visibility="Collapsed"
                       Name="gameClipListView"
                       Margin="10,20,10,0"
-                      CanUserAddRows="False"
                       AutoGenerateColumns="False"
                       Style="{StaticResource AzureDataGrid}"
+                      CanUserAddRows="False"
                       MouseUp="Row_Click">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Game Clip ID"
                                         Binding="{Binding GameClipId}"
-                                        SortMemberPath="Game Clip ID"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="Game Recorded"
+                    <DataGridTextColumn Header="Game"
                                         Binding="{Binding TitleName}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Device"
+                                        Binding="{Binding DeviceType}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Duration (In Seconds)"
                                         Binding="{Binding DurationInSeconds}"
                                         IsReadOnly="True" />
+                    <DataGridTextColumn Header="Date Recorded"
+                                        Binding="{Binding DateRecorded}"
+                                        IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Published"
                                         Binding="{Binding DatePublished}"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="URI"
-                                        Binding="{Binding GameClipUris.Uri}"
+                    <DataGridTextColumn Header="Views"
+                                        Binding="{Binding Views}"
                                         IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
 
             <!-- Capture feed and capture details -->
-            <TextBlock Visibility="Collapsed"
-                       Name="screenshotListView">Screenshots</TextBlock>
+            <DataGrid Visibility="Collapsed"
+                      Name="screenshotListView"
+                      Margin="10,20,10,0"
+                      AutoGenerateColumns="False"
+                      Style="{StaticResource AzureDataGrid}"
+                      CanUserAddRows="False"
+                      MouseUp="Row_Click">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Screenshot ID"
+                                        Binding="{Binding ScreenshotId}"
+                                        SortMemberPath="Screenshot ID"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Game"
+                                        Binding="{Binding TitleName}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Device"
+                                        Binding="{Binding DeviceType}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Date Taken"
+                                        Binding="{Binding DateTaken}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Date Published"
+                                        Binding="{Binding DatePublished}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Views"
+                                        Binding="{Binding Views}"
+                                        IsReadOnly="True" />
+                </DataGrid.Columns>
+            </DataGrid>
             <!--<MediaElement Grid.Column="1" Name="videoControl" Width="426" Height="240" Source=""></MediaElement>-->
         </Grid>
     </Grid>
