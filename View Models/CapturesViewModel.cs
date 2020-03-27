@@ -8,12 +8,12 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
     public class CapturesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private List<GameClipUri> _GameClipUris;
-        private List<Models.Thumbnail> _GameClipThumbnails;
+        private List<string> _GameClipUris;
+        private List<string> _GameClipThumbnails;
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
 
-        public List<GameClipUri> GameClipUris
+        public List<string> GameClipUris
         {
             get { return _GameClipUris; }
             set
@@ -26,7 +26,7 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             }
         }
 
-        public List<Models.Thumbnail> GameClipThumbnails
+        public List<string> GameClipThumbnails
         {
             get { return _GameClipThumbnails; }
             set

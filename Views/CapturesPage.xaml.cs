@@ -17,6 +17,8 @@ namespace XboxGameClipLibrary.Views
     public partial class CapturesPage : Page
     {
         private bool handle = true;
+        List<string> gameClipUriList = new List<string>();
+        List<string> thumbnails = new List<string>();
 
         public CapturesPage()
         {
@@ -44,11 +46,17 @@ namespace XboxGameClipLibrary.Views
 
             var gameClipData = await GetGameClips(cts.Token);
 
+            foreach (var GameClip in gameClipData)
+            {
+                gameClipUriList.Add(GameClip.GameClipUris[0].Uri);
+                thumbnails.Add(GameClip.Thumbnails[0].Uri);
+            }
+
             // Bind the GameClip and Screenshot data to the view model
             var cvm = new CapturesViewModel
             {
-                //GameClipUris = (List<GameClipUri>) GetType().GetProperty("Thumbnails").GetValue(gameClipData),
-                //GameClipThumbnails = (List<Models.Thumbnail>) GetType().GetProperty("GameClipUris").GetValue(gameClipData),
+                GameClipUris = gameClipUriList,
+                GameClipThumbnails = thumbnails,
                 GameClips = gameClipData,
                 Screenshots = await GetScreenshots(cts.Token)
             };
