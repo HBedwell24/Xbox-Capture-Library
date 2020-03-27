@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
+using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
 using XboxGameClipLibrary.Models.Screenshots;
 
@@ -8,35 +10,32 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
     public class CapturesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private List<string> _GameClipUris;
-        private List<string> _GameClipThumbnails;
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
 
-        public List<string> GameClipUris
+        public CapturesViewModel()
         {
-            get { return _GameClipUris; }
-            set
-            {
-                if (value != _GameClipUris)
-                {
-                    _GameClipUris = value;
-                    OnNotifyPropertyChanged("GameClipUris");
-                }
-            }
+            LoadCaptureData();
         }
 
-        public List<string> GameClipThumbnails
+        public async void LoadCaptureData()
         {
-            get { return _GameClipThumbnails; }
-            set
-            {
-                if (value != _GameClipThumbnails)
-                {
-                    _GameClipThumbnails = value;
-                    OnNotifyPropertyChanged("GameClipThumbnails");
-                }
-            }
+            // Create a CancellationTokenSource object
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            // Create List objects to store the data in
+            List<GameClip> gameClips = await XboxApiImpl.GetGameClips(cts.Token);
+            List<Screenshot> screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
+
+            // Request cancellation
+            cts.Cancel();
+
+            // Cancellation should have happened, so call Dispose
+            cts.Dispose();
+
+            // Set the data in the respective property
+            GameClips = gameClips;
+            Screenshots = screenshots;
         }
 
         public List<GameClip> GameClips
