@@ -10,7 +10,7 @@ namespace XboxGameClipLibrary.Models.Screenshots
         public int ResolutionWidth { get; set; }
         public string State { get; set; }
         public DateTime DatePublished { get; set; }
-        public string DateTaken { get; set; }
+        public DateTime DateTaken { get; set; }
         public DateTime LastModified { get; set; }
         public string UserCaption { get; set; }
         public string Type { get; set; }

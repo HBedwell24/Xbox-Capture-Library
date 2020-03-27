@@ -10,7 +10,7 @@ namespace XboxGameClipLibrary.Models
         public string GameClipId { get; set; }
         public string State { get; set; }
         public DateTime DatePublished { get; set; }
-        public string DateRecorded { get; set; }
+        public DateTime DateRecorded { get; set; }
         public string LastModified { get; set; }
         public string UserCaption { get; set; }
         public string Type { get; set; }

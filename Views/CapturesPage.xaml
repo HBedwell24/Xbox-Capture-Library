@@ -64,6 +64,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Game Clip ID"
                                         Binding="{Binding GameClipId}"
+                                        SortMemberPath="DatePublished"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Game"
                                         Binding="{Binding TitleName}"
@@ -71,7 +72,7 @@
                     <DataGridTextColumn Header="Device"
                                         Binding="{Binding DeviceType}"
                                         IsReadOnly="True" />
-                    <DataGridTextColumn Header="Duration (In Seconds)"
+                    <DataGridTextColumn Header="Duration"
                                         Binding="{Binding DurationInSeconds}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Recorded"
@@ -97,7 +98,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Screenshot ID"
                                         Binding="{Binding ScreenshotId}"
-                                        SortMemberPath="Screenshot ID"
+                                        SortMemberPath="DatePublished"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Game"
                                         Binding="{Binding TitleName}"
