@@ -32,15 +32,15 @@ namespace XboxGameClipLibrary.Views
             progressRing.IsActive = true;
             progressRing.Visibility = Visibility.Visible;
 
-            CapturesViewModel capturesViewModel = new CapturesViewModel();
+            // Wait for the ViewModel to fetch the data
+            // * TO-DO *
 
             // The data bind has finished, so the ring can now be collapsed
             progressRing.IsActive = false;
             progressRing.Visibility = Visibility.Collapsed;
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
-            gameClipListView.ItemsSource = capturesViewModel.GameClips;
-            screenshotListView.ItemsSource = capturesViewModel.Screenshots;
+            DataContext = new CapturesViewModel();
 
             // Display the correct type of capture data with respect to the ComboBox
             Handle();

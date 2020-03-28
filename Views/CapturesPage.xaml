@@ -58,6 +58,7 @@
                       Name="gameClipListView"
                       Margin="10,20,10,0"
                       AutoGenerateColumns="False"
+                      ItemsSource="{Binding GameClips}"
                       Style="{StaticResource AzureDataGrid}"
                       CanUserAddRows="False"
                       MouseUp="Row_Click">
@@ -74,6 +75,9 @@
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Duration"
                                         Binding="{Binding DurationInSeconds}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Game Clip URI"
+                                        Binding="{Binding GameClipUris}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Recorded"
                                         Binding="{Binding DateRecorded}"
@@ -92,6 +96,7 @@
                       Name="screenshotListView"
                       Margin="10,20,10,0"
                       AutoGenerateColumns="False"
+                      ItemsSource="{Binding Screenshots}"
                       Style="{StaticResource AzureDataGrid}"
                       CanUserAddRows="False"
                       MouseUp="Row_Click">
@@ -105,6 +110,9 @@
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Device"
                                         Binding="{Binding DeviceType}"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Header="Screenshot URI"
+                                        Binding="{Binding ScreenshotUris}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Taken"
                                         Binding="{Binding DateTaken}"
