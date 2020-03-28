@@ -77,7 +77,7 @@
                                         Binding="{Binding DurationInSeconds}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Game Clip URI"
-                                        Binding="{Binding GameClipUris}"
+                                        Binding="{Binding GameClipUris[0].Uri}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Recorded"
                                         Binding="{Binding DateRecorded}"
@@ -112,7 +112,7 @@
                                         Binding="{Binding DeviceType}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Screenshot URI"
-                                        Binding="{Binding ScreenshotUris}"
+                                        Binding="{Binding ScreenshotUris[0].Uri}"
                                         IsReadOnly="True" />
                     <DataGridTextColumn Header="Date Taken"
                                         Binding="{Binding DateTaken}"
