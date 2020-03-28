@@ -10,6 +10,10 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
     public class CapturesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _ProgressRingActive;
+        private string _ProgressRingVisibility;
+
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
 
@@ -23,9 +27,13 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             // Create a CancellationTokenSource object
             CancellationTokenSource cts = new CancellationTokenSource();
 
-            // Create List objects to store the data in
-            List<GameClip> gameClips = await XboxApiImpl.GetGameClips(cts.Token);
-            List<Screenshot> screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
+            // Display the progress ring
+            ProgressRingActive = "True";
+            ProgressRingVisibility = "Visible";
+
+            // Bind the capture data
+            GameClips = await XboxApiImpl.GetGameClips(cts.Token);
+            Screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
 
             // Request cancellation
             cts.Cancel();
@@ -33,9 +41,37 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             // Cancellation should have happened, so call Dispose
             cts.Dispose();
 
-            // Set the data in the respective property
-            GameClips = gameClips;
-            Screenshots = screenshots;
+            // The data bind has finished, so the ring can now be collapsed
+            ProgressRingActive = "False";
+            ProgressRingVisibility = "Collapsed";
+        }
+
+        public string ProgressRingActive
+        {
+            get
+            {
+                return _ProgressRingActive;
+            }
+
+            set
+            {
+                _ProgressRingActive = value;
+                OnNotifyPropertyChanged("ProgressRingActive");
+            }
+        }
+
+        public string ProgressRingVisibility
+        {
+            get
+            {
+                return _ProgressRingVisibility;
+            }
+
+            set
+            {
+                _ProgressRingVisibility = value;
+                OnNotifyPropertyChanged("ProgressRingVisibility");
+            }
         }
 
         public List<GameClip> GameClips

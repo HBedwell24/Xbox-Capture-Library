@@ -28,22 +28,11 @@ namespace XboxGameClipLibrary.Views
 
         private void BindCaptureDataToDataGrid()
         {
-            // Display the progress ring
-            progressRing.IsActive = true;
-            progressRing.Visibility = Visibility.Visible;
-
-            // Wait for the ViewModel to fetch the data
-            // * TO-DO *
-
-            // The data bind has finished, so the ring can now be collapsed
-            progressRing.IsActive = false;
-            progressRing.Visibility = Visibility.Collapsed;
-
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = new CapturesViewModel();
 
             // Display the correct type of capture data with respect to the ComboBox
-            Handle();
+            //Handle();
         }
 
         // Click event handler for data grid rows

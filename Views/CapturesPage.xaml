@@ -40,8 +40,8 @@
                                Grid.Column="0" 
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" 
-                               IsActive="False"
-                               Visibility="Collapsed"
+                               IsActive="{Binding ProgressRingActive}"
+                               Visibility="{Binding ProgressRingVisibility}"
                                Name="progressRing"
                                Foreground="{DynamicResource AccentColorBrush}" />
 
