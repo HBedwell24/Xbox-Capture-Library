@@ -50,6 +50,8 @@ namespace XboxGameClipLibrary.Views
 
             // TODO: Open URI in MediaPlayer
             Console.WriteLine("The index of the row for the clicked cell is " + FindRowIndex(row));
+            //player.Source = new Uri("");
+            //player.Play();
         }
 
         // Finds the row index corresponding to the data grid row clicked
