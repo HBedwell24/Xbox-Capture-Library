@@ -3,6 +3,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using XboxGameClipLibrary.Models.Screenshots;
 using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
@@ -33,6 +35,29 @@ namespace XboxGameClipLibrary.Views
 
             // Display the correct type of capture data with respect to the ComboBox
             //Handle();
+        }
+
+        // Click event handler for data grid rows
+        private void Screenshot_Row_Click(object sender, MouseButtonEventArgs e)
+        {
+            // Ensure row was clicked and not empty space
+            var row = ItemsControl.ContainerFromElement((DataGrid)sender, e.OriginalSource as DependencyObject) as DataGridRow;
+
+            // If empty space was clicked exit method
+            if (row == null)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            var dataContext = capturesPage.DataContext as CapturesViewModel;
+            Uri uri = new Uri(dataContext.ScreenshotUris[FindRowIndex(row)]);
+            BitmapImage bitmapImage = new BitmapImage(uri);
+
+            // TODO: Open URI in MediaPlayer
+            Console.WriteLine("The index of the row for the clicked cell is " + FindRowIndex(row));
+            //player.Source = new Uri("");
+            //player.Play();
         }
 
         // Click event handler for data grid rows

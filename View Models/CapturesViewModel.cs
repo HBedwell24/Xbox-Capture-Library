@@ -16,6 +16,7 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
 
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
+        private List<string> _ScreenshotUris;
 
         public CapturesViewModel()
         {
@@ -34,6 +35,11 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             // Bind the capture data
             GameClips = await XboxApiImpl.GetGameClips(cts.Token);
             Screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
+
+            foreach (var Screenshot in Screenshots)
+            {
+                //ScreenshotUris.Add(Screenshot.ScreenshotUris[0].Uri);
+            }
 
             // Request cancellation
             cts.Cancel();
@@ -96,6 +102,19 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
                 {
                     _Screenshots = value;
                     OnNotifyPropertyChanged("Screenshots");
+                }
+            }
+        }
+
+        public List<string> ScreenshotUris
+        {
+            get { return _ScreenshotUris; }
+            set
+            {
+                if (value != _ScreenshotUris)
+                {
+                    _ScreenshotUris = value;
+                    OnNotifyPropertyChanged("ScreenshotUris");
                 }
             }
         }
