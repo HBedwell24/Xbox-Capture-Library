@@ -90,7 +90,7 @@ namespace XboxGameClipLibrary.Views
 
         private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            if (handle) Handle();
+            if (handle) HandleComboBoxSelection();
             handle = true;
         }
 
@@ -98,11 +98,11 @@ namespace XboxGameClipLibrary.Views
         {
             ComboBox cmb = sender as ComboBox;
             handle = !cmb.IsDropDownOpen;
-            Handle();
+            HandleComboBoxSelection();
         }
 
         // Gets input from comboboxes
-        private void Handle()
+        private void HandleComboBoxSelection()
         {
             switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {

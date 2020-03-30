@@ -139,31 +139,12 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Controls:Tile Style="{StaticResource LargeTileStyle}">
+                                <Controls:Tile Style="{StaticResource LargeTileStyle}" Title="{Binding DatePublished}">
                                     <!-- Tile image -->
                                     <Controls:Tile.Background>
                                         <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}"
                                                     Stretch="UniformToFill" />
                                     </Controls:Tile.Background>
-                                    <!-- Tile information -->
-                                    <Grid HorizontalAlignment="Center">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Label Grid.Row="1"
-                                               Content="{Binding TitleName}"
-                                               Foreground="White"
-                                               HorizontalAlignment="Center"></Label>
-                                        <StackPanel Orientation="Horizontal"
-                                                    Grid.Row="2"
-                                                    HorizontalAlignment="Center">
-                                            <Label Content="{Binding DatePublished}"
-                                                   Foreground="White"
-                                                   HorizontalAlignment="Center"></Label>
-                                        </StackPanel>
-                                    </Grid>
                                 </Controls:Tile>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
