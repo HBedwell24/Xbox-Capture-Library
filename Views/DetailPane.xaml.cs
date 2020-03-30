@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace XboxGameClipLibrary.Views
 {
     /// <summary>
-    /// Interaction logic for GameClipDetailPage.xaml
+    /// Interaction logic for DetailPane.xaml
     /// </summary>
-    public partial class GameClipDetailPage : Page
+    public partial class DetailPane : UserControl
     {
-        public GameClipDetailPage()
+        public DetailPane()
         {
             InitializeComponent();
         }

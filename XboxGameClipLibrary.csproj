@@ -158,8 +158,8 @@
     <Compile Include="Views\CapturesPage.xaml.cs">
       <DependentUpon>CapturesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameClipDetailPage.xaml.cs">
-      <DependentUpon>GameClipDetailPage.xaml</DependentUpon>
+    <Compile Include="Views\DetailPane.xaml.cs">
+      <DependentUpon>DetailPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScreenshotDetailPage.xaml.cs">
       <DependentUpon>ScreenshotDetailPage.xaml</DependentUpon>
@@ -184,7 +184,7 @@
     <Page Include="Views\CapturesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
-    <Page Include="Views\GameClipDetailPage.xaml">
+    <Page Include="Views\DetailPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
