@@ -11,6 +11,8 @@
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
+    
+    <!-- Page Resources -->
     <Page.Resources>
         <Style x:Key="LargeTileStyle"
                TargetType="Controls:Tile">
@@ -31,6 +33,8 @@
                     Value="10" />
         </Style>
     </Page.Resources>
+    
+    <!-- Start of page content -->
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -39,6 +43,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <!-- Combo boxes for user input -->
         <StackPanel Grid.Row="0" Grid.Column="0">
             <TextBlock FontSize="30">Captures</TextBlock>
             <Separator  Height="12"></Separator>
@@ -74,7 +79,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- List of capture items -->
+            <!-- List of game clip items -->
             <DataGrid Visibility="Collapsed"
                       Name="gameClipListView"
                       Margin="10,20,10,0"
@@ -111,87 +116,68 @@
                                         IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
+        </Grid>
 
-            <ScrollViewer Grid.Row="1"
-                          HorizontalScrollBarVisibility="Disabled"
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- List of screenshot items -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                           Name="screenshotListView"
                           VerticalScrollBarVisibility="Visible">
-                <ItemsControl ItemsSource="{Binding Screenshots}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical"></StackPanel>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Controls:Tile Style="{StaticResource LargeTileStyle}">
-                                <Controls:Tile.Background>
-                                    <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}" Stretch="UniformToFill" />
-                                </Controls:Tile.Background>
-                                <Grid HorizontalAlignment="Center">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="1"
-                                           Content="{Binding TitleName}"
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"></Label>
-                                    <StackPanel Orientation="Horizontal"
-                                                Grid.Row="2"
-                                                HorizontalAlignment="Center">
-                                        <Label Content="{Binding DatePublished}"
+                <WrapPanel>
+                    <ItemsControl ItemsSource="{Binding Screenshots}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Controls:Tile Style="{StaticResource LargeTileStyle}">
+                                    <!-- Tile image -->
+                                    <Controls:Tile.Background>
+                                        <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}"
+                                                    Stretch="UniformToFill" />
+                                    </Controls:Tile.Background>
+                                    <!-- Tile information -->
+                                    <Grid HorizontalAlignment="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="1"
+                                               Content="{Binding TitleName}"
                                                Foreground="White"
                                                HorizontalAlignment="Center"></Label>
-                                    </StackPanel>
-                                </Grid>
-                            </Controls:Tile>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
-
-            <!-- Capture feed and capture details -->
-            <!--<DataGrid Visibility="Collapsed"
-                      Name="screenshotListView"
-                      Margin="10,20,10,0"
-                      AutoGenerateColumns="False"
-                      ItemsSource="{Binding Screenshots}"
-                      CanUserAddRows="False"
-                      MouseUp="Row_Click">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Width="Auto"
-                                            Header="Thumbnail">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Thumbnails[0].Uri}" />
+                                        <StackPanel Orientation="Horizontal"
+                                                    Grid.Row="2"
+                                                    HorizontalAlignment="Center">
+                                            <Label Content="{Binding DatePublished}"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"></Label>
+                                        </StackPanel>
+                                    </Grid>
+                                </Controls:Tile>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Game"
-                                        Binding="{Binding TitleName}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="Device"
-                                        Binding="{Binding DeviceType}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="Date Taken"
-                                        Binding="{Binding DateTaken}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="Date Published"
-                                        Binding="{Binding DatePublished}"
-                                        IsReadOnly="True" />
-                    <DataGridTextColumn Header="Views"
-                                        Binding="{Binding Views}"
-                                        IsReadOnly="True" />
-                </DataGrid.Columns>
-            </DataGrid>-->
-            <!--<MediaElement Grid.Column="1"
-                          Name="player"
-                          Width="426"
-                          Height="240"
-                          Source="">
-            </MediaElement>-->
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </WrapPanel>
+            </ScrollViewer>
         </Grid>
+
+        <!--<MediaElement Grid.Column="1"
+                        Name="player"
+                        Width="426"
+                        Height="240"
+                        Source="">
+        </MediaElement>-->
+        
     </Grid>
 </Page>
