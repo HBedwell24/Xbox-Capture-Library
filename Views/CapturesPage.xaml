@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       Title="Captures"
       KeepAlive="True"
       d:DesignHeight="400"
@@ -22,7 +21,6 @@
             <Setter Property="TitleFontSize"
                     Value="10" />
         </Style>
-
         <Style x:Key="SmallTileStyle"
                TargetType="Controls:Tile">
             <Setter Property="Width"
@@ -117,10 +115,8 @@
             <ScrollViewer Grid.Row="1"
                           HorizontalScrollBarVisibility="Disabled"
                           Name="screenshotListView"
-                          VerticalScrollBarVisibility="Visible"
-                          Margin="20,0,20,0">
-                <ItemsControl  Name="VisitPlanItems"
-                               ItemsSource="{Binding Screenshots}">
+                          VerticalScrollBarVisibility="Visible">
+                <ItemsControl ItemsSource="{Binding Screenshots}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Vertical"></StackPanel>
@@ -128,32 +124,25 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Controls:Tile>
+                            <Controls:Tile Style="{StaticResource LargeTileStyle}">
                                 <Controls:Tile.Background>
-                                    <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}" Stretch="None" />
+                                    <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}" Stretch="UniformToFill" />
                                 </Controls:Tile.Background>
                                 <Grid HorizontalAlignment="Center">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="50"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Label Content="{Binding VisitPlanTitelSub}"
-                                           Foreground="White"
-                                           FontSize="16"
-                                           HorizontalAlignment="Center"></Label>
-                                    <Label x:Name="ibsSubTitle"
-                                           Grid.Row="1"
+                                    <Label Grid.Row="1"
                                            Content="{Binding TitleName}"
                                            Foreground="White"
                                            HorizontalAlignment="Center"></Label>
                                     <StackPanel Orientation="Horizontal"
                                                 Grid.Row="2"
                                                 HorizontalAlignment="Center">
-                                        <Label x:Name="TileDetailCount"
-                                               Content="{Binding DatePublished}"
+                                        <Label Content="{Binding DatePublished}"
                                                Foreground="White"
-                                               FontWeight="Bold"
                                                HorizontalAlignment="Center"></Label>
                                     </StackPanel>
                                 </Grid>

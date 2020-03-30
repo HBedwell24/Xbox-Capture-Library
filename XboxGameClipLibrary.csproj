@@ -230,5 +230,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\logo.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\black-overlay.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
