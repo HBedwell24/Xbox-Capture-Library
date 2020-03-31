@@ -60,8 +60,7 @@
                       AutoGenerateColumns="False"
                       ItemsSource="{Binding GameClips}"
                       Style="{StaticResource AzureDataGrid}"
-                      CanUserAddRows="False"
-                      MouseUp="Row_Click">
+                      CanUserAddRows="False">
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Game Clip ID"
@@ -104,7 +103,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding Screenshots}" Grid.Row="0">
+            <ListView ItemsSource="{Binding Screenshots}" Grid.Row="0" MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="1" />
@@ -133,7 +132,7 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"
                           Margin="0" />
-            <views:ScreenshotDetailPane Grid.Column="2" />
+            <views:ScreenshotDetailPane x:Name="screenshotDetailPane" Grid.Column="2" />
         </Grid>
     </Grid>
 </Page>
