@@ -32,7 +32,7 @@
                                Style="{StaticResource MetroLabel}"
                                FontSize="24" />
                     </StackPanel>
-                    <ToggleButton Background="Transparent">
+                    <ToggleButton Background="Transparent" BorderBrush="Transparent">
                         <ToggleButton.Content>
                             <iconPacks:PackIconBoxIcons Kind="RegularStar" />
                         </ToggleButton.Content>
@@ -67,9 +67,9 @@
         </Grid>
 
         <StackPanel Grid.Row="1">
-            <Image Source="{Binding ScreenshotUris[0].Uri}" Stretch="Uniform" />
+            <Image Source="{Binding ScreenshotUris[0].Uri}" 
+                   Stretch="Uniform" />
         </StackPanel>
-
         <StackPanel Grid.Row="2"
                     Margin="10 10 0 0">
             <StackPanel>
