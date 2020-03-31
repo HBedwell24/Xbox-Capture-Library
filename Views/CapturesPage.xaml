@@ -134,7 +134,7 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch"
                           Margin="0" />
-            <views:DetailPane Grid.Column="2" />
+            <views:ScreenshotDetailPane Grid.Column="2" />
         </Grid>
     </Grid>
 </Page>
