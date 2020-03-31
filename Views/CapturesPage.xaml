@@ -14,7 +14,7 @@
       Style="{DynamicResource MetroPage}">
     
     <!-- Start of page content -->
-    <Grid Margin="15">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -23,7 +23,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <!-- Combo boxes for user input -->
-        <StackPanel Grid.Row="0" Grid.Column="0">
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="15">
             <TextBlock FontSize="30">Captures</TextBlock>
             <Separator  Height="12"></Separator>
             <StackPanel Orientation="Horizontal"
@@ -40,15 +42,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Progress ring -->
-        <Controls:ProgressRing Grid.Row="1" 
-                               Grid.Column="0" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" 
-                               IsActive="{Binding ProgressRingActive}"
-                               Visibility="{Binding ProgressRingVisibility}"
-                               Name="progressRing"
-                               Foreground="{DynamicResource AccentColorBrush}" />
+        
 
         <Grid Grid.Row="1"
               Grid.Column="0"
@@ -103,15 +97,14 @@
               Grid.Column="0"
               Name="screenshotListView">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="7*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding Screenshots}">
+            <ListView ItemsSource="{Binding Screenshots}" Grid.Row="0">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="1" />
@@ -119,13 +112,19 @@
                 </ItemsControl.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding Thumbnails[0].Uri}"
-                               Stretch="Uniform"
-                               Width="300"
-                               Height="125" />
+                        <views:ScreenshotListItem />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!-- Progress ring -->
+            <Controls:ProgressRing Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsActive="{Binding ProgressRingActive}"
+                                   Visibility="{Binding ProgressRingVisibility}"
+                                   Name="progressRing"
+                                   Foreground="{DynamicResource AccentColorBrush}" />
 
             <GridSplitter ResizeDirection="Columns"
                           Grid.Column="1"

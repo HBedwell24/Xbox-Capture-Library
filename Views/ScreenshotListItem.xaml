@@ -27,11 +27,13 @@
                         VerticalAlignment="Center"
                         Grid.Column="1">
                 <TextBlock x:Name="screenshotName"
-                           Text="Grand Theft Auto V"
-                           FontSize="24" />
+                           Text="{Binding TitleName,FallbackValue=NULL}"
+                           FontWeight="DemiBold"
+                           FontSize="18" />
                 <TextBlock x:Name="screenshotDatePublished"
-                           Text="10/20/18 10:45AM"
-                           FontSize="20" />
+                           Text="{Binding DatePublished, FallbackValue=NULL}"
+                           FontWeight="Light"
+                           FontSize="14" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
