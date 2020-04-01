@@ -26,11 +26,12 @@
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0"
                        Margin="15">
-                <TextBlock FontSize="24">Captures</TextBlock>
+                <TextBlock FontSize="24" Margin="0 0 40 0">Captures</TextBlock>
                 <ComboBox Name="captureBox"
                           SelectionChanged="CaptureTypeComboBox_SelectionChanged"
                           DropDownClosed="CaptureTypeComboBox_DropDownClosed"
-                          HorizontalAlignment="Right">
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center">
                     <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
                     <ComboBoxItem>Game clips</ComboBoxItem>
                 </ComboBox>
@@ -106,7 +107,8 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
-            <views:ScreenshotDetailPane x:Name="screenshotDetailPane" Visibility="Collapsed" />
+            <views:ScreenshotDetailPane x:Name="screenshotDetailPane"
+                                        Visibility="Collapsed" />
         </Grid>
     </Grid>
 </Page>

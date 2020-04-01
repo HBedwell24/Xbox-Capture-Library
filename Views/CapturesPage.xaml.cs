@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using XboxGameClipLibrary.Models.Screenshots;
 using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
@@ -43,7 +39,18 @@ namespace XboxGameClipLibrary.Views
         {
             ListView list = (ListView) sender;
             var dataContext = capturesPage.DataContext as CapturesViewModel;
-            //screenshotDetailPane.ItemsSource = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
+            var screenshot = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
+
+            screenshotDetailPane.ScreenshotId = screenshot.ScreenshotId;
+            screenshotDetailPane.ScreenshotUri = screenshot.ScreenshotUris[0].Uri;
+            screenshotDetailPane.Game = screenshot.TitleName;
+            screenshotDetailPane.Device = screenshot.DeviceType;
+            screenshotDetailPane.DateTaken = screenshot.DateTaken.ToString();
+            screenshotDetailPane.DatePublished = screenshot.DatePublished.ToString();
+
+            screenshotDetailPane.Views = screenshot.Views.ToString();
+            screenshotDetailPane.Likes = screenshot.RatingCount.ToString();
+
             screenshotDetailPane.Visibility = Visibility.Visible;
         }
 
