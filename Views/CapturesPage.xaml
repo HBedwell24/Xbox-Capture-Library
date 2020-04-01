@@ -15,100 +15,124 @@
     
     <!-- Start of page content -->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="7*" />
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <DockPanel Grid.Row="0"
-                       Margin="15">
-                <TextBlock FontSize="24" Margin="0 0 40 0">Captures</TextBlock>
-                <ComboBox Name="captureBox"
-                          SelectionChanged="CaptureTypeComboBox_SelectionChanged"
-                          DropDownClosed="CaptureTypeComboBox_DropDownClosed"
-                          HorizontalAlignment="Right"
-                          VerticalAlignment="Center">
-                    <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
-                    <ComboBoxItem>Game clips</ComboBoxItem>
-                </ComboBox>
-            </DockPanel>
-            <Grid Grid.Row="1"
-                  Name="gameClipListView">
-
-                <!-- List of game clip items -->
-                <DataGrid Visibility="Collapsed"
-                          Margin="10,20,10,0"
-                          AutoGenerateColumns="False"
-                          ItemsSource="{Binding GameClips}"
-                          Style="{StaticResource AzureDataGrid}"
-                          CanUserAddRows="False">
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Game Clip ID"
-                                            Binding="{Binding GameClipId}"
-                                            SortMemberPath="DatePublished"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Game"
-                                            Binding="{Binding TitleName}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Device"
-                                            Binding="{Binding DeviceType}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Duration"
-                                            Binding="{Binding DurationInSeconds}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Game Clip URI"
-                                            Binding="{Binding GameClipUris[0].Uri}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Date Recorded"
-                                            Binding="{Binding DateRecorded}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Date Published"
-                                            Binding="{Binding DatePublished}"
-                                            IsReadOnly="True" />
-                        <DataGridTextColumn Header="Views"
-                                            Binding="{Binding Views}"
-                                            IsReadOnly="True" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-            <Grid Grid.Row="1"
-                  Name="screenshotListView">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Panel.ZIndex="1">
+            <TextBlock Grid.Row="0"
+                       FontSize="24"
+                       Margin="15 15 0 15">Captures</TextBlock>
+            <Separator Height="1"
+                       Margin="0"></Separator>
+        </StackPanel>        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ListView ItemsSource="{Binding Screenshots}"
-                          Grid.Row="0"
-                          MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="1" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <views:ScreenshotListItem />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!-- Progress ring -->
-                <Controls:ProgressRing Grid.Row="0"
-                                       Grid.Column="0"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       IsActive="{Binding ProgressRingActive}"
-                                       Visibility="{Binding ProgressRingVisibility}"
-                                       Name="progressRing"
-                                       Foreground="{DynamicResource AccentColorBrush}" />
+                <StackPanel Grid.Row="0"
+                            Margin="15"
+                            Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Capture Type" />
+                        <ComboBox Name="captureBox"
+                                  Margin="0 0 10 0"
+                                  SelectionChanged="CaptureTypeComboBox_SelectionChanged"
+                                  DropDownClosed="CaptureTypeComboBox_DropDownClosed"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center">
+                            <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
+                            <ComboBoxItem>Game clips</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Filter" />
+                        <ComboBox Name="filterBox">
+                            <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
+                            <ComboBoxItem>By game</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Grid.Row="1"
+                      Name="gameClipListView">
+
+                    <!-- List of game clip items -->
+                    <DataGrid Visibility="Collapsed"
+                              Margin="10,20,10,0"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding GameClips}"
+                              Style="{StaticResource AzureDataGrid}"
+                              CanUserAddRows="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Game Clip ID"
+                                                Binding="{Binding GameClipId}"
+                                                SortMemberPath="DatePublished"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Game"
+                                                Binding="{Binding TitleName}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Device"
+                                                Binding="{Binding DeviceType}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Duration"
+                                                Binding="{Binding DurationInSeconds}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Game Clip URI"
+                                                Binding="{Binding GameClipUris[0].Uri}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date Recorded"
+                                                Binding="{Binding DateRecorded}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date Published"
+                                                Binding="{Binding DatePublished}"
+                                                IsReadOnly="True" />
+                            <DataGridTextColumn Header="Views"
+                                                Binding="{Binding Views}"
+                                                IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Name="screenshotListView">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ListView ItemsSource="{Binding Screenshots}"
+                              Grid.Row="0"
+                              MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <views:ScreenshotListItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!-- Progress ring -->
+                    <Controls:ProgressRing Grid.Row="0"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           IsActive="{Binding ProgressRingActive}"
+                                           Visibility="{Binding ProgressRingVisibility}"
+                                           Name="progressRing"
+                                           Foreground="{DynamicResource AccentColorBrush}" />
+                </Grid>
             </Grid>
-        </Grid>
-        <Grid Grid.Column="1">
-            <views:ScreenshotDetailPane x:Name="screenshotDetailPane"
-                                        Visibility="Collapsed" />
+            <Grid Grid.Column="1">
+                <views:ScreenshotDetailPane x:Name="screenshotDetailPane"
+                                            Visibility="Collapsed" />
+            </Grid>
         </Grid>
     </Grid>
 </Page>
