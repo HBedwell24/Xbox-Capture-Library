@@ -44,6 +44,7 @@ namespace XboxGameClipLibrary.Views
             ListView list = (ListView) sender;
             var dataContext = capturesPage.DataContext as CapturesViewModel;
             //screenshotDetailPane.ItemsSource = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
+            screenshotDetailPane.Visibility = Visibility.Visible;
         }
 
         private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)

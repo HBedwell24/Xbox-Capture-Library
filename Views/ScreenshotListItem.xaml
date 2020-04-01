@@ -17,12 +17,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Image Grid.Column="0"
-                   Source="{Binding Thumbnails[0].Uri}"
-                   Stretch="Uniform"
-                   Width="150"
-                   Height="80"
-                   Margin="0 0 10 0" />
+            <Ellipse Grid.Column="0"
+                     Width="60"
+                     Height="60" 
+                     Margin="0 0 10 0"
+                     Stroke="#FFFFFF"
+                     StrokeThickness="2">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Thumbnails[0].Uri}"
+                                Stretch="UniformToFill" />
+                </Ellipse.Fill>
+            </Ellipse>
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Center"
                         Grid.Column="1">
