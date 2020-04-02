@@ -53,7 +53,9 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Label Content="Filter" />
-                        <ComboBox Name="filterBox">
+                        <ComboBox Name="filterBox"
+                                  SelectionChanged="FilterComboBox_SelectionChanged"
+                                  DropDownClosed="FilterComboBox_DropDownClosed">
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
                             <ComboBoxItem>By game</ComboBoxItem>
                         </ComboBox>

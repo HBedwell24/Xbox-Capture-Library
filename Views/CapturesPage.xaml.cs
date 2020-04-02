@@ -9,30 +9,30 @@ namespace XboxGameClipLibrary.Views
 {
     public partial class CapturesPage : Page
     {
-        private bool handle = true;
+        private bool captureTypeHandle = true;
+        private bool filterHandle = true;
+
+        private CapturesViewModel cvm;
 
         public CapturesPage()
         {
             // Initialize the CapturesPage component
             InitializeComponent();
 
-            // Bind the capture data to gameClipListView
+            // Bind the capture data to the DataContext
             Loaded += CapturesPage_Loaded;
         }
 
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            BindCaptureDataToDataGrid();
-            Loaded -= CapturesPage_Loaded;
-        }
+            // Instantiate ViewModel
+            cvm = new CapturesViewModel();
 
-        private void BindCaptureDataToDataGrid()
-        {
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
-            DataContext = new CapturesViewModel();
+            DataContext = cvm;
 
-            // Display the correct type of capture data with respect to the ComboBox
-            //Handle();
+            // Unhook the Loaded method
+            Loaded -= CapturesPage_Loaded;
         }
 
         private void ScreenshotListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -56,19 +56,19 @@ namespace XboxGameClipLibrary.Views
 
         private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            if (handle) HandleComboBoxSelection();
-            handle = true;
+            if (captureTypeHandle) HandleCaptureTypeComboBoxSelection();
+            captureTypeHandle = true;
         }
 
         private void CaptureTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = sender as ComboBox;
-            handle = !cmb.IsDropDownOpen;
-            HandleComboBoxSelection();
+            captureTypeHandle = !cmb.IsDropDownOpen;
+            HandleCaptureTypeComboBoxSelection();
         }
 
         // Gets input from comboboxes
-        private void HandleComboBoxSelection()
+        private void HandleCaptureTypeComboBoxSelection()
         {
             switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
@@ -80,6 +80,36 @@ namespace XboxGameClipLibrary.Views
                 case "Game clips":
                     screenshotListView.Visibility = Visibility.Collapsed;
                     gameClipListView.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void FilterComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (filterHandle) HandleFilterComboBoxSelection();
+            filterHandle = true;
+        }
+
+        private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            filterHandle = !cmb.IsDropDownOpen;
+            HandleFilterComboBoxSelection();
+        }
+
+        // Gets input from comboboxes
+        private void HandleFilterComboBoxSelection()
+        {
+            switch (filterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
+            {
+                case "By date":
+                    var screenshotByDate = cvm.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
+                    cvm.Screenshots = screenshotByDate;
+                    break;
+
+                case "By game":
+                    var screenshotByGame = cvm.Screenshots.OrderBy(o => o.TitleName).ToList();
+                    cvm.Screenshots = screenshotByGame;
                     break;
             }
         }
