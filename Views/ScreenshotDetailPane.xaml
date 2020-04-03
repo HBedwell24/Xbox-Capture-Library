@@ -46,7 +46,8 @@
                         Width="40"
                         Height="40"
                         ToolTip="Download"
-                        Margin="15 15 0 15">
+                        Margin="15 15 0 15"
+                        Click="Download_Image_Content">
                     <Button.Content>
                         <iconPacks:PackIconBoxIcons Kind="RegularDownload" />
                     </Button.Content>

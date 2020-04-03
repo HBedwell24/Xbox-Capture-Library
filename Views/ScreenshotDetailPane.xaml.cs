@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Net;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace XboxGameClipLibrary.Views
@@ -80,6 +82,14 @@ namespace XboxGameClipLibrary.Views
         {
             get { return (string)GetValue(LikesProperty); }
             set { SetValue(LikesProperty, value); }
+        }
+
+        public void Download_Image_Content(object sender, RoutedEventArgs e)
+        {
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFileAsync(new Uri(ScreenshotUri), @"c:\Downloads\" + ScreenshotId + ".png");
+            }
         }
     }
 }

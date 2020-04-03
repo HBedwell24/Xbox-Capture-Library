@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using XboxGameClipLibrary.Models.Screenshots;
 using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
