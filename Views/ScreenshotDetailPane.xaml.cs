@@ -86,9 +86,11 @@ namespace XboxGameClipLibrary.Views
 
         public void Download_Image_Content(object sender, RoutedEventArgs e)
         {
+            string downloadPath = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads\");
+
             using (WebClient client = new WebClient())
             {
-                client.DownloadFileAsync(new Uri(ScreenshotUri), @"c:\Downloads\" + ScreenshotId + ".png");
+                client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }
         }
     }
