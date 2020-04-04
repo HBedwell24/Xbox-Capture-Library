@@ -25,6 +25,7 @@
             <Separator Height="1"
                        Margin="0"></Separator>
         </StackPanel>
+        
         <Grid Grid.Row="1"
               x:Name="progressRingWrapper"
               Visibility="{Binding ProgressRingWrapperVisibility}">
@@ -34,8 +35,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-            <!-- Progress ring -->
             <Controls:ProgressRing Grid.Row="0"
                                    Grid.Column="0"
                                    HorizontalAlignment="Center"
@@ -44,6 +43,7 @@
                                    Visibility="{Binding ProgressRingVisibility}"
                                    Foreground="{DynamicResource AccentColorBrush}" />
         </Grid>
+        
         <Grid Grid.Row="1"
               Visibility="{Binding ContentWrapperVisibility}" 
               x:Name="contentWrapper">
@@ -83,46 +83,6 @@
                     </StackPanel>
                 </StackPanel>
                 <Grid Grid.Row="1"
-                      Name="gameClipListView">
-
-                    <!-- List of game clip items -->
-                    <DataGrid Visibility="Collapsed"
-                              Margin="10,20,10,0"
-                              AutoGenerateColumns="False"
-                              ItemsSource="{Binding GameClips}"
-                              Style="{StaticResource AzureDataGrid}"
-                              CanUserAddRows="False">
-
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Game Clip ID"
-                                                Binding="{Binding GameClipId}"
-                                                SortMemberPath="DatePublished"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Game"
-                                                Binding="{Binding TitleName}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Device"
-                                                Binding="{Binding DeviceType}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Duration"
-                                                Binding="{Binding DurationInSeconds}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Game Clip URI"
-                                                Binding="{Binding GameClipUris[0].Uri}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Date Recorded"
-                                                Binding="{Binding DateRecorded}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Date Published"
-                                                Binding="{Binding DatePublished}"
-                                                IsReadOnly="True" />
-                            <DataGridTextColumn Header="Views"
-                                                Binding="{Binding Views}"
-                                                IsReadOnly="True" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-                <Grid Grid.Row="1"
                       Name="screenshotListView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -147,7 +107,6 @@
                 <ScrollViewer>
                     <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
                 </ScrollViewer>
-                
             </Grid>
         </Grid>
     </Grid>

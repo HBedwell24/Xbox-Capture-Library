@@ -73,13 +73,12 @@ namespace XboxGameClipLibrary.Views
             switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
                 case "Screenshots":
-                    gameClipListView.Visibility = Visibility.Collapsed;
                     screenshotListView.Visibility = Visibility.Visible;
                     break;
 
                 case "Game clips":
                     screenshotListView.Visibility = Visibility.Collapsed;
-                    gameClipListView.Visibility = Visibility.Visible;
+                    capturesDetailView.Visibility = Visibility.Collapsed;
                     break;
             }
         }
