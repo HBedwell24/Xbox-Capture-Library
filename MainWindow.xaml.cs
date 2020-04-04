@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using XboxGameClipLibrary.ViewModels;
-using XboxGameClipLibrary.Views;
 using MenuItemViewModel = XboxGameClipLibrary.ViewModels.MenuItemViewModel;
 namespace XboxGameClipLibrary
 {

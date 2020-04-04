@@ -144,7 +144,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
-    <Compile Include="API\Credentials\Credentials.cs" />
+    <Compile Include="EnterUserDetails.xaml.cs">
+      <DependentUpon>EnterUserDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Screenshots\Screenshot.cs" />
     <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
     <Compile Include="Models\Screenshots\Thumbnail.cs" />
@@ -164,6 +166,10 @@
     <Compile Include="Views\ScreenshotListItem.xaml.cs">
       <DependentUpon>ScreenshotListItem.xaml</DependentUpon>
     </Compile>
+    <Page Include="EnterUserDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

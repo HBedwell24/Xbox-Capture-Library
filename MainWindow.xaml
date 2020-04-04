@@ -12,8 +12,7 @@
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       Title="Xbox Game Clip Library"
                       WindowStartupLocation="CenterScreen"
-                      Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico"
-                      WindowTransitionsEnabled="False">
+                      Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico">
 
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
