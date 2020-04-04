@@ -111,6 +111,11 @@ namespace XboxGameClipLibrary.Views
                     var screenshotByGame = cvm.Screenshots.OrderBy(o => o.TitleName).ToList();
                     cvm.Screenshots = screenshotByGame;
                     break;
+
+                case "By views":
+                    var screenshotByViews = cvm.Screenshots.OrderByDescending(o => o.Views).ToList();
+                    cvm.Screenshots = screenshotByViews;
+                    break;
             }
         }
     }

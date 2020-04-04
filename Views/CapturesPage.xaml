@@ -13,20 +13,40 @@
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
     
-    <!-- Start of page content -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Panel.ZIndex="1">
+        <StackPanel Orientation="Vertical">
             <TextBlock Grid.Row="0"
                        FontSize="24"
                        Margin="15 15 0 15">Captures</TextBlock>
             <Separator Height="1"
                        Margin="0"></Separator>
-        </StackPanel>        
-        <Grid Grid.Row="1">
+        </StackPanel>
+        <Grid Grid.Row="1"
+              x:Name="progressRingWrapper"
+              Visibility="{Binding ProgressRingWrapperVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Progress ring -->
+            <Controls:ProgressRing Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsActive="{Binding ProgressRingActive}"
+                                   Visibility="{Binding ProgressRingVisibility}"
+                                   Foreground="{DynamicResource AccentColorBrush}" />
+        </Grid>
+        <Grid Grid.Row="1"
+              Visibility="{Binding ContentWrapperVisibility}" 
+              x:Name="contentWrapper">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="7*" />
@@ -58,6 +78,7 @@
                                   DropDownClosed="FilterComboBox_DropDownClosed">
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
                             <ComboBoxItem>By game</ComboBoxItem>
+                            <ComboBoxItem>By views</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
@@ -120,15 +141,6 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <!-- Progress ring -->
-                    <Controls:ProgressRing Grid.Row="0"
-                                           Grid.Column="0"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           IsActive="{Binding ProgressRingActive}"
-                                           Visibility="{Binding ProgressRingVisibility}"
-                                           Name="progressRing"
-                                           Foreground="{DynamicResource AccentColorBrush}" />
                 </Grid>
             </Grid>
             <Grid Grid.Column="1" Visibility="Collapsed" x:Name="capturesDetailView">

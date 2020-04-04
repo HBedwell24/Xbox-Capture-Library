@@ -13,6 +13,8 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
 
         private string _ProgressRingActive;
         private string _ProgressRingVisibility;
+        private string _ProgressRingWrapperVisibility;
+        private string _ContentWrapperVisibility;
 
         private List<GameClip> _GameClips;
         private List<Screenshot> _Screenshots;
@@ -24,12 +26,14 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
 
         public async void LoadCaptureData()
         {
-            // Create a CancellationTokenSource object
-            CancellationTokenSource cts = new CancellationTokenSource();
-
             // Display the progress ring
+            ContentWrapperVisibility = "Collapsed";
+            ProgressRingWrapperVisibility = "Visible";
             ProgressRingActive = "True";
             ProgressRingVisibility = "Visible";
+
+            // Create a CancellationTokenSource object
+            CancellationTokenSource cts = new CancellationTokenSource();
 
             // Bind the capture data
             GameClips = await XboxApiImpl.GetGameClips(cts.Token);
@@ -44,6 +48,8 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             // The data bind has finished, so the ring can now be collapsed
             ProgressRingActive = "False";
             ProgressRingVisibility = "Collapsed";
+            ProgressRingWrapperVisibility = "Collapsed";
+            ContentWrapperVisibility = "Visible";
         }
 
         public string ProgressRingActive
@@ -71,6 +77,34 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             {
                 _ProgressRingVisibility = value;
                 OnNotifyPropertyChanged("ProgressRingVisibility");
+            }
+        }
+
+        public string ProgressRingWrapperVisibility
+        {
+            get
+            {
+                return _ProgressRingWrapperVisibility;
+            }
+
+            set
+            {
+                _ProgressRingWrapperVisibility = value;
+                OnNotifyPropertyChanged("ProgressRingWrapperVisibility");
+            }
+        }
+
+        public string ContentWrapperVisibility
+        {
+            get
+            {
+                return _ContentWrapperVisibility;
+            }
+
+            set
+            {
+                _ContentWrapperVisibility = value;
+                OnNotifyPropertyChanged("ContentWrapperVisibility");
             }
         }
 
