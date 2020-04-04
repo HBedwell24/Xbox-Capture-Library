@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.Models.Screenshots;
 using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
@@ -52,7 +51,7 @@ namespace XboxGameClipLibrary.Views
             screenshotDetailPane.Views = screenshot.Views.ToString();
             screenshotDetailPane.Likes = screenshot.RatingCount.ToString();
 
-            screenshotDetailPane.Visibility = Visibility.Visible;
+            capturesDetailView.Visibility = Visibility.Visible;
         }
 
         private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)

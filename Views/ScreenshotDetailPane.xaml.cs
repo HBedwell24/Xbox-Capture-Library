@@ -84,12 +84,23 @@ namespace XboxGameClipLibrary.Views
             set { SetValue(LikesProperty, value); }
         }
 
+        void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Console.WriteLine("Download status: {0}%.", e.ProgressPercentage);
+
+            // updating the UI
+            Dispatcher.Invoke(() => {
+                // progressBar.Value = e.ProgressPercentage;
+            });
+        }
+
         public void Download_Image_Content(object sender, RoutedEventArgs e)
         {
             string downloadPath = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads\");
 
             using (WebClient client = new WebClient())
             {
+                client.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }
         }

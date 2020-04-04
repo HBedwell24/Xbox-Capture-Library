@@ -131,9 +131,11 @@
                                            Foreground="{DynamicResource AccentColorBrush}" />
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
-                <views:ScreenshotDetailPane x:Name="screenshotDetailPane"
-                                            Visibility="Collapsed" />
+            <Grid Grid.Column="1" Visibility="Collapsed" x:Name="capturesDetailView">
+                <ScrollViewer>
+                    <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
+                </ScrollViewer>
+                
             </Grid>
         </Grid>
     </Grid>
