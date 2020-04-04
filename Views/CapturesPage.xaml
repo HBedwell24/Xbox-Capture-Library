@@ -79,6 +79,7 @@
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
                             <ComboBoxItem>By game</ComboBoxItem>
                             <ComboBoxItem>By views</ComboBoxItem>
+                            <ComboBoxItem>By likes</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
