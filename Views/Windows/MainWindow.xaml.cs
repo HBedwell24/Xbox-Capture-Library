@@ -17,7 +17,7 @@ namespace XboxGameClipLibrary
             HamburgerMenuControl.Content = Navigation.Navigation.Frame;
 
             // Navigate to the home page.
-            Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
+            Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/Pages/CapturesPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)

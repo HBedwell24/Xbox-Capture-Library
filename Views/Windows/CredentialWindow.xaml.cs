@@ -2,9 +2,9 @@
 
 namespace XboxGameClipLibrary
 {
-    public partial class EnterUserDetails : MetroWindow
+    public partial class CredentialWindow : MetroWindow
     {
-        public EnterUserDetails()
+        public CredentialWindow()
         {
             InitializeComponent();
         }

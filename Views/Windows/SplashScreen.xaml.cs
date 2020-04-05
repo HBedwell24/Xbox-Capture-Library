@@ -22,8 +22,8 @@ namespace XboxGameClipLibrary
         {
             if (string.IsNullOrEmpty(credential))
             {
-                EnterUserDetails enterUserDetails = new EnterUserDetails();
-                enterUserDetails.Show();
+                CredentialWindow credentialWindow = new CredentialWindow();
+                credentialWindow.Show();
                 dispatcherTimer.Stop();
                 Close();
             }

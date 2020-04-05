@@ -144,8 +144,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
-    <Compile Include="EnterUserDetails.xaml.cs">
-      <DependentUpon>EnterUserDetails.xaml</DependentUpon>
+    <Compile Include="Views\Windows\CredentialWindow.xaml.cs">
+      <DependentUpon>CredentialWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Screenshots\Screenshot.cs" />
     <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
@@ -153,27 +153,30 @@
     <Compile Include="Implementations\BindableBase.cs" />
     <Compile Include="Implementations\DelegateCommand.cs" />
     <Compile Include="Extensions\NavigationExtension.cs" />
-    <Compile Include="SplashScreen.xaml.cs">
+    <Compile Include="Views\Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View Models\CapturesViewModel.cs" />
     <Compile Include="View Models\MenuItemViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />
     <Compile Include="View Models\ViewModelCase.cs" />
-    <Compile Include="Views\CapturesPage.xaml.cs">
+    <Compile Include="Views\Pages\CapturesPage.xaml.cs">
       <DependentUpon>CapturesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ScreenshotDetailPane.xaml.cs">
+    <Compile Include="Views\User Controls\ScreenshotDetailPane.xaml.cs">
       <DependentUpon>ScreenshotDetailPane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ScreenshotListItem.xaml.cs">
+    <Compile Include="Views\User Controls\ScreenshotListItem.xaml.cs">
       <DependentUpon>ScreenshotListItem.xaml</DependentUpon>
     </Compile>
-    <Page Include="EnterUserDetails.xaml">
+    <Page Include="Views\Windows\CredentialWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -182,7 +185,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -190,23 +193,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SplashScreen.xaml">
+    <Page Include="Views\Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CapturesPage.xaml">
+    <Page Include="Views\Windows\SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\CapturesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
-    <Page Include="Views\ScreenshotDetailPane.xaml">
+    <Page Include="Views\User Controls\ScreenshotDetailPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ScreenshotListItem.xaml">
+    <Page Include="Views\User Controls\ScreenshotListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
