@@ -107,7 +107,7 @@ namespace XboxGameClipLibrary.Views
                     break;
 
                 case "By game":
-                    var screenshotByGame = cvm.Screenshots.OrderBy(o => o.TitleName).ToList();
+                    var screenshotByGame = cvm.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
                     cvm.Screenshots = screenshotByGame;
                     break;
 

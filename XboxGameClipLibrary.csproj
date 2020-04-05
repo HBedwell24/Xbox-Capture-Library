@@ -249,10 +249,10 @@
     <Resource Include="Resources\Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\splash-background.jpg" />
+    <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\logo.png" />
+    <Resource Include="Resources\Images\splash-background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
