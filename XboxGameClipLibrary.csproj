@@ -144,6 +144,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
+    <Compile Include="Implementations\CredentialValidator.cs" />
     <Compile Include="Views\Windows\CredentialWindow.xaml.cs">
       <DependentUpon>CredentialWindow.xaml</DependentUpon>
     </Compile>

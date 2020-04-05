@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using System.Text.RegularExpressions;
 
 namespace XboxGameClipLibrary
 {
@@ -11,19 +12,21 @@ namespace XboxGameClipLibrary
 
         public void SaveSettings()
         {
-            if (!string.IsNullOrEmpty(apiKey.ToString()))
-            {
-                Properties.Settings.Default.xboxApiKey = apiKey.Text;
-                Properties.Settings.Default.Save();
-            }
+            Properties.Settings.Default.xboxApiKey = apiKey.Text;
+            Properties.Settings.Default.Save();
         }
         
         private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            SaveSettings();
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            Close();
+            Regex regex = new Regex("^[a-z0-9]*$");
+
+            if (!string.IsNullOrEmpty(apiKey.Text) && regex.IsMatch(apiKey.Text) && apiKey.Text.Length == 40)
+            {
+                SaveSettings();
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                Close();
+            }
         }
     }
 }
