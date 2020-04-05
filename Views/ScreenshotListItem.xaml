@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d">
+    
     <Grid VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <Grid Grid.Row="0"
               Margin="10">
             <Grid.ColumnDefinitions>
@@ -33,12 +33,11 @@
                         Grid.Column="1">
                 <TextBlock x:Name="screenshotName"
                            Text="{Binding TitleName,FallbackValue=NULL}"
-                           FontWeight="DemiBold"
+                           FontWeight="Light"
                            FontSize="18" />
                 <TextBlock x:Name="screenshotDatePublished"
-                           Text="{Binding DatePublished, FallbackValue=NULL}"
-                           FontWeight="Light"
-                           FontSize="14" />
+                           FontFamily="Segoe UI Semilight"
+                           Text="{Binding DatePublished, FallbackValue=NULL}" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

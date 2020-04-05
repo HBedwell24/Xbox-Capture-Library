@@ -24,12 +24,12 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <Label Style="{StaticResource MetroLabel}">API Key:</Label>
+                <Label Style="{StaticResource MetroLabel}" FontSize="11" FontFamily="Segoe UI Semilight">API Key:</Label>
                 <TextBox Style="{StaticResource MetroTextBox}" Grid.ColumnSpan="1"
                          Margin="0,0,0,10"
                          x:Name="apiKey" />
             </StackPanel>
-            <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}" Click="Save_Click">Save</Button>
+            <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}" Click="Save_Click" FontSize="9" FontFamily="Segoe UI">Save</Button>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>

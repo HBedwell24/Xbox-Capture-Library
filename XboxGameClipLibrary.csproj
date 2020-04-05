@@ -153,6 +153,9 @@
     <Compile Include="Implementations\BindableBase.cs" />
     <Compile Include="Implementations\DelegateCommand.cs" />
     <Compile Include="Extensions\NavigationExtension.cs" />
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View Models\CapturesViewModel.cs" />
     <Compile Include="View Models\MenuItemViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />
@@ -184,6 +187,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Themes\Accent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,7 +244,10 @@
     <Resource Include="Resources\Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\black-overlay.jpg" />
+    <Resource Include="Resources\Images\splash-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

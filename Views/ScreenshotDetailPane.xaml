@@ -28,8 +28,8 @@
                     <StackPanel HorizontalAlignment="Center">
                         <Label Content="{Binding ScreenshotId, FallbackValue=NULL}"
                                HorizontalAlignment="Center"
-                               Style="{StaticResource MetroLabel}"
-                               FontSize="24" />
+                               FontWeight="Light"
+                               FontSize="22" />
                     </StackPanel>
                     <ToggleButton Background="Transparent" BorderBrush="Transparent" ToolTip="Favorite">
                         <ToggleButton.Content>
@@ -72,38 +72,33 @@
                     Margin="15 15 0 0">
             <StackPanel>
                 <Label FontSize="18"
-                           FontWeight="DemiBold"
-                           Style="{StaticResource MetroLabel}"
+                       FontWeight="Light"
                            Content="Screenshot Details"
                            Margin="0 0 0 10" />
                 <Separator Height="2"
                            Margin="0 0 0 10" />
                 <StackPanel>
-                    <Label Style="{StaticResource MetroLabel}"
-                           FontWeight="Light"
+                    <Label FontFamily="Segoe UI Semilight"
                            Content="GAME" />
-                    <Label Style="{StaticResource MetroLabel}"
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding Game, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
-                    
-                    <Label Style="{StaticResource MetroLabel}"
-                           FontWeight="Light"
+
+                    <Label FontFamily="Segoe UI Semilight"
                            Content="DEVICE" />
-                    <Label Style="{StaticResource MetroLabel}"
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding Device, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
-                    
-                    <Label Style="{StaticResource MetroLabel}"
-                               FontWeight="Light"
-                               Content="DATE TAKEN" />
-                    <Label Style="{StaticResource MetroLabel}"
+
+                    <Label FontFamily="Segoe UI Semilight"
+                           Content="DATE TAKEN" />
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding DateTaken, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
-                    
-                    <Label Style="{StaticResource MetroLabel}"
-                               FontWeight="Light"
-                               Content="DATE PUBLISHED" />
-                    <Label Style="{StaticResource MetroLabel}"
+
+                    <Label FontFamily="Segoe UI Semilight"
+                           Content="DATE PUBLISHED" />
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding DatePublished, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
                 </StackPanel>
@@ -113,24 +108,21 @@
                     Margin="15 0 0 0">
             <StackPanel>
                 <Label FontSize="18"
-                       FontWeight="DemiBold"
-                       Style="{StaticResource MetroLabel}"
+                       FontWeight="Light"
                        Content="Screenshot Metrics"
                        Margin="0 0 0 10"/>
                 <Separator Height="2"
                            Margin="0 0 0 10" />
                 <StackPanel>
-                    <Label Style="{StaticResource MetroLabel}"
-                               FontWeight="Light"
+                    <Label FontFamily="Segoe UI Semilight"
                                Content="VIEWS" />
-                    <Label Style="{StaticResource MetroLabel}"
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding Views, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
-                    
-                    <Label Style="{StaticResource MetroLabel}"
-                           FontWeight="Light"
+
+                    <Label FontFamily="Segoe UI Semilight"
                            Content="LIKES" />
-                    <Label Style="{StaticResource MetroLabel}"
+                    <Label FontFamily="Segoe UI"
                            Content="{Binding Likes, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
                 </StackPanel>

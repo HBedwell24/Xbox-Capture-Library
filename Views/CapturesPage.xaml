@@ -20,7 +20,8 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <TextBlock Grid.Row="0"
-                       FontSize="24"
+                       FontSize="28"
+                       FontWeight="Light"
                        Margin="15 15 0 15">Captures</TextBlock>
             <Separator Height="1"
                        Margin="0"></Separator>
@@ -60,9 +61,10 @@
                             Margin="15"
                             Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
-                        <Label Content="Capture Type" />
+                        <Label Content="Capture Type" FontFamily="Segoe UI Semilight" />
                         <ComboBox Name="captureBox"
                                   Margin="0 0 10 0"
+                                  FontFamily="Segoe UI"
                                   SelectionChanged="CaptureTypeComboBox_SelectionChanged"
                                   DropDownClosed="CaptureTypeComboBox_DropDownClosed"
                                   HorizontalAlignment="Right"
@@ -72,8 +74,9 @@
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
-                        <Label Content="Filter" />
+                        <Label Content="Filter" FontFamily="Segoe UI Semilight" />
                         <ComboBox Name="filterBox"
+                                  FontFamily="Segoe UI"
                                   SelectionChanged="FilterComboBox_SelectionChanged"
                                   DropDownClosed="FilterComboBox_DropDownClosed">
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
