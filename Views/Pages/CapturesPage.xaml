@@ -73,27 +73,62 @@
                             <ComboBoxItem>Game clips</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" x:Name="screenshotFilter">
                         <Label Content="Filter" FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="filterBox"
+                        <ComboBox Name="screenshotFilterBox"
                                   FontFamily="Segoe UI"
-                                  SelectionChanged="FilterComboBox_SelectionChanged"
-                                  DropDownClosed="FilterComboBox_DropDownClosed">
+                                  SelectionChanged="ScreenshotFilter_SelectionChanged"
+                                  DropDownClosed="ScreenshotFilter_DropDownClosed">
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
                             <ComboBoxItem>By game</ComboBoxItem>
-                            <ComboBoxItem>By views</ComboBoxItem>
                             <ComboBoxItem>By likes</ComboBoxItem>
+                            <ComboBoxItem>By views</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" x:Name="gameClipFilter" Visibility="Collapsed">
+                        <Label Content="Filter"
+                               FontFamily="Segoe UI Semilight" />
+                        <ComboBox Name="gameClipFilterBox"
+                                  FontFamily="Segoe UI"
+                                  SelectionChanged="GameClipFilter_SelectionChanged"
+                                  DropDownClosed="GameClipFilter_DropDownClosed">
+                            <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
+                            <ComboBoxItem>By duration</ComboBoxItem>
+                            <ComboBoxItem>By game</ComboBoxItem>
+                            <ComboBoxItem>By likes</ComboBoxItem>
+                            <ComboBoxItem>By views</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
                 <Grid Grid.Row="1"
-                      Name="screenshotListView">
+                      x:Name="screenshotListView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <ListView ItemsSource="{Binding Screenshots}"
                               Grid.Row="0"
                               MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <views:ScreenshotListItem />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      x:Name="gameClipListView"
+                      Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ListView ItemsSource="{Binding GameClips}"
+                              Grid.Row="0">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="1" />
