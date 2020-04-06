@@ -10,7 +10,7 @@ namespace XboxGameClipLibrary.ViewModels
         {
             // Build the menus
             Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CameraSolid }, Text = "Captures", NavigationDestination = new Uri("Views/Pages/CapturesPage.xaml", UriKind.RelativeOrAbsolute) });
-            OptionsMenu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Settings", NavigationDestination = new Uri("Views/Windows/SettingsWindow.xaml", UriKind.RelativeOrAbsolute) });
+            OptionsMenu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Settings", NavigationDestination = new Uri("Views/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute) });
         }
 
         public object GetItem(object uri)

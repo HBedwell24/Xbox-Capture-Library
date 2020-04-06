@@ -145,6 +145,9 @@
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
     <Compile Include="Implementations\CredentialValidator.cs" />
+    <Compile Include="Views\Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\CredentialWindow.xaml.cs">
       <DependentUpon>CredentialWindow.xaml</DependentUpon>
     </Compile>
@@ -154,9 +157,6 @@
     <Compile Include="Implementations\BindableBase.cs" />
     <Compile Include="Implementations\DelegateCommand.cs" />
     <Compile Include="Extensions\NavigationExtension.cs" />
-    <Compile Include="Views\Windows\SettingsWindow.xaml.cs">
-      <DependentUpon>SettingsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Windows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
@@ -173,6 +173,10 @@
     <Compile Include="Views\User Controls\ScreenshotListItem.xaml.cs">
       <DependentUpon>ScreenshotListItem.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\CredentialWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,10 +195,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Themes\Accent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
