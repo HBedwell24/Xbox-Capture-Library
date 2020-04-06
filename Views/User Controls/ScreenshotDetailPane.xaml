@@ -56,7 +56,8 @@
                         Width="40"
                         Height="40"
                         ToolTip="Share"
-                        Margin="15">
+                        Margin="15"
+                        Click="Share_Screenshot">
                     <Button.Content>
                         <iconPacks:PackIconBoxIcons Kind="RegularShare" />
                     </Button.Content>

@@ -87,11 +87,6 @@ namespace XboxGameClipLibrary.Views
         void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             Console.WriteLine("Download status: {0}%.", e.ProgressPercentage);
-
-            // updating the UI
-            Dispatcher.Invoke(() => {
-                // progressBar.Value = e.ProgressPercentage;
-            });
         }
 
         public void Download_Image_Content(object sender, RoutedEventArgs e)
@@ -103,6 +98,11 @@ namespace XboxGameClipLibrary.Views
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }
+        }
+
+        public void Share_Screenshot(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
