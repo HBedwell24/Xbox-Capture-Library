@@ -67,7 +67,7 @@
         </Grid>
 
         <StackPanel Grid.Row="1">
-            <local:GameClipPlayer Margin="15 15 15 0" x:Name="gameClipPlayer" />
+            <local:GameClipPlayer Margin="15 15 15 0" GameClipUri="{Binding GameClipUri}" />
         </StackPanel>
         <StackPanel Grid.Row="2"
                     Margin="15 15 0 0">

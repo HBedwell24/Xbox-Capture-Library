@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.Threading;
 using XboxGameClipLibrary.API;
-using XboxGameClipLibrary.Models;
+using XboxGameClipLibrary.Models.Screenshots;
 
-namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
+namespace XboxGameClipLibrary.ViewModels.ScreenshotViewModel
 {
-    public class GameClipsViewModel : INotifyPropertyChanged
+    public class ScreenshotViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -15,14 +15,14 @@ namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
         private string _ProgressRingWrapperVisibility;
         private string _ContentWrapperVisibility;
 
-        private List<GameClip> _GameClips;
+        private List<Screenshot> _Screenshots;
 
-        public GameClipsViewModel()
+        public ScreenshotViewModel()
         {
-            LoadGameClipData();
+            LoadScreenshotData();
         }
 
-        public async void LoadGameClipData()
+        public async void LoadScreenshotData()
         {
             // Display the progress ring
             ContentWrapperVisibility = "Collapsed";
@@ -34,7 +34,7 @@ namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
             CancellationTokenSource cts = new CancellationTokenSource();
 
             // Bind the capture data
-            GameClips = await XboxApiImpl.GetGameClips(cts.Token);
+            Screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
 
             // Request cancellation
             cts.Cancel();
@@ -105,15 +105,15 @@ namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
             }
         }
 
-        public List<GameClip> GameClips
+        public List<Screenshot> Screenshots
         {
-            get { return _GameClips; }
+            get { return _Screenshots; }
             set
             {
-                if (value != _GameClips)
+                if (value != _Screenshots)
                 {
-                    _GameClips = value;
-                    OnNotifyPropertyChanged("GameClips");
+                    _Screenshots = value;
+                    OnNotifyPropertyChanged("Screenshots");
                 }
             }
         }
@@ -124,4 +124,3 @@ namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
         }
     }
 }
-

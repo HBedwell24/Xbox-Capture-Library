@@ -15,7 +15,7 @@ namespace XboxGameClipLibrary.Views.User_Controls
 		public GameClipPlayer()
 		{
 			InitializeComponent();
-
+			
 			DispatcherTimer timer = new DispatcherTimer();
 			timer.Interval = TimeSpan.FromSeconds(1);
 			timer.Tick += timer_Tick;
@@ -23,9 +23,9 @@ namespace XboxGameClipLibrary.Views.User_Controls
 		}
 
 		public static readonly DependencyProperty GameClipUriProperty =
-		DependencyProperty.Register("GameDetailUri", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+		DependencyProperty.Register("GameClipUri", typeof(string), typeof(GameClipPlayer), new PropertyMetadata("NULL"));
 
-		public string GameDetailUri
+		public string GameClipUri
 		{
 			get { return (string) GetValue(GameClipUriProperty); }
 			set { SetValue(GameClipUriProperty, value); }

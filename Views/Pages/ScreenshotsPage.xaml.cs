@@ -3,14 +3,14 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.ScreenshotsViewModel;
+using XboxGameClipLibrary.ViewModels.ScreenshotViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
     public partial class ScreenshotsPage : Page
     {
-        private bool screenshotFilterHandle = true;
-        private ScreenshotsViewModel cvm;
+        private bool FilterHandle = true;
+        private ScreenshotViewModel screenshotViewModel;
 
         public ScreenshotsPage()
         {
@@ -24,10 +24,10 @@ namespace XboxGameClipLibrary.Views
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
             // Instantiate ViewModel
-            cvm = new ScreenshotsViewModel();
+            screenshotViewModel = new ScreenshotViewModel();
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
-            DataContext = cvm;
+            DataContext = screenshotViewModel;
 
             // Unhook the Loaded method
             Loaded -= CapturesPage_Loaded;
@@ -36,7 +36,7 @@ namespace XboxGameClipLibrary.Views
         private void ScreenshotListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListView list = (ListView) sender;
-            var dataContext = screenshotsPage.DataContext as ScreenshotsViewModel;
+            var dataContext = screenshotsPage.DataContext as ScreenshotViewModel;
             var screenshot = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
 
             screenshotDetailPane.ScreenshotId = screenshot.ScreenshotId;
@@ -54,14 +54,14 @@ namespace XboxGameClipLibrary.Views
 
         private void ScreenshotFilter_DropDownClosed(object sender, EventArgs e)
         {
-            if (screenshotFilterHandle) HandleScreenshotFilter();
-            screenshotFilterHandle = true;
+            if (FilterHandle) HandleScreenshotFilter();
+            FilterHandle = true;
         }
 
         private void ScreenshotFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = sender as ComboBox;
-            screenshotFilterHandle = !cmb.IsDropDownOpen;
+            FilterHandle = !cmb.IsDropDownOpen;
             HandleScreenshotFilter();
         }
 
@@ -71,23 +71,23 @@ namespace XboxGameClipLibrary.Views
             switch (screenshotFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
                 case "By date":
-                    var screenshotByDate = cvm.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
-                    cvm.Screenshots = screenshotByDate;
+                    var screenshotByDate = screenshotViewModel.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
+                    screenshotViewModel.Screenshots = screenshotByDate;
                     break;
 
                 case "By game":
-                    var screenshotByGame = cvm.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
-                    cvm.Screenshots = screenshotByGame;
+                    var screenshotByGame = screenshotViewModel.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
+                    screenshotViewModel.Screenshots = screenshotByGame;
                     break;
 
                 case "By likes":
-                    var screenshotByLikes = cvm.Screenshots.OrderByDescending(o => o.RatingCount).ToList();
-                    cvm.Screenshots = screenshotByLikes;
+                    var screenshotByLikes = screenshotViewModel.Screenshots.OrderByDescending(o => o.RatingCount).ToList();
+                    screenshotViewModel.Screenshots = screenshotByLikes;
                     break;
 
                 case "By views":
-                    var screenshotByViews = cvm.Screenshots.OrderByDescending(o => o.Views).ToList();
-                    cvm.Screenshots = screenshotByViews;
+                    var screenshotByViews = screenshotViewModel.Screenshots.OrderByDescending(o => o.Views).ToList();
+                    screenshotViewModel.Screenshots = screenshotByViews;
                     break;
             }
         }

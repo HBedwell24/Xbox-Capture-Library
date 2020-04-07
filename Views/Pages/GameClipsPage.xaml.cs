@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.GameClipsViewModel;
+using XboxGameClipLibrary.ViewModels.GameClipViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
@@ -11,7 +11,7 @@ namespace XboxGameClipLibrary.Views
     {
         private bool FilterHandle = true;
 
-        private GameClipsViewModel cvm;
+        private GameClipViewModel gameClipViewModel;
 
         public GameClipsPage()
         {
@@ -25,10 +25,10 @@ namespace XboxGameClipLibrary.Views
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
             // Instantiate ViewModel
-            cvm = new GameClipsViewModel();
+            gameClipViewModel = new GameClipViewModel();
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
-            DataContext = cvm;
+            DataContext = gameClipViewModel;
 
             // Unhook the Loaded method
             Loaded -= CapturesPage_Loaded;
@@ -37,7 +37,7 @@ namespace XboxGameClipLibrary.Views
         private void GameClipListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListView list = (ListView) sender;
-            var dataContext = gameClipsPage.DataContext as GameClipsViewModel;
+            var dataContext = gameClipsPage.DataContext as GameClipViewModel;
             var gameClip = dataContext.GameClips[list.Items.IndexOf(list.SelectedItem)];
 
             gameClipDetailPane.GameClipId = gameClip.GameClipId;
@@ -72,28 +72,28 @@ namespace XboxGameClipLibrary.Views
             switch (gameClipFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
                 case "By date":
-                    var gameClipsByDate = cvm.GameClips.OrderByDescending(o => o.DatePublished).ToList();
-                    cvm.GameClips = gameClipsByDate;
+                    var gameClipsByDate = gameClipViewModel.GameClips.OrderByDescending(o => o.DatePublished).ToList();
+                    gameClipViewModel.GameClips = gameClipsByDate;
                     break;
 
                 case "By duration":
-                    var gameClipsByDuration = cvm.GameClips.OrderByDescending(o => o.DurationInSeconds).ToList();
-                    cvm.GameClips = gameClipsByDuration;
+                    var gameClipsByDuration = gameClipViewModel.GameClips.OrderByDescending(o => o.DurationInSeconds).ToList();
+                    gameClipViewModel.GameClips = gameClipsByDuration;
                     break;
 
                 case "By game":
-                    var gameClipsByGame = cvm.GameClips.OrderByDescending(o => o.TitleName).ToList();
-                    cvm.GameClips = gameClipsByGame;
+                    var gameClipsByGame = gameClipViewModel.GameClips.OrderByDescending(o => o.TitleName).ToList();
+                    gameClipViewModel.GameClips = gameClipsByGame;
                     break;
 
                 case "By likes":
-                    var gameClipsByLikes = cvm.GameClips.OrderByDescending(o => o.RatingCount).ToList();
-                    cvm.GameClips = gameClipsByLikes;
+                    var gameClipsByLikes = gameClipViewModel.GameClips.OrderByDescending(o => o.RatingCount).ToList();
+                    gameClipViewModel.GameClips = gameClipsByLikes;
                     break;
 
                 case "By views":
-                    var gameClipsByViews = cvm.GameClips.OrderByDescending(o => o.Views).ToList();
-                    cvm.GameClips = gameClipsByViews;
+                    var gameClipsByViews = gameClipViewModel.GameClips.OrderByDescending(o => o.Views).ToList();
+                    gameClipViewModel.GameClips = gameClipsByViews;
                     break;
             }
         }
