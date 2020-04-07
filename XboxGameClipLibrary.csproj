@@ -145,6 +145,7 @@
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
     <Compile Include="Implementations\CredentialValidator.cs" />
+    <Compile Include="View Models\GameClipsViewModel.cs" />
     <Compile Include="Views\Pages\GameClipsPage.xaml.cs">
       <DependentUpon>GameClipsPage.xaml</DependentUpon>
     </Compile>
@@ -169,7 +170,7 @@
     <Compile Include="Views\Windows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View Models\CapturesViewModel.cs" />
+    <Compile Include="View Models\ScreenshotsViewModel.cs" />
     <Compile Include="View Models\MenuItemViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />
     <Compile Include="View Models\ViewModelCase.cs" />

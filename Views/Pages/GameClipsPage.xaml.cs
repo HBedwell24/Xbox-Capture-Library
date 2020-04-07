@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.CapturesViewModel;
+using XboxGameClipLibrary.ViewModels.GameClipsViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
@@ -11,7 +11,7 @@ namespace XboxGameClipLibrary.Views
     {
         private bool FilterHandle = true;
 
-        private CapturesViewModel cvm;
+        private GameClipsViewModel cvm;
 
         public GameClipsPage()
         {
@@ -25,7 +25,7 @@ namespace XboxGameClipLibrary.Views
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
             // Instantiate ViewModel
-            cvm = new CapturesViewModel();
+            cvm = new GameClipsViewModel();
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = cvm;
@@ -37,7 +37,7 @@ namespace XboxGameClipLibrary.Views
         private void GameClipListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListView list = (ListView) sender;
-            var dataContext = gameClipsPage.DataContext as CapturesViewModel;
+            var dataContext = gameClipsPage.DataContext as GameClipsViewModel;
             var gameClip = dataContext.GameClips[list.Items.IndexOf(list.SelectedItem)];
 
             gameClipDetailPane.GameClipId = gameClip.GameClipId;

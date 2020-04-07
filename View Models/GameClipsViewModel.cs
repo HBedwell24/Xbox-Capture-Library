@@ -3,11 +3,10 @@ using System.ComponentModel;
 using System.Threading;
 using XboxGameClipLibrary.API;
 using XboxGameClipLibrary.Models;
-using XboxGameClipLibrary.Models.Screenshots;
 
-namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
+namespace XboxGameClipLibrary.ViewModels.GameClipsViewModel
 {
-    public class CapturesViewModel : INotifyPropertyChanged
+    public class GameClipsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,14 +16,13 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
         private string _ContentWrapperVisibility;
 
         private List<GameClip> _GameClips;
-        private List<Screenshot> _Screenshots;
 
-        public CapturesViewModel()
+        public GameClipsViewModel()
         {
-            LoadCaptureData();
+            LoadGameClipData();
         }
 
-        public async void LoadCaptureData()
+        public async void LoadGameClipData()
         {
             // Display the progress ring
             ContentWrapperVisibility = "Collapsed";
@@ -37,7 +35,6 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
 
             // Bind the capture data
             GameClips = await XboxApiImpl.GetGameClips(cts.Token);
-            Screenshots = await XboxApiImpl.GetScreenshots(cts.Token);
 
             // Request cancellation
             cts.Cancel();
@@ -121,22 +118,10 @@ namespace XboxGameClipLibrary.ViewModels.CapturesViewModel
             }
         }
 
-        public List<Screenshot> Screenshots
-        {
-            get { return _Screenshots; }
-            set
-            {
-                if (value != _Screenshots)
-                {
-                    _Screenshots = value;
-                    OnNotifyPropertyChanged("Screenshots");
-                }
-            }
-        }
-
         private void OnNotifyPropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }
+

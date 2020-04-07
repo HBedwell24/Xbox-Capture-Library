@@ -3,14 +3,14 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.CapturesViewModel;
+using XboxGameClipLibrary.ViewModels.ScreenshotsViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
     public partial class ScreenshotsPage : Page
     {
         private bool screenshotFilterHandle = true;
-        private CapturesViewModel cvm;
+        private ScreenshotsViewModel cvm;
 
         public ScreenshotsPage()
         {
@@ -24,7 +24,7 @@ namespace XboxGameClipLibrary.Views
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
             // Instantiate ViewModel
-            cvm = new CapturesViewModel();
+            cvm = new ScreenshotsViewModel();
 
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = cvm;
@@ -36,7 +36,7 @@ namespace XboxGameClipLibrary.Views
         private void ScreenshotListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListView list = (ListView) sender;
-            var dataContext = screenshotsPage.DataContext as CapturesViewModel;
+            var dataContext = screenshotsPage.DataContext as ScreenshotsViewModel;
             var screenshot = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
 
             screenshotDetailPane.ScreenshotId = screenshot.ScreenshotId;
