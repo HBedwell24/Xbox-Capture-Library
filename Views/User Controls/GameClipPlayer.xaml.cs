@@ -33,22 +33,22 @@ namespace XboxGameClipLibrary.Views.User_Controls
 
 		private void timer_Tick(object sender, EventArgs e)
 		{
-			if ((mePlayer.Source != null) && (mePlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
+			if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider))
 			{
 				sliProgress.Minimum = 0;
-				sliProgress.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
-				sliProgress.Value = mePlayer.Position.TotalSeconds;
+				sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+				sliProgress.Value = mediaPlayer.Position.TotalSeconds;
 			}
 		}
 
 		private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
-			e.CanExecute = (mePlayer != null) && (mePlayer.Source != null);
+			e.CanExecute = (mediaPlayer != null) && (mediaPlayer.Source != null);
 		}
 
 		private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
 		{
-			mePlayer.Play();
+			mediaPlayer.Play();
 			mediaPlayerIsPlaying = true;
 		}
 
@@ -59,7 +59,7 @@ namespace XboxGameClipLibrary.Views.User_Controls
 
 		private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
 		{
-			mePlayer.Pause();
+			mediaPlayer.Pause();
 		}
 
 		private void Stop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace XboxGameClipLibrary.Views.User_Controls
 
 		private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
 		{
-			mePlayer.Stop();
+			mediaPlayer.Stop();
 			mediaPlayerIsPlaying = false;
 		}
 
@@ -81,7 +81,7 @@ namespace XboxGameClipLibrary.Views.User_Controls
 		private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
 		{
 			userIsDraggingSlider = false;
-			mePlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+			mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
 		}
 
 		private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -91,7 +91,7 @@ namespace XboxGameClipLibrary.Views.User_Controls
 
 		private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
 		{
-			mePlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+			mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
 		}
 	}
 }

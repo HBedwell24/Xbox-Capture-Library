@@ -105,13 +105,8 @@ namespace XboxGameClipLibrary.Views
             using (WebClient client = new WebClient())
             {
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
-                client.DownloadFileAsync(new Uri(GameClipUri), downloadPath + GameClipId + ".png");
+                client.DownloadFileAsync(new Uri(GameClipUri), downloadPath + GameClipId + ".mp4");
             }
-        }
-
-        public void Share_Screenshot(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -99,10 +99,5 @@ namespace XboxGameClipLibrary.Views
                 client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }
         }
-
-        public void Share_Screenshot(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

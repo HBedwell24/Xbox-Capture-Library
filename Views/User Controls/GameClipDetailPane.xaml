@@ -32,38 +32,27 @@
                                FontWeight="Light"
                                FontSize="22" />
                     </StackPanel>
-                    <ToggleButton Background="Transparent" BorderBrush="Transparent" ToolTip="Favorite">
+                    <ToggleButton Background="Transparent"
+                                  BorderBrush="Transparent"
+                                  ToolTip="Favorite">
                         <ToggleButton.Content>
                             <iconPacks:PackIconBoxIcons Kind="RegularStar" />
                         </ToggleButton.Content>
                     </ToggleButton>
                 </StackPanel>
             </StackPanel>
-
-            <StackPanel Grid.Column="1"
-                        VerticalAlignment="Top"
-                        Orientation="Horizontal">
-                <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                        Width="40"
-                        Height="40"
-                        ToolTip="Download"
-                        Margin="15 15 0 15"
-                        Click="Download_Image_Content">
-                    <Button.Content>
-                        <iconPacks:PackIconBoxIcons Kind="RegularDownload" />
-                    </Button.Content>
-                </Button>
-                <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                        Width="40"
-                        Height="40"
-                        ToolTip="Share"
-                        Margin="15"
-                        Click="Share_Screenshot">
-                    <Button.Content>
-                        <iconPacks:PackIconBoxIcons Kind="RegularShare" />
-                    </Button.Content>
-                </Button>
-            </StackPanel>
+            <Button Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Width="40"
+                    Height="40"
+                    ToolTip="Download"
+                    Margin="15"
+                    Click="Download_Image_Content">
+                <Button.Content>
+                    <iconPacks:PackIconBoxIcons Kind="RegularDownload" />
+                </Button.Content>
+            </Button>
         </Grid>
 
         <StackPanel Grid.Row="1">

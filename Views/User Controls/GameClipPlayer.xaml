@@ -41,7 +41,7 @@
             </Button>
         </ToolBar>
 
-        <MediaElement Name="mePlayer"
+        <MediaElement Name="mediaPlayer"
                       Grid.Row="1"
                       LoadedBehavior="Manual"
                       Stretch="None" />
