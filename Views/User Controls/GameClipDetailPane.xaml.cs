@@ -13,75 +13,84 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty GameClipIdProperty =
-        DependencyProperty.Register("GameClipId", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("GameClipId", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
         public string GameClipId
         {
-            get { return (string)GetValue(GameClipIdProperty); }
+            get { return (string) GetValue(GameClipIdProperty); }
             set { SetValue(GameClipIdProperty, value); }
         }
 
         public static readonly DependencyProperty GameClipUriProperty =
-        DependencyProperty.Register("GameClipUri", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("GameClipUri", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
         public string GameClipUri
         {
-            get { return (string)GetValue(GameClipUriProperty); }
+            get { return (string) GetValue(GameClipUriProperty); }
             set { SetValue(GameClipUriProperty, value); }
         }
 
-        public static readonly DependencyProperty GameClipGameProperty =
-        DependencyProperty.Register("GameClipGame", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        public static readonly DependencyProperty GameProperty =
+        DependencyProperty.Register("Game", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
-        public string GameClipGame
+        public string Game
         {
-            get { return (string)GetValue(GameClipGameProperty); }
-            set { SetValue(GameClipGameProperty, value); }
+            get { return (string) GetValue(GameProperty); }
+            set { SetValue(GameProperty, value); }
         }
 
-        public static readonly DependencyProperty GameClipDeviceProperty =
-        DependencyProperty.Register("GameClipDevice", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        public static readonly DependencyProperty DeviceProperty =
+        DependencyProperty.Register("Device", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
-        public string GameClipDevice
+        public string Device
         {
-            get { return (string)GetValue(GameClipDeviceProperty); }
-            set { SetValue(GameClipDeviceProperty, value); }
+            get { return (string) GetValue(DeviceProperty); }
+            set { SetValue(DeviceProperty, value); }
+        }
+
+        public static readonly DependencyProperty DurationProperty =
+        DependencyProperty.Register("Duration", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
+
+        public string Duration
+        {
+            get { return (string) GetValue(DurationProperty); }
+            set { SetValue(DurationProperty, value); }
         }
 
         public static readonly DependencyProperty DateRecordedProperty =
-        DependencyProperty.Register("DateRecorded", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("DateRecorded", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
         public string DateRecorded
         {
-            get { return (string)GetValue(DateRecordedProperty); }
+            get { return (string) GetValue(DateRecordedProperty); }
             set { SetValue(DateRecordedProperty, value); }
         }
 
-        public static readonly DependencyProperty GameClipDatePublishedProperty =
-        DependencyProperty.Register("GameClipDatePublished", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        public static readonly DependencyProperty DatePublishedProperty =
+        DependencyProperty.Register("DatePublished", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
-        public string GameClipDatePublished
+        public string DatePublished
         {
-            get { return (string)GetValue(GameClipDatePublishedProperty); }
-            set { SetValue(GameClipDatePublishedProperty, value); }
+            get { return (string)GetValue(DatePublishedProperty); }
+            set { SetValue(DatePublishedProperty, value); }
         }
 
-        public static readonly DependencyProperty GameClipViewsProperty =
-        DependencyProperty.Register("GameClipViews", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        public static readonly DependencyProperty ViewsProperty =
+        DependencyProperty.Register("Views", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
-        public string GameClipViews
+        public string Views
         {
-            get { return (string)GetValue(GameClipViewsProperty); }
-            set { SetValue(GameClipViewsProperty, value); }
+            get { return (string)GetValue(ViewsProperty); }
+            set { SetValue(ViewsProperty, value); }
         }
 
-        public static readonly DependencyProperty GameClipLikesProperty =
-        DependencyProperty.Register("GameClipLikes", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        public static readonly DependencyProperty LikesProperty =
+        DependencyProperty.Register("Likes", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
-        public string GameClipLikes
+        public string Likes
         {
-            get { return (string)GetValue(GameClipLikesProperty); }
-            set { SetValue(GameClipLikesProperty, value); }
+            get { return (string)GetValue(LikesProperty); }
+            set { SetValue(LikesProperty, value); }
         }
 
         void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -102,7 +111,7 @@ namespace XboxGameClipLibrary.Views
 
         public void Share_Screenshot(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

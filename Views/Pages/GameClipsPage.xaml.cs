@@ -42,13 +42,14 @@ namespace XboxGameClipLibrary.Views
 
             gameClipDetailPane.GameClipId = gameClip.GameClipId;
             gameClipDetailPane.GameClipUri = gameClip.GameClipUris[0].Uri;
-            gameClipDetailPane.GameClipGame = gameClip.TitleName;
-            gameClipDetailPane.GameClipDevice = gameClip.DeviceType;
+            gameClipDetailPane.Game = gameClip.TitleName;
+            gameClipDetailPane.Device = gameClip.DeviceType;
+            gameClipDetailPane.Duration = gameClip.DurationInSeconds;
             gameClipDetailPane.DateRecorded = gameClip.DateRecorded.ToString();
-            gameClipDetailPane.GameClipDatePublished = gameClip.DatePublished.ToString();
+            gameClipDetailPane.DatePublished = gameClip.DatePublished.ToString();
 
-            gameClipDetailPane.GameClipViews = gameClip.Views.ToString();
-            gameClipDetailPane.GameClipLikes = gameClip.RatingCount.ToString();
+            gameClipDetailPane.Views = gameClip.Views.ToString();
+            gameClipDetailPane.Likes = gameClip.RatingCount.ToString();
 
             gameClipDetailView.Visibility = Visibility.Visible;
         }

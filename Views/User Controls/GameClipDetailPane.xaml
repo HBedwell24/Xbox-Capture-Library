@@ -82,13 +82,19 @@
                     <Label FontFamily="Segoe UI Semilight"
                            Content="GAME" />
                     <Label FontFamily="Segoe UI"
-                           Content="{Binding GameClipGame, FallbackValue=NULL}"
+                           Content="{Binding Game, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
 
                     <Label FontFamily="Segoe UI Semilight"
                            Content="DEVICE" />
                     <Label FontFamily="Segoe UI"
-                           Content="{Binding GameClipDevice, FallbackValue=NULL}"
+                           Content="{Binding Device, FallbackValue=NULL}"
+                           Margin="0 0 0 10" />
+
+                    <Label FontFamily="Segoe UI Semilight"
+                           Content="DURATION" />
+                    <Label FontFamily="Segoe UI"
+                           Content="{Binding Duration, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
 
                     <Label FontFamily="Segoe UI Semilight"
@@ -100,7 +106,7 @@
                     <Label FontFamily="Segoe UI Semilight"
                            Content="DATE PUBLISHED" />
                     <Label FontFamily="Segoe UI"
-                           Content="{Binding GameClipDatePublished, FallbackValue=NULL}"
+                           Content="{Binding DatePublished, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
                 </StackPanel>
             </StackPanel>
@@ -118,13 +124,13 @@
                     <Label FontFamily="Segoe UI Semilight"
                                Content="VIEWS" />
                     <Label FontFamily="Segoe UI"
-                           Content="{Binding GameClipViews, FallbackValue=NULL}"
+                           Content="{Binding Views, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
 
                     <Label FontFamily="Segoe UI Semilight"
                            Content="LIKES" />
                     <Label FontFamily="Segoe UI"
-                           Content="{Binding GameClipLikes, FallbackValue=NULL}"
+                           Content="{Binding Likes, FallbackValue=NULL}"
                            Margin="0 0 0 10" />
                 </StackPanel>
             </StackPanel>

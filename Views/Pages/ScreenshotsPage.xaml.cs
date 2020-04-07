@@ -9,10 +9,7 @@ namespace XboxGameClipLibrary.Views
 {
     public partial class ScreenshotsPage : Page
     {
-        private bool captureTypeHandle = true;
         private bool screenshotFilterHandle = true;
-        private bool gameClipFilterHandle = true;
-
         private CapturesViewModel cvm;
 
         public ScreenshotsPage()
