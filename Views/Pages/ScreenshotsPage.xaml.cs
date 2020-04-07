@@ -55,61 +55,6 @@ namespace XboxGameClipLibrary.Views
             capturesDetailView.Visibility = Visibility.Visible;
         }
 
-        private void GameClipListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ListView list = (ListView)sender;
-            var dataContext = screenshotsPage.DataContext as CapturesViewModel;
-            var gameClip = dataContext.GameClips[list.Items.IndexOf(list.SelectedItem)];
-
-            gameClipDetailPane.GameClipId = gameClip.GameClipId;
-            gameClipDetailPane.GameClipUri = gameClip.GameClipUris[0].Uri;
-            gameClipDetailPane.GameClipGame = gameClip.TitleName;
-            gameClipDetailPane.GameClipDevice = gameClip.DeviceType;
-            gameClipDetailPane.DateRecorded = gameClip.DateRecorded.ToString();
-            gameClipDetailPane.GameClipDatePublished = gameClip.DatePublished.ToString();
-
-            gameClipDetailPane.GameClipViews = gameClip.Views.ToString();
-            gameClipDetailPane.GameClipLikes = gameClip.RatingCount.ToString();
-
-            capturesDetailView.Visibility = Visibility.Visible;
-        }
-
-        private void CaptureTypeComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            if (captureTypeHandle) HandleCaptureTypeComboBoxSelection();
-            captureTypeHandle = true;
-        }
-
-        private void CaptureTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = sender as ComboBox;
-            captureTypeHandle = !cmb.IsDropDownOpen;
-            HandleCaptureTypeComboBoxSelection();
-        }
-
-        // Gets input from comboboxes
-        private void HandleCaptureTypeComboBoxSelection()
-        {
-            switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
-            {
-                case "Screenshots":
-                    gameClipDetailPane.Visibility = Visibility.Collapsed;
-                    gameClipFilter.Visibility = Visibility.Collapsed;
-                    gameClipListView.Visibility = Visibility.Collapsed;
-                    screenshotFilter.Visibility = Visibility.Visible;
-                    screenshotListView.Visibility = Visibility.Visible;
-                    break;
-
-                case "Game clips":
-                    capturesDetailView.Visibility = Visibility.Collapsed;
-                    screenshotFilter.Visibility = Visibility.Collapsed;
-                    screenshotListView.Visibility = Visibility.Collapsed;
-                    gameClipFilter.Visibility = Visibility.Visible;
-                    gameClipListView.Visibility = Visibility.Visible;
-                    break;
-            }
-        }
-
         private void ScreenshotFilter_DropDownClosed(object sender, EventArgs e)
         {
             if (screenshotFilterHandle) HandleScreenshotFilter();
@@ -146,50 +91,6 @@ namespace XboxGameClipLibrary.Views
                 case "By views":
                     var screenshotByViews = cvm.Screenshots.OrderByDescending(o => o.Views).ToList();
                     cvm.Screenshots = screenshotByViews;
-                    break;
-            }
-        }
-
-        private void GameClipFilter_DropDownClosed(object sender, EventArgs e)
-        {
-            if (gameClipFilterHandle) HandleGameClipFilter();
-            gameClipFilterHandle = true;
-        }
-
-        private void GameClipFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = sender as ComboBox;
-            gameClipFilterHandle = !cmb.IsDropDownOpen;
-            HandleGameClipFilter();
-        }
-
-        private void HandleGameClipFilter()
-        {
-            switch (gameClipFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
-            {
-                case "By date":
-                    var gameClipsByDate = cvm.GameClips.OrderByDescending(o => o.DatePublished).ToList();
-                    cvm.GameClips = gameClipsByDate;
-                    break;
-
-                case "By duration":
-                    var gameClipsByDuration = cvm.GameClips.OrderByDescending(o => o.DurationInSeconds).ToList();
-                    cvm.GameClips = gameClipsByDuration;
-                    break;
-
-                case "By game":
-                    var gameClipsByGame = cvm.GameClips.OrderByDescending(o => o.TitleName).ToList();
-                    cvm.GameClips = gameClipsByGame;
-                    break;
-
-                case "By likes":
-                    var gameClipsByLikes = cvm.GameClips.OrderByDescending(o => o.RatingCount).ToList();
-                    cvm.GameClips = gameClipsByLikes;
-                    break;
-
-                case "By views":
-                    var gameClipsByViews = cvm.GameClips.OrderByDescending(o => o.Views).ToList();
-                    cvm.GameClips = gameClipsByViews;
                     break;
             }
         }

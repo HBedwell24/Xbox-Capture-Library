@@ -60,40 +60,15 @@
                 <StackPanel Grid.Row="0"
                             Margin="15"
                             Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Capture Type" FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="captureBox"
-                                  Margin="0 0 10 0"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="CaptureTypeComboBox_SelectionChanged"
-                                  DropDownClosed="CaptureTypeComboBox_DropDownClosed"
-                                  HorizontalAlignment="Right"
-                                  VerticalAlignment="Center">
-                            <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
-                            <ComboBoxItem>Game clips</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" x:Name="screenshotFilter">
-                        <Label Content="Filter" FontFamily="Segoe UI Semilight" />
+                    <StackPanel Orientation="Vertical"
+                                x:Name="screenshotFilter">
+                        <Label Content="Filter"
+                               FontFamily="Segoe UI Semilight" />
                         <ComboBox Name="screenshotFilterBox"
                                   FontFamily="Segoe UI"
                                   SelectionChanged="ScreenshotFilter_SelectionChanged"
                                   DropDownClosed="ScreenshotFilter_DropDownClosed">
                             <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                            <ComboBoxItem>By game</ComboBoxItem>
-                            <ComboBoxItem>By likes</ComboBoxItem>
-                            <ComboBoxItem>By views</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" x:Name="gameClipFilter" Visibility="Collapsed">
-                        <Label Content="Filter"
-                               FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="gameClipFilterBox"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="GameClipFilter_SelectionChanged"
-                                  DropDownClosed="GameClipFilter_DropDownClosed">
-                            <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                            <ComboBoxItem>By duration</ComboBoxItem>
                             <ComboBoxItem>By game</ComboBoxItem>
                             <ComboBoxItem>By likes</ComboBoxItem>
                             <ComboBoxItem>By views</ComboBoxItem>
@@ -120,39 +95,12 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
-
-                <Grid Grid.Row="1"
-                      x:Name="gameClipListView"
-                      Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding GameClips}"
-                              Grid.Row="0"
-                              MouseLeftButtonUp="GameClipListView_MouseLeftButtonUp">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="1" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <views:ScreenshotListItem />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </Grid>
-            <Grid Grid.Column="1" Visibility="Collapsed" x:Name="capturesDetailView">
-                <ScrollViewer>
-                    <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
-                </ScrollViewer>
             </Grid>
             <Grid Grid.Column="1"
                   Visibility="Collapsed"
-                  x:Name="gameClipDetailView">
+                  x:Name="capturesDetailView">
                 <ScrollViewer>
-                    <views:GameClipDetailPane x:Name="gameClipDetailPane" />
+                    <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
                 </ScrollViewer>
             </Grid>
         </Grid>
