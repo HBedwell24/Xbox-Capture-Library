@@ -9,7 +9,9 @@ namespace XboxGameClipLibrary.ViewModels
         public ShellViewModel()
         {
             // Build the menus
-            Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CameraSolid }, Text = "Captures", NavigationDestination = new Uri("Views/Pages/CapturesPage.xaml", UriKind.RelativeOrAbsolute) });
+            Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CameraSolid }, Text = "Screenshots", NavigationDestination = new Uri("Views/Pages/ScreenshotsPage.xaml", UriKind.RelativeOrAbsolute) });
+            Menu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.VideoSolid }, Text = "Game Clips", NavigationDestination = new Uri("Views/Pages/GameClipsPage.xaml", UriKind.RelativeOrAbsolute) });
+
             OptionsMenu.Add(new MenuItemViewModel() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid }, Text = "Settings", NavigationDestination = new Uri("Views/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute) });
         }
 

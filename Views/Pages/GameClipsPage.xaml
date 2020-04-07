@@ -1,18 +1,18 @@
-﻿<Page x:Class="XboxGameClipLibrary.Views.CapturesPage"
-      x:Name="capturesPage"
+﻿<Page x:Class="XboxGameClipLibrary.Views.GameClipsPage"
+      x:Name="gameClipsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:views="clr-namespace:XboxGameClipLibrary.Views"
-      Title="Captures"
+      Title="Game Clips"
       KeepAlive="True"
       d:DesignHeight="400"
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -22,11 +22,11 @@
             <TextBlock Grid.Row="0"
                        FontSize="28"
                        FontWeight="Light"
-                       Margin="15 15 0 15">Captures</TextBlock>
+                       Margin="15 15 0 15">Game Clips</TextBlock>
             <Separator Height="1"
                        Margin="0"></Separator>
         </StackPanel>
-        
+
         <Grid Grid.Row="1"
               x:Name="progressRingWrapper"
               Visibility="{Binding ProgressRingWrapperVisibility}">
@@ -44,9 +44,9 @@
                                    Visibility="{Binding ProgressRingVisibility}"
                                    Foreground="{DynamicResource AccentColorBrush}" />
         </Grid>
-        
+
         <Grid Grid.Row="1"
-              Visibility="{Binding ContentWrapperVisibility}" 
+              Visibility="{Binding ContentWrapperVisibility}"
               x:Name="contentWrapper">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -60,32 +60,8 @@
                 <StackPanel Grid.Row="0"
                             Margin="15"
                             Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Capture Type" FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="captureBox"
-                                  Margin="0 0 10 0"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="CaptureTypeComboBox_SelectionChanged"
-                                  DropDownClosed="CaptureTypeComboBox_DropDownClosed"
-                                  HorizontalAlignment="Right"
-                                  VerticalAlignment="Center">
-                            <ComboBoxItem IsSelected="True">Screenshots</ComboBoxItem>
-                            <ComboBoxItem>Game clips</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" x:Name="screenshotFilter">
-                        <Label Content="Filter" FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="screenshotFilterBox"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="ScreenshotFilter_SelectionChanged"
-                                  DropDownClosed="ScreenshotFilter_DropDownClosed">
-                            <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                            <ComboBoxItem>By game</ComboBoxItem>
-                            <ComboBoxItem>By likes</ComboBoxItem>
-                            <ComboBoxItem>By views</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" x:Name="gameClipFilter" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical"
+                                x:Name="gameClipFilter">
                         <Label Content="Filter"
                                FontFamily="Segoe UI Semilight" />
                         <ComboBox Name="gameClipFilterBox"
@@ -101,34 +77,13 @@
                     </StackPanel>
                 </StackPanel>
                 <Grid Grid.Row="1"
-                      x:Name="screenshotListView">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding Screenshots}"
-                              Grid.Row="0"
-                              MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="1" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <views:ScreenshotListItem />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-
-                <Grid Grid.Row="1"
-                      x:Name="gameClipListView"
-                      Visibility="Collapsed">
+                      x:Name="gameClipListView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <ListView ItemsSource="{Binding GameClips}"
-                              Grid.Row="0">
+                              Grid.Row="0"
+                              MouseLeftButtonUp="GameClipListView_MouseLeftButtonUp">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="1" />
@@ -142,9 +97,11 @@
                     </ListView>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1" Visibility="Collapsed" x:Name="capturesDetailView">
+            <Grid Grid.Column="1"
+                  Visibility="Collapsed"
+                  x:Name="gameClipDetailView">
                 <ScrollViewer>
-                    <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
+                    <views:GameClipDetailPane x:Name="gameClipDetailPane" />
                 </ScrollViewer>
             </Grid>
         </Grid>

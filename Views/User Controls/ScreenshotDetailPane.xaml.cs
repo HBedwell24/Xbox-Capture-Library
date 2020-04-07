@@ -13,7 +13,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty ScreenshotIdProperty =
-        DependencyProperty.Register("ScreenshotId", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("ScreenshotId", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string ScreenshotId
         {
@@ -22,7 +22,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty ScreenshotUriProperty =
-        DependencyProperty.Register("ScreenshotUri", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("ScreenshotUri", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string ScreenshotUri
         {
@@ -31,7 +31,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty GameProperty =
-        DependencyProperty.Register("Game", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("Game", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string Game
         {
@@ -40,7 +40,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty DeviceProperty =
-        DependencyProperty.Register("Device", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("Device", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string Device
         {
@@ -49,7 +49,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty DateTakenProperty =
-        DependencyProperty.Register("DateTaken", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("DateTaken", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string DateTaken
         {
@@ -58,7 +58,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty DatePublishedProperty =
-        DependencyProperty.Register("DatePublished", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("DatePublished", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string DatePublished
         {
@@ -67,7 +67,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty ViewsProperty =
-        DependencyProperty.Register("Views", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("Views", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string Views
         {
@@ -76,7 +76,7 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty LikesProperty =
-        DependencyProperty.Register("Likes", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("default value"));
+        DependencyProperty.Register("Likes", typeof(string), typeof(ScreenshotDetailPane), new PropertyMetadata("NULL"));
 
         public string Likes
         {

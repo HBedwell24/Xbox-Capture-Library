@@ -7,7 +7,7 @@ using XboxGameClipLibrary.ViewModels.CapturesViewModel;
 
 namespace XboxGameClipLibrary.Views
 {
-    public partial class CapturesPage : Page
+    public partial class ScreenshotsPage : Page
     {
         private bool captureTypeHandle = true;
         private bool screenshotFilterHandle = true;
@@ -15,7 +15,7 @@ namespace XboxGameClipLibrary.Views
 
         private CapturesViewModel cvm;
 
-        public CapturesPage()
+        public ScreenshotsPage()
         {
             // Initialize the CapturesPage component
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace XboxGameClipLibrary.Views
         private void ScreenshotListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListView list = (ListView) sender;
-            var dataContext = capturesPage.DataContext as CapturesViewModel;
+            var dataContext = screenshotsPage.DataContext as CapturesViewModel;
             var screenshot = dataContext.Screenshots[list.Items.IndexOf(list.SelectedItem)];
 
             screenshotDetailPane.ScreenshotId = screenshot.ScreenshotId;
@@ -51,6 +51,25 @@ namespace XboxGameClipLibrary.Views
 
             screenshotDetailPane.Views = screenshot.Views.ToString();
             screenshotDetailPane.Likes = screenshot.RatingCount.ToString();
+
+            capturesDetailView.Visibility = Visibility.Visible;
+        }
+
+        private void GameClipListView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ListView list = (ListView)sender;
+            var dataContext = screenshotsPage.DataContext as CapturesViewModel;
+            var gameClip = dataContext.GameClips[list.Items.IndexOf(list.SelectedItem)];
+
+            gameClipDetailPane.GameClipId = gameClip.GameClipId;
+            gameClipDetailPane.GameClipUri = gameClip.GameClipUris[0].Uri;
+            gameClipDetailPane.GameClipGame = gameClip.TitleName;
+            gameClipDetailPane.GameClipDevice = gameClip.DeviceType;
+            gameClipDetailPane.DateRecorded = gameClip.DateRecorded.ToString();
+            gameClipDetailPane.GameClipDatePublished = gameClip.DatePublished.ToString();
+
+            gameClipDetailPane.GameClipViews = gameClip.Views.ToString();
+            gameClipDetailPane.GameClipLikes = gameClip.RatingCount.ToString();
 
             capturesDetailView.Visibility = Visibility.Visible;
         }
@@ -74,6 +93,7 @@ namespace XboxGameClipLibrary.Views
             switch (captureBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
                 case "Screenshots":
+                    gameClipDetailPane.Visibility = Visibility.Collapsed;
                     gameClipFilter.Visibility = Visibility.Collapsed;
                     gameClipListView.Visibility = Visibility.Collapsed;
                     screenshotFilter.Visibility = Visibility.Visible;
@@ -81,11 +101,11 @@ namespace XboxGameClipLibrary.Views
                     break;
 
                 case "Game clips":
-                    screenshotListView.Visibility = Visibility.Collapsed;
                     capturesDetailView.Visibility = Visibility.Collapsed;
                     screenshotFilter.Visibility = Visibility.Collapsed;
-                    gameClipListView.Visibility = Visibility.Visible;
+                    screenshotListView.Visibility = Visibility.Collapsed;
                     gameClipFilter.Visibility = Visibility.Visible;
+                    gameClipListView.Visibility = Visibility.Visible;
                     break;
             }
         }

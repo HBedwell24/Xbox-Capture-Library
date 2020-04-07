@@ -6,7 +6,6 @@ namespace XboxGameClipLibrary.Navigation
     public static class Navigation
     {
         private static Frame _frame;
-        private static object _data = null;
 
         public static Frame Frame
         {

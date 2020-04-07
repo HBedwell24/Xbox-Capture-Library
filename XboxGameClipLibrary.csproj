@@ -145,8 +145,17 @@
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
     <Compile Include="Implementations\CredentialValidator.cs" />
+    <Compile Include="Views\Pages\GameClipsPage.xaml.cs">
+      <DependentUpon>GameClipsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User Controls\GameClipPlayer.xaml.cs">
+      <DependentUpon>GameClipPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User Controls\GameClipDetailPane.xaml.cs">
+      <DependentUpon>GameClipDetailPane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\CredentialWindow.xaml.cs">
       <DependentUpon>CredentialWindow.xaml</DependentUpon>
@@ -164,8 +173,8 @@
     <Compile Include="View Models\MenuItemViewModel.cs" />
     <Compile Include="View Models\ShellViewModel.cs" />
     <Compile Include="View Models\ViewModelCase.cs" />
-    <Compile Include="Views\Pages\CapturesPage.xaml.cs">
-      <DependentUpon>CapturesPage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\ScreenshotsPage.xaml.cs">
+      <DependentUpon>ScreenshotsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User Controls\ScreenshotDetailPane.xaml.cs">
       <DependentUpon>ScreenshotDetailPane.xaml</DependentUpon>
@@ -173,9 +182,21 @@
     <Compile Include="Views\User Controls\ScreenshotListItem.xaml.cs">
       <DependentUpon>ScreenshotListItem.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Pages\GameClipsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User Controls\GameClipPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User Controls\GameClipDetailPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Windows\CredentialWindow.xaml">
       <SubType>Designer</SubType>
@@ -202,8 +223,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\CapturesPage.xaml">
+    <Page Include="Views\Pages\ScreenshotsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\User Controls\ScreenshotDetailPane.xaml">
       <SubType>Designer</SubType>
@@ -218,7 +240,6 @@
     <Compile Include="Models\Game Clips\GameClip.cs" />
     <Compile Include="Models\Game Clips\GameClipUri.cs" />
     <Compile Include="Models\Game Clips\Thumbnail.cs" />
-    <Compile Include="View Models\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
