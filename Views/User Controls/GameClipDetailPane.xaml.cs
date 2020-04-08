@@ -22,11 +22,11 @@ namespace XboxGameClipLibrary.Views
         }
 
         public static readonly DependencyProperty GameClipUriProperty =
-        DependencyProperty.Register("GameClipUri", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
+        DependencyProperty.Register("GameClipUri", typeof(Uri), typeof(GameClipDetailPane));
 
-        public string GameClipUri
+        public Uri GameClipUri
         {
-            get { return (string) GetValue(GameClipUriProperty); }
+            get { return (Uri) GetValue(GameClipUriProperty); }
             set { SetValue(GameClipUriProperty, value); }
         }
 
@@ -105,7 +105,7 @@ namespace XboxGameClipLibrary.Views
             using (WebClient client = new WebClient())
             {
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
-                client.DownloadFileAsync(new Uri(GameClipUri), downloadPath + GameClipId + ".mp4");
+                client.DownloadFileAsync(GameClipUri, downloadPath + GameClipId + ".mp4");
             }
         }
     }
