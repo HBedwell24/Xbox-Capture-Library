@@ -2,14 +2,25 @@
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace XboxGameClipLibrary.Views
 {
     public partial class GameClipDetailPane : UserControl
     {
+        private bool MediaPlayerIsPlaying = false;
+        private bool UserIsDraggingSlider = false;
+
         public GameClipDetailPane()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         public static readonly DependencyProperty GameClipIdProperty =
@@ -107,6 +118,69 @@ namespace XboxGameClipLibrary.Views
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 client.DownloadFileAsync(GameClipUri, downloadPath + GameClipId + ".mp4");
             }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!UserIsDraggingSlider))
+            {
+                sliProgress.Minimum = 0;
+                sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                sliProgress.Value = mediaPlayer.Position.TotalSeconds;
+            }
+        }
+
+        private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (mediaPlayer != null) && (mediaPlayer.Source != null);
+        }
+
+        private void Play_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+            MediaPlayerIsPlaying = true;
+        }
+
+        private void Pause_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = MediaPlayerIsPlaying;
+        }
+
+        private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
+        }
+
+        private void Stop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = MediaPlayerIsPlaying;
+        }
+
+        private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            mediaPlayer.Stop();
+            MediaPlayerIsPlaying = false;
+        }
+
+        private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            UserIsDraggingSlider = true;
+        }
+
+        private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            UserIsDraggingSlider = false;
+            mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
+        }
+
+        private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
+        }
+
+        private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
         }
     }
 }

@@ -152,9 +152,6 @@
     <Compile Include="Views\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\User Controls\GameClipPlayer.xaml.cs">
-      <DependentUpon>GameClipPlayer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\User Controls\GameClipDetailPane.xaml.cs">
       <DependentUpon>GameClipDetailPane.xaml</DependentUpon>
     </Compile>
@@ -188,10 +185,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\User Controls\GameClipPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
