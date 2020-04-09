@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ namespace XboxGameClipLibrary.Views
     {
         private bool MediaPlayerIsPlaying = false;
         private bool UserIsDraggingSlider = false;
+        private bool FilterHandle = true;
 
         public GameClipDetailPane()
         {
@@ -181,6 +183,58 @@ namespace XboxGameClipLibrary.Views
         private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+        }
+
+        private void SpeedRatio_DropDownClosed(object sender, EventArgs e)
+        {
+            if (FilterHandle) HandleSpeedRatio();
+            FilterHandle = true;
+        }
+
+        private void SpeedRatio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            FilterHandle = !cmb.IsDropDownOpen;
+            HandleSpeedRatio();
+        }
+
+        // Gets input from comboboxes
+        private void HandleSpeedRatio()
+        {
+            switch (speedRatioComboBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
+            {
+                case "0.25":
+                    mediaPlayer.SpeedRatio = 0.25;
+                    break;
+
+                case "0.5":
+                    mediaPlayer.SpeedRatio = 0.5;
+                    break;
+
+                case "0.75":
+                    mediaPlayer.SpeedRatio = 0.75;
+                    break;
+
+                case "1":
+                    mediaPlayer.SpeedRatio = 1;
+                    break;
+
+                case "1.25":
+                    mediaPlayer.SpeedRatio = 1.25;
+                    break;
+
+                case "1.5":
+                    mediaPlayer.SpeedRatio = 1.5;
+                    break;
+
+                case "1.75":
+                    mediaPlayer.SpeedRatio = 1.75;
+                    break;
+
+                case "2":
+                    mediaPlayer.SpeedRatio = 2;
+                    break;
+            }
         }
     }
 }
