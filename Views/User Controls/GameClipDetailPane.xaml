@@ -72,7 +72,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <ToolBar>
+                <ToolBar Grid.Row="1">
                     <Button Command="MediaCommands.Play">
                         <Button.Content>
                             <iconPacks:PackIconBoxIcons Kind="RegularPlay" />
@@ -91,10 +91,10 @@
                 </ToolBar>
 
                 <MediaElement Name="mediaPlayer"
-                              Grid.Row="1"
+                              Grid.Row="0"
                               LoadedBehavior="Manual"
                               Source="{Binding GameClipUri}"
-                              Stretch="Uniform" />
+                              Stretch="UniformToFill" />
 
                 <StatusBar Grid.Row="2">
                     <StatusBar.ItemsPanel>
