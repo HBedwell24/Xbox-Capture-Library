@@ -66,7 +66,7 @@
         </Grid>
 
         <StackPanel Grid.Row="1" Margin="15 15 15 0">
-            <Grid MouseWheel="Grid_MouseWheel">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -131,10 +131,12 @@
                     <StatusBarItem Grid.Column="1"
                                    HorizontalContentAlignment="Stretch">
                         <Slider Name="sliProgress"
+                                IsMoveToPointEnabled="True"
                                 Thumb.DragStarted="sliProgress_DragStarted"
                                 Thumb.DragCompleted="sliProgress_DragCompleted"
                                 ValueChanged="sliProgress_ValueChanged" />
                     </StatusBarItem>
+                    
                     <StatusBarItem Grid.Column="2">
                         <TextBlock Name="timeLeft">00:00:00</TextBlock>
                     </StatusBarItem>
@@ -159,6 +161,15 @@
                                      Height="12"
                                      Maximum="1"
                                      Value="{Binding ElementName=mePlayer, Path=Volume}" />
+                        <DockPanel>
+                            <iconPacks:PackIconBoxIcons Kind="RegularVolume" Margin="0 0 5 0"/>
+                            <Slider Name="volSlider"
+                                    Width="50"
+                                    Value="0.75"
+                                    Maximum="1"
+                                    ValueChanged="volSlider_ValueChanged">
+                            </Slider>
+                        </DockPanel>
                     </StatusBarItem>
                 </StatusBar>
             </Grid>

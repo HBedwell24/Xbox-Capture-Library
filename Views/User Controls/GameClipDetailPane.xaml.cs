@@ -180,9 +180,9 @@ namespace XboxGameClipLibrary.Views
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
         }
 
-        private void Grid_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void volSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            mediaPlayer.Volume += (e.Delta > 0) ? 0.1 : -0.1;
+            mediaPlayer.Volume = volSlider.Value;
         }
 
         private void SpeedRatio_DropDownClosed(object sender, EventArgs e)
