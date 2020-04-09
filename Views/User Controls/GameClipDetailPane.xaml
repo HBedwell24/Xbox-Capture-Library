@@ -66,6 +66,15 @@
                               Source="{Binding GameClipUri}"
                               Stretch="UniformToFill" />
                 <DockPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 15 0 0">
+                    <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                            Width="40"
+                            Height="40"
+                            Margin="0 0 5 0"
+                            ToolTip="Go to Previous Record">
+                        <Button.Content>
+                            <iconPacks:PackIconBoxIcons Kind="RegularSkipPrevious" />
+                        </Button.Content>
+                    </Button>
                     <!-- Play/pause toggle button -->
                     <ToggleButton IsChecked="{Binding MediaPlayerIsPlaying}" Height="40" Width="40" Margin="0 0 5 0" >
                         <ToggleButton.Style>
@@ -113,6 +122,14 @@
                             <iconPacks:PackIconBoxIcons Kind="RegularPause" />
                         </Button.Content>
                     </Button>
+                    <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                            Width="40"
+                            Height="40"
+                            ToolTip="Go to Next Record">
+                        <Button.Content>
+                            <iconPacks:PackIconBoxIcons Kind="RegularSkipNext" />
+                        </Button.Content>
+                    </Button>
                 </DockPanel>
 
                 <StatusBar Grid.Row="2" Background="Transparent">
@@ -156,14 +173,14 @@
                                       VerticalAlignment="Center"
                                       SelectionChanged="SpeedRatio_SelectionChanged"
                                       DropDownClosed="SpeedRatio_DropDownClosed">
-                                <ComboBoxItem>0.25</ComboBoxItem>
-                                <ComboBoxItem>0.5</ComboBoxItem>
-                                <ComboBoxItem>0.75</ComboBoxItem>
+                                <ComboBoxItem>x0.25</ComboBoxItem>
+                                <ComboBoxItem>x0.5</ComboBoxItem>
+                                <ComboBoxItem>x0.75</ComboBoxItem>
                                 <ComboBoxItem IsSelected="True">Normal</ComboBoxItem>
-                                <ComboBoxItem>1.25</ComboBoxItem>
-                                <ComboBoxItem>1.5</ComboBoxItem>
-                                <ComboBoxItem>1.75</ComboBoxItem>
-                                <ComboBoxItem>2</ComboBoxItem>
+                                <ComboBoxItem>x1.25</ComboBoxItem>
+                                <ComboBoxItem>x1.5</ComboBoxItem>
+                                <ComboBoxItem>x1.75</ComboBoxItem>
+                                <ComboBoxItem>x2</ComboBoxItem>
                             </ComboBox>
                         </DockPanel>
                         

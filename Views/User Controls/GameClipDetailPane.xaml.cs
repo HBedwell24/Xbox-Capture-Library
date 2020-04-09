@@ -167,6 +167,7 @@ namespace XboxGameClipLibrary.Views
         private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
+            timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum - sliProgress.Value).ToString(@"hh\:mm\:ss");
         }
 
         private void volSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -192,15 +193,15 @@ namespace XboxGameClipLibrary.Views
         {
             switch (speedRatioComboBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
-                case "0.25":
+                case "x0.25":
                     mediaPlayer.SpeedRatio = 0.25;
                     break;
 
-                case "0.5":
+                case "x0.5":
                     mediaPlayer.SpeedRatio = 0.5;
                     break;
 
-                case "0.75":
+                case "x0.75":
                     mediaPlayer.SpeedRatio = 0.75;
                     break;
 
@@ -208,22 +209,24 @@ namespace XboxGameClipLibrary.Views
                     mediaPlayer.SpeedRatio = 1;
                     break;
 
-                case "1.25":
+                case "x1.25":
                     mediaPlayer.SpeedRatio = 1.25;
                     break;
 
-                case "1.5":
+                case "x1.5":
                     mediaPlayer.SpeedRatio = 1.5;
                     break;
 
-                case "1.75":
+                case "x1.75":
                     mediaPlayer.SpeedRatio = 1.75;
                     break;
 
-                case "2":
+                case "x2":
                     mediaPlayer.SpeedRatio = 2;
                     break;
             }
         }
+
+
     }
 }

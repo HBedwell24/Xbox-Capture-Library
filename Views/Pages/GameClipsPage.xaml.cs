@@ -82,7 +82,7 @@ namespace XboxGameClipLibrary.Views
                     break;
 
                 case "By game":
-                    var gameClipsByGame = gameClipViewModel.GameClips.OrderByDescending(o => o.TitleName).ToList();
+                    var gameClipsByGame = gameClipViewModel.GameClips.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
                     gameClipViewModel.GameClips = gameClipsByGame;
                     break;
 
