@@ -87,7 +87,7 @@
                                         <Setter Property="ToolTip"
                                                 Value="Pause" />
                                         <Setter Property="Content"
-                                                Value="{iconPacks:BoxIcons Kind=RegularPlay}" />
+                                                Value="{iconPacks:BoxIcons Kind=RegularPause}" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding MediaPlayerIsPlaying}" 
                                                  Value="false">

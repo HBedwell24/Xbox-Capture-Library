@@ -168,6 +168,7 @@ namespace XboxGameClipLibrary.Views
         {
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"hh\:mm\:ss");
             timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum - sliProgress.Value).ToString(@"hh\:mm\:ss");
+            mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
         }
 
         private void volSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
