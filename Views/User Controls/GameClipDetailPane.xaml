@@ -14,9 +14,6 @@
         <CommandBinding Command="MediaCommands.Pause"
                         CanExecute="Pause_CanExecute"
                         Executed="Pause_Executed" />
-        <CommandBinding Command="MediaCommands.Stop"
-                        CanExecute="Stop_CanExecute"
-                        Executed="Stop_Executed" />
     </UserControl.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -69,6 +66,33 @@
                               Source="{Binding GameClipUri}"
                               Stretch="UniformToFill" />
                 <DockPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 15 0 0">
+                    <!-- Play/pause toggle button -->
+                    <ToggleButton IsChecked="{Binding MediaPlayerIsPlaying}" Height="40" Width="40" Margin="0 0 5 0" >
+                        <ToggleButton.Style>
+                            <Style TargetType="{x:Type ToggleButton}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MediaPlayerIsPlaying}"
+                                                 Value="true">
+                                        <Setter Property="Command"
+                                                Value="MediaCommands.Pause" />
+                                        <Setter Property="ToolTip"
+                                                Value="Pause" />
+                                        <Setter Property="Content"
+                                                Value="{iconPacks:BoxIcons Kind=RegularPlay}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MediaPlayerIsPlaying}" 
+                                                 Value="false">
+                                        <Setter Property="Command" 
+                                                Value="MediaCommands.Play" />
+                                        <Setter Property="ToolTip"
+                                                Value="Play" />
+                                        <Setter Property="Content"
+                                                Value="{iconPacks:BoxIcons Kind=RegularPlay}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
                     <Button Command="MediaCommands.Play" 
                             Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
                             Width="40"
@@ -87,15 +111,6 @@
                             ToolTip="Pause">
                         <Button.Content>
                             <iconPacks:PackIconBoxIcons Kind="RegularPause" />
-                        </Button.Content>
-                    </Button>
-                    <Button Command="MediaCommands.Stop"
-                            Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                            Width="40"
-                            Height="40"
-                            ToolTip="Stop">
-                        <Button.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularStop" />
                         </Button.Content>
                     </Button>
                 </DockPanel>

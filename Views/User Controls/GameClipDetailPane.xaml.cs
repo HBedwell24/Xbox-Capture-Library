@@ -153,17 +153,6 @@ namespace XboxGameClipLibrary.Views
             mediaPlayer.Pause();
         }
 
-        private void Stop_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = MediaPlayerIsPlaying;
-        }
-
-        private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            mediaPlayer.Stop();
-            MediaPlayerIsPlaying = false;
-        }
-
         private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
         {
             UserIsDraggingSlider = true;
