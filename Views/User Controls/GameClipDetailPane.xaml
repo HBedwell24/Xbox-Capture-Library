@@ -156,11 +156,6 @@
                         </ComboBox>
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="4">
-                        <ProgressBar Name="pbVolume"
-                                     Width="50"
-                                     Height="12"
-                                     Maximum="1"
-                                     Value="{Binding ElementName=mePlayer, Path=Volume}" />
                         <DockPanel>
                             <iconPacks:PackIconBoxIcons Kind="RegularVolume" Margin="0 0 5 0"/>
                             <Slider Name="volSlider"
