@@ -35,21 +35,10 @@
             <StackPanel Grid.Column="0"
                         HorizontalAlignment="Left"
                         Margin="15">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel HorizontalAlignment="Center">
-                        <Label Content="{Binding GameClipId, FallbackValue=NULL}"
-                               HorizontalAlignment="Center"
-                               FontWeight="Light"
-                               FontSize="22" />
-                    </StackPanel>
-                    <ToggleButton Background="Transparent"
-                                  BorderBrush="Transparent"
-                                  ToolTip="Favorite">
-                        <ToggleButton.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularStar" />
-                        </ToggleButton.Content>
-                    </ToggleButton>
-                </StackPanel>
+                <Label Content="{Binding GameClipId, FallbackValue=NULL}"
+                       HorizontalAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="22" />
             </StackPanel>
             <Button Grid.Column="1"
                     VerticalAlignment="Top"
@@ -79,7 +68,7 @@
                               UnloadedBehavior="Stop"
                               Source="{Binding GameClipUri}"
                               Stretch="UniformToFill" />
-                <ToolBar Grid.Row="1" HorizontalAlignment="Center">
+                <DockPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 15 0 0">
                     <Button Command="MediaCommands.Play" 
                             Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
                             Width="40"
@@ -109,9 +98,9 @@
                             <iconPacks:PackIconBoxIcons Kind="RegularStop" />
                         </Button.Content>
                     </Button>
-                </ToolBar>
+                </DockPanel>
 
-                <StatusBar Grid.Row="2">
+                <StatusBar Grid.Row="2" Background="Transparent">
                     <StatusBar.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid>
@@ -137,23 +126,32 @@
                                 ValueChanged="sliProgress_ValueChanged" />
                     </StatusBarItem>
                     
-                    <StatusBarItem Grid.Column="2">
+                    <StatusBarItem Grid.Column="2" 
+                                   Margin="0 0 15 0">
                         <TextBlock Name="timeLeft">00:00:00</TextBlock>
                     </StatusBarItem>
-                    <StatusBarItem Grid.Column="3">
-                        <ComboBox Name="speedRatioComboBox"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="SpeedRatio_SelectionChanged"
-                                  DropDownClosed="SpeedRatio_DropDownClosed">
-                            <ComboBoxItem>0.25</ComboBoxItem>
-                            <ComboBoxItem>0.5</ComboBoxItem>
-                            <ComboBoxItem>0.75</ComboBoxItem>
-                            <ComboBoxItem IsSelected="True">1</ComboBoxItem>
-                            <ComboBoxItem>1.25</ComboBoxItem>
-                            <ComboBoxItem>1.5</ComboBoxItem>
-                            <ComboBoxItem>1.75</ComboBoxItem>
-                            <ComboBoxItem>2</ComboBoxItem>
-                        </ComboBox>
+                    <StatusBarItem Grid.Column="3"
+                                   Margin="0 0 15 0">
+                        <DockPanel>
+                            <Label Style="{StaticResource MetroLabel}"
+                                   Margin="0 0 5 0"
+                                   Content="Playback Speed:" />
+                            <ComboBox Name="speedRatioComboBox"
+                                      FontFamily="Segoe UI"
+                                      VerticalAlignment="Center"
+                                      SelectionChanged="SpeedRatio_SelectionChanged"
+                                      DropDownClosed="SpeedRatio_DropDownClosed">
+                                <ComboBoxItem>0.25</ComboBoxItem>
+                                <ComboBoxItem>0.5</ComboBoxItem>
+                                <ComboBoxItem>0.75</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">Normal</ComboBoxItem>
+                                <ComboBoxItem>1.25</ComboBoxItem>
+                                <ComboBoxItem>1.5</ComboBoxItem>
+                                <ComboBoxItem>1.75</ComboBoxItem>
+                                <ComboBoxItem>2</ComboBoxItem>
+                            </ComboBox>
+                        </DockPanel>
+                        
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="4">
                         <DockPanel>

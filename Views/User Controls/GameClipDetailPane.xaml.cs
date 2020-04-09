@@ -215,7 +215,7 @@ namespace XboxGameClipLibrary.Views
                     mediaPlayer.SpeedRatio = 0.75;
                     break;
 
-                case "1":
+                case "Normal":
                     mediaPlayer.SpeedRatio = 1;
                     break;
 

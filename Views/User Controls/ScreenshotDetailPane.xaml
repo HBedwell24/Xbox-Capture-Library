@@ -24,21 +24,10 @@
             <StackPanel Grid.Column="0"
                         HorizontalAlignment="Left"
                         Margin="15">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel HorizontalAlignment="Center">
-                        <Label Content="{Binding ScreenshotId, FallbackValue=NULL}"
-                               HorizontalAlignment="Center"
-                               FontWeight="Light"
-                               FontSize="22" />
-                    </StackPanel>
-                    <ToggleButton Background="Transparent"
-                                  BorderBrush="Transparent"
-                                  ToolTip="Favorite">
-                        <ToggleButton.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularStar" />
-                        </ToggleButton.Content>
-                    </ToggleButton>
-                </StackPanel>
+                <Label Content="{Binding ScreenshotId, FallbackValue=NULL}"
+                       HorizontalAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="22" />
             </StackPanel>
             <Button Grid.Column="1"
                     VerticalAlignment="Top"
