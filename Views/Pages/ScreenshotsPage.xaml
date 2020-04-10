@@ -50,7 +50,7 @@
               x:Name="contentWrapper">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="6*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -76,12 +76,16 @@
                     </StackPanel>
                 </StackPanel>
                 <Grid Grid.Row="1"
+                      Margin="15 0 0 15"
                       x:Name="screenshotListView">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+                    <Separator Grid.Row="0" Height="1" Margin="3 0 0 0" />
                     <ListView ItemsSource="{Binding Screenshots}"
-                              Grid.Row="0"
+                              BorderBrush="Transparent"
+                              Grid.Row="1"
                               MouseLeftButtonUp="ScreenshotListView_MouseLeftButtonUp">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
