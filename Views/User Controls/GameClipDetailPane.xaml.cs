@@ -26,6 +26,16 @@ namespace XboxGameClipLibrary.Views
             timer.Start();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!UserIsDraggingSlider))
+            {
+                sliProgress.Minimum = 0;
+                sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                sliProgress.Value = mediaPlayer.Position.TotalSeconds;
+            }
+        }
+
         public static readonly DependencyProperty GameClipIdProperty =
         DependencyProperty.Register("GameClipId", typeof(string), typeof(GameClipDetailPane), new PropertyMetadata("NULL"));
 
@@ -123,16 +133,6 @@ namespace XboxGameClipLibrary.Views
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            if ((mediaPlayer.Source != null) && (mediaPlayer.NaturalDuration.HasTimeSpan) && (!UserIsDraggingSlider))
-            {
-                sliProgress.Minimum = 0;
-                sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-                sliProgress.Value = mediaPlayer.Position.TotalSeconds;
-            }
-        }
-
         private void Play_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = (mediaPlayer != null) && (mediaPlayer.Source != null);
@@ -154,27 +154,69 @@ namespace XboxGameClipLibrary.Views
             mediaPlayer.Pause();
         }
 
-        private void sliProgress_DragStarted(object sender, DragStartedEventArgs e)
+        private void SliProgress_DragStarted(object sender, DragStartedEventArgs e)
         {
             UserIsDraggingSlider = true;
         }
 
-        private void sliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
+        private void SliProgress_DragCompleted(object sender, DragCompletedEventArgs e)
         {
             UserIsDraggingSlider = false;
             mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
         }
 
-        private void sliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"mm\:ss");
             timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum - sliProgress.Value).ToString(@"mm\:ss");
             mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
         }
 
-        private void volSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        // Video playback has been resumed
+        private void Handle_Playback_Check(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+        }
+
+        // Video playback has been paused
+        private void Handle_Playback_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
+        }
+
+        private void VolSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             mediaPlayer.Volume = volSlider.Value;
+        }
+
+        // Media player has been muted
+        private void Handle_Volume_Check(object sender, RoutedEventArgs e)
+        {
+            // Store previous volume level in temporary variable
+            TempVolumeLevel = volSlider.Value;
+
+            // Set volume level to 0
+            mediaPlayer.Volume = 0;
+            volSlider.Value = 0;
+        }
+
+        // Media player has been unmuted
+        private void Handle_Volume_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Restore volume level to previous value
+            mediaPlayer.Volume = TempVolumeLevel;
+            volSlider.Value = TempVolumeLevel;
+        }
+
+        private void Element_MediaOpened(object sender, EventArgs e)
+        {
+            sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum).ToString(@"mm\:ss");
+        }
+
+        private void Element_MediaEnded(object sender, EventArgs e)
+        {
+            mediaPlayer.Stop();
         }
 
         private void SpeedRatio_DropDownClosed(object sender, EventArgs e)
@@ -188,11 +230,6 @@ namespace XboxGameClipLibrary.Views
             ComboBox cmb = sender as ComboBox;
             FilterHandle = !cmb.IsDropDownOpen;
             HandleSpeedRatio();
-        }
-
-        private void Element_MediaEnded(object sender, EventArgs e)
-        {
-            mediaPlayer.Stop();
         }
 
         // Gets input from comboboxes
@@ -232,37 +269,6 @@ namespace XboxGameClipLibrary.Views
                     mediaPlayer.SpeedRatio = 2;
                     break;
             }
-        }
-
-        // Video playback has been resumed
-        private void Handle_Playback_Check(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Play();
-        }
-
-        // Video playback has been paused
-        private void Handle_Playback_Unchecked(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Pause();
-        }
-
-        // Media player has been muted
-        private void Handle_Volume_Check(object sender, RoutedEventArgs e)
-        {
-            // Store previous volume level in temporary variable
-            TempVolumeLevel = volSlider.Value;
-
-            // Set volume level to 0
-            mediaPlayer.Volume = 0;
-            volSlider.Value = 0;
-        }
-
-        // Media player has been unmuted
-        private void Handle_Volume_Unchecked(object sender, RoutedEventArgs e)
-        {
-            // Restore volume level to previous value
-            mediaPlayer.Volume = TempVolumeLevel;
-            volSlider.Value = TempVolumeLevel;
         }
     }
 }

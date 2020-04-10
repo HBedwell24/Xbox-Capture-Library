@@ -61,10 +61,9 @@
                 <MediaElement Name="mediaPlayer"
                               Grid.Row="0"
                               LoadedBehavior="Manual"
-                              UnloadedBehavior="Stop"
+                              MediaOpened="Element_MediaOpened"
                               MediaEnded="Element_MediaEnded"
-                              Source="{Binding GameClipUri}"
-                              Stretch="UniformToFill" />
+                              Source="{Binding GameClipUri}" />
                 <StatusBar Grid.Row="1" Background="Transparent">
                     <StatusBar.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -112,9 +111,9 @@
                                    HorizontalContentAlignment="Stretch">
                         <Slider Name="sliProgress"
                                 IsMoveToPointEnabled="True"
-                                Thumb.DragStarted="sliProgress_DragStarted"
-                                Thumb.DragCompleted="sliProgress_DragCompleted"
-                                ValueChanged="sliProgress_ValueChanged" />
+                                Thumb.DragStarted="SliProgress_DragStarted"
+                                Thumb.DragCompleted="SliProgress_DragCompleted"
+                                ValueChanged="SliProgress_ValueChanged" />
                     </StatusBarItem>
                     
                     <StatusBarItem Grid.Column="3" 
@@ -172,7 +171,7 @@
                                     Width="75"
                                     Value="1"
                                     Maximum="1"
-                                    ValueChanged="volSlider_ValueChanged">
+                                    ValueChanged="VolSlider_ValueChanged">
                             </Slider>
                         </DockPanel>
                     </StatusBarItem>
