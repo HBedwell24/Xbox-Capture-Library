@@ -234,31 +234,33 @@ namespace XboxGameClipLibrary.Views
             }
         }
 
+        // Video playback has been resumed
         private void Handle_Playback_Check(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Play();
         }
 
+        // Video playback has been paused
         private void Handle_Playback_Unchecked(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Pause();
         }
 
-        // media player has been muted
+        // Media player has been muted
         private void Handle_Volume_Check(object sender, RoutedEventArgs e)
         {
-            // store previous volume level in temporary variable
+            // Store previous volume level in temporary variable
             TempVolumeLevel = volSlider.Value;
 
-            // set volume level to 0
+            // Set volume level to 0
             mediaPlayer.Volume = 0;
             volSlider.Value = 0;
         }
 
-        // media player has been unmuted
+        // Media player has been unmuted
         private void Handle_Volume_Unchecked(object sender, RoutedEventArgs e)
         {
-            // restore volume level to previous value
+            // Restore volume level to previous value
             mediaPlayer.Volume = TempVolumeLevel;
             volSlider.Value = TempVolumeLevel;
         }
