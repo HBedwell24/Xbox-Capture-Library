@@ -83,8 +83,8 @@
                     <StatusBarItem Grid.Column="0">
                         <ToggleButton Checked="Handle_Playback_Check"
                                       Unchecked="Handle_Playback_Unchecked"
-                                      Height="40"
-                                      Width="40"
+                                      Height="35"
+                                      Width="35"
                                       Background="Transparent"
                                       BorderBrush="Transparent"
                                       Margin="0 0 15 0">
