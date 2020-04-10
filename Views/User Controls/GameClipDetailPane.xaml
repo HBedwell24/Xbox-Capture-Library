@@ -81,8 +81,8 @@
                         </ItemsPanelTemplate>
                     </StatusBar.ItemsPanel>
                     <StatusBarItem Grid.Column="0">
-                        <ToggleButton Checked="Handle_Check"
-                                      Unchecked="Handle_Unchecked"
+                        <ToggleButton Checked="Handle_Playback_Check"
+                                      Unchecked="Handle_Playback_Unchecked"
                                       Height="40"
                                       Width="40"
                                       Background="Transparent"
@@ -146,8 +146,30 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="5">
                         <DockPanel>
-                            <iconPacks:PackIconBoxIcons Kind="RegularVolume" Margin="0 0 5 0"/>
+                            <ToggleButton Checked="Handle_Volume_Check"
+                                          Unchecked="Handle_Volume_Unchecked"
+                                          Height="35"
+                                          Width="35"
+                                          Background="Transparent"
+                                          BorderBrush="Transparent"
+                                          Margin="0 0 0 0">
+                                <ToggleButton.Style>
+                                    <Style TargetType="{x:Type ToggleButton}"
+                                           BasedOn="{StaticResource MahApps.Metro.Styles.MetroToggleButton}">
+                                        <Setter Property="Content"
+                                                Value="{iconPacks:BoxIcons Kind=RegularVolumeFull}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsChecked"
+                                                     Value="True">
+                                                <Setter Property="Content"
+                                                        Value="{iconPacks:BoxIcons Kind=RegularVolumeMute}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
                             <Slider Name="volSlider"
+                                    IsMoveToPointEnabled="True"
                                     Width="75"
                                     Value="1"
                                     Maximum="1"

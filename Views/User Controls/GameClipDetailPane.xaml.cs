@@ -14,6 +14,7 @@ namespace XboxGameClipLibrary.Views
         private bool MediaPlayerIsPlaying = false;
         private bool UserIsDraggingSlider = false;
         private bool FilterHandle = true;
+        private double TempVolumeLevel = 1.00;
 
         public GameClipDetailPane()
         {
@@ -233,14 +234,33 @@ namespace XboxGameClipLibrary.Views
             }
         }
 
-        private void Handle_Check(object sender, RoutedEventArgs e)
+        private void Handle_Playback_Check(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Play();
         }
 
-        private void Handle_Unchecked(object sender, RoutedEventArgs e)
+        private void Handle_Playback_Unchecked(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Pause();
+        }
+
+        // media player has been muted
+        private void Handle_Volume_Check(object sender, RoutedEventArgs e)
+        {
+            // store previous volume level in temporary variable
+            TempVolumeLevel = volSlider.Value;
+
+            // set volume level to 0
+            mediaPlayer.Volume = 0;
+            volSlider.Value = 0;
+        }
+
+        // media player has been unmuted
+        private void Handle_Volume_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // restore volume level to previous value
+            mediaPlayer.Volume = TempVolumeLevel;
+            volSlider.Value = TempVolumeLevel;
         }
     }
 }
