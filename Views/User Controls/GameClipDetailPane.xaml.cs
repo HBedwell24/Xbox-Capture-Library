@@ -189,6 +189,11 @@ namespace XboxGameClipLibrary.Views
             HandleSpeedRatio();
         }
 
+        private void Element_MediaEnded(object sender, EventArgs e)
+        {
+            mediaPlayer.Stop();
+        }
+
         // Gets input from comboboxes
         private void HandleSpeedRatio()
         {
@@ -228,6 +233,14 @@ namespace XboxGameClipLibrary.Views
             }
         }
 
+        private void Handle_Check(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+        }
 
+        private void Handle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
+        }
     }
 }

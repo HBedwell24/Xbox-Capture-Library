@@ -55,7 +55,6 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
@@ -63,80 +62,15 @@
                               Grid.Row="0"
                               LoadedBehavior="Manual"
                               UnloadedBehavior="Stop"
+                              MediaEnded="Element_MediaEnded"
                               Source="{Binding GameClipUri}"
                               Stretch="UniformToFill" />
-                <DockPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0 15 0 0">
-                    <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                            Width="40"
-                            Height="40"
-                            Margin="0 0 5 0"
-                            ToolTip="Go to Previous Record">
-                        <Button.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularSkipPrevious" />
-                        </Button.Content>
-                    </Button>
-                    <!-- Play/pause toggle button -->
-                    <ToggleButton IsChecked="{Binding MediaPlayerIsPlaying}" Height="40" Width="40" Margin="0 0 5 0" >
-                        <ToggleButton.Style>
-                            <Style TargetType="{x:Type ToggleButton}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding MediaPlayerIsPlaying}"
-                                                 Value="true">
-                                        <Setter Property="Command"
-                                                Value="MediaCommands.Pause" />
-                                        <Setter Property="ToolTip"
-                                                Value="Pause" />
-                                        <Setter Property="Content"
-                                                Value="{iconPacks:BoxIcons Kind=RegularPause}" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding MediaPlayerIsPlaying}" 
-                                                 Value="false">
-                                        <Setter Property="Command" 
-                                                Value="MediaCommands.Play" />
-                                        <Setter Property="ToolTip"
-                                                Value="Play" />
-                                        <Setter Property="Content"
-                                                Value="{iconPacks:BoxIcons Kind=RegularPlay}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ToggleButton.Style>
-                    </ToggleButton>
-                    <Button Command="MediaCommands.Play" 
-                            Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                            Width="40"
-                            Height="40"
-                            Margin="0 0 5 0"
-                            ToolTip="Play">
-                        <Button.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularPlay" />
-                        </Button.Content>
-                    </Button>
-                    <Button Command="MediaCommands.Pause"
-                            Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                            Width="40"
-                            Height="40"
-                            Margin="0 0 5 0"
-                            ToolTip="Pause">
-                        <Button.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularPause" />
-                        </Button.Content>
-                    </Button>
-                    <Button Style="{StaticResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
-                            Width="40"
-                            Height="40"
-                            ToolTip="Go to Next Record">
-                        <Button.Content>
-                            <iconPacks:PackIconBoxIcons Kind="RegularSkipNext" />
-                        </Button.Content>
-                    </Button>
-                </DockPanel>
-
-                <StatusBar Grid.Row="2" Background="Transparent">
+                <StatusBar Grid.Row="1" Background="Transparent">
                     <StatusBar.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
@@ -147,9 +81,34 @@
                         </ItemsPanelTemplate>
                     </StatusBar.ItemsPanel>
                     <StatusBarItem Grid.Column="0">
+                        <ToggleButton Checked="Handle_Check"
+                                      Unchecked="Handle_Unchecked"
+                                      Height="40"
+                                      Width="40"
+                                      Background="Transparent"
+                                      BorderBrush="Transparent"
+                                      Margin="0 0 15 0">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}" 
+                                       BasedOn="{StaticResource MahApps.Metro.Styles.MetroToggleButton}">
+                                    <Setter Property="Content"
+                                            Value="{iconPacks:BoxIcons Kind=RegularPlay}" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsChecked"
+                                                 Value="True">
+                                            <Setter Property="Content"
+                                                    Value="{iconPacks:BoxIcons Kind=RegularPause}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="1">
                         <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
                     </StatusBarItem>
-                    <StatusBarItem Grid.Column="1"
+                    <StatusBarItem Grid.Column="2"
                                    HorizontalContentAlignment="Stretch">
                         <Slider Name="sliProgress"
                                 IsMoveToPointEnabled="True"
@@ -158,11 +117,11 @@
                                 ValueChanged="sliProgress_ValueChanged" />
                     </StatusBarItem>
                     
-                    <StatusBarItem Grid.Column="2" 
+                    <StatusBarItem Grid.Column="3" 
                                    Margin="0 0 15 0">
                         <TextBlock Name="timeLeft">00:00:00</TextBlock>
                     </StatusBarItem>
-                    <StatusBarItem Grid.Column="3"
+                    <StatusBarItem Grid.Column="4"
                                    Margin="0 0 15 0">
                         <DockPanel>
                             <Label Style="{StaticResource MetroLabel}"
@@ -185,12 +144,12 @@
                         </DockPanel>
                         
                     </StatusBarItem>
-                    <StatusBarItem Grid.Column="4">
+                    <StatusBarItem Grid.Column="5">
                         <DockPanel>
                             <iconPacks:PackIconBoxIcons Kind="RegularVolume" Margin="0 0 5 0"/>
                             <Slider Name="volSlider"
-                                    Width="50"
-                                    Value="0.75"
+                                    Width="75"
+                                    Value="1"
                                     Maximum="1"
                                     ValueChanged="volSlider_ValueChanged">
                             </Slider>
