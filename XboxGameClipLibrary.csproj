@@ -177,8 +177,8 @@
     <Compile Include="Views\User Controls\ScreenshotDetailPane.xaml.cs">
       <DependentUpon>ScreenshotDetailPane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\User Controls\ScreenshotListItem.xaml.cs">
-      <DependentUpon>ScreenshotListItem.xaml</DependentUpon>
+    <Compile Include="Views\User Controls\CaptureListItem.xaml.cs">
+      <DependentUpon>CaptureListItem.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Pages\GameClipsPage.xaml">
       <SubType>Designer</SubType>
@@ -225,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\User Controls\ScreenshotListItem.xaml">
+    <Page Include="Views\User Controls\CaptureListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

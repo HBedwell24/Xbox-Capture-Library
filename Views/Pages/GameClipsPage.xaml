@@ -95,7 +95,7 @@
                         </ItemsControl.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <views:ScreenshotListItem />
+                                <views:CaptureListItem />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
