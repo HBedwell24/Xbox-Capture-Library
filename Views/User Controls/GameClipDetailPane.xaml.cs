@@ -223,6 +223,11 @@ namespace XboxGameClipLibrary.Views
         private void Element_MediaEnded(object sender, EventArgs e)
         {
             mediaPlayer.Stop();
+
+            if(playbackToggle.IsChecked != false)
+            {
+                playbackToggle.IsChecked = false;
+            }
         }
 
         private void SpeedRatio_DropDownClosed(object sender, EventArgs e)
