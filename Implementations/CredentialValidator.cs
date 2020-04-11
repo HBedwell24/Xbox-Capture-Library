@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
@@ -7,20 +6,22 @@ namespace XboxGameClipLibrary.Implementations
 {
     public class CredentialValidator : ValidationRule
     {
+        public int MinimumCharacters { get; set; }
+
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            string strValue = Convert.ToString(value);
+            string charString = value as string;
             Regex regex = new Regex("^[a-z0-9]*$");
 
-            if (string.IsNullOrEmpty(strValue))
+            if (string.IsNullOrWhiteSpace(charString))
             {
-                return new ValidationResult(false, $"Value cannot be empty.");
+                return new ValidationResult(false, "Value cannot be empty.");
             }
-            else if (strValue.Length != 40)
+            else if (charString.Length != MinimumCharacters)
             {
-                return new ValidationResult(false, "Value must be 40 characters in length.");
+                return new ValidationResult(false, $"Value must be {MinimumCharacters} characters in length.");
             }
-            else if (!regex.IsMatch(strValue))
+            else if (!regex.IsMatch(charString))
             {
                 return new ValidationResult(false, "Value must only contain lowercase letters and numbers.");
             }

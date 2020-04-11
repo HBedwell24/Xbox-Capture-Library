@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -12,6 +13,12 @@ namespace XboxGameClipLibrary
         public SplashScreen()
         {
             InitializeComponent();
+
+            //if (Debugger.IsAttached)
+            //{
+            //    Properties.Settings.Default.xboxApiKey = "";
+            //    Properties.Settings.Default.Save();
+            //}
 
             dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 2);

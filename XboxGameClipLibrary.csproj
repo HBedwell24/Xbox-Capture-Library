@@ -144,7 +144,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\XboxApiImpl.cs" />
+    <Compile Include="Extensions\ObservableObject.cs" />
     <Compile Include="Implementations\CredentialValidator.cs" />
+    <Compile Include="View Models\CredentialViewModel.cs" />
     <Compile Include="View Models\GameClipViewModel.cs" />
     <Compile Include="Views\Pages\GameClipsPage.xaml.cs">
       <DependentUpon>GameClipsPage.xaml</DependentUpon>
