@@ -61,6 +61,8 @@
                 <MediaElement Name="mediaPlayer"
                               Grid.Row="0"
                               LoadedBehavior="Manual"
+                              Loaded="MediaElement_Loaded"
+                              ScrubbingEnabled="True"
                               MediaOpened="Element_MediaOpened"
                               MediaEnded="Element_MediaEnded"
                               Source="{Binding GameClipUri}" />
@@ -80,7 +82,8 @@
                         </ItemsPanelTemplate>
                     </StatusBar.ItemsPanel>
                     <StatusBarItem Grid.Column="0">
-                        <ToggleButton Checked="Handle_Playback_Check"
+                        <ToggleButton x:Name="playbackToggle"
+                                      Checked="Handle_Playback_Check"
                                       Unchecked="Handle_Playback_Unchecked"
                                       Height="35"
                                       Width="35"

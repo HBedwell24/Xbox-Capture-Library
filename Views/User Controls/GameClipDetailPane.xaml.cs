@@ -208,6 +208,12 @@ namespace XboxGameClipLibrary.Views
             volSlider.Value = TempVolumeLevel;
         }
 
+        private void MediaElement_Loaded(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+            mediaPlayer.Pause();
+        }
+
         private void Element_MediaOpened(object sender, EventArgs e)
         {
             sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
