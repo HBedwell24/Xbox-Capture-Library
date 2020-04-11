@@ -152,6 +152,7 @@ namespace XboxGameClipLibrary.Views
         private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             mediaPlayer.Pause();
+            MediaPlayerIsPlaying = false;
         }
 
         private void SliProgress_DragStarted(object sender, DragStartedEventArgs e)
@@ -184,6 +185,7 @@ namespace XboxGameClipLibrary.Views
             mediaPlayer.Pause();
         }
 
+        // Media player volume level has changed
         private void VolSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             mediaPlayer.Volume = volSlider.Value;
@@ -208,18 +210,23 @@ namespace XboxGameClipLibrary.Views
             volSlider.Value = TempVolumeLevel;
         }
 
+        // Media element has loaded a video source
         private void MediaElement_Loaded(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Play();
             mediaPlayer.Pause();
+            MediaPlayerIsPlaying = false;
         }
 
+        // Media element has opened a video source
         private void Element_MediaOpened(object sender, EventArgs e)
         {
             sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
             timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum).ToString(@"mm\:ss");
+            playbackToggle.IsChecked = false;
         }
 
+        // Media element has ended a video
         private void Element_MediaEnded(object sender, EventArgs e)
         {
             mediaPlayer.Stop();
