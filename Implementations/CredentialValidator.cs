@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
@@ -16,6 +17,10 @@ namespace XboxGameClipLibrary.Implementations
             if (string.IsNullOrWhiteSpace(charString))
             {
                 return new ValidationResult(false, "Value cannot be empty.");
+            }
+            else if (charString.Any(char.IsWhiteSpace))
+            {
+                return new ValidationResult(false, "Value must not contain spaces.");
             }
             else if (charString.Length != MinimumCharacters)
             {
