@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MahApps.Metro;
+using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace XboxGameClipLibrary.Views.Pages
 {
@@ -44,6 +34,7 @@ namespace XboxGameClipLibrary.Views.Pages
             Exit_Authorization_Detail_View();
         }
 
+        // Saves API key to settings
         public void Save_Click(object sender, RoutedEventArgs e)
         {
             Regex regex = new Regex("^[a-z0-9]*$");
@@ -53,6 +44,25 @@ namespace XboxGameClipLibrary.Views.Pages
                 Properties.Settings.Default.xboxApiKey = apiKey.Text;
                 Properties.Settings.Default.Save();
                 Exit_Authorization_Detail_View();
+            }
+        }
+
+        // Listens for dark theme toggleButton state changes
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            if (toggleSwitch != null)
+            {
+                // If toggleButton is checked, dark theme is enabled
+                if (toggleSwitch.IsChecked == true)
+                {
+                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseDark"));
+                }
+                // Else if toggleButton is not checked, light theme is enabled
+                else
+                {
+                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseLight"));
+                }
             }
         }
     }

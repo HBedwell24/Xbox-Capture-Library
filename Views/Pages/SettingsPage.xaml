@@ -134,6 +134,8 @@
                            FontWeight="Light"
                            Margin="0 0 0 10">Dark Theme</TextBlock>
                 <Controls:ToggleSwitch Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                       IsChecked="True"
+                                       Click="ToggleSwitch_Toggled"
                                        FontFamily="Segoe UI Semilight"
                                        ContentPadding="10 0 0 0"
                                        HorizontalAlignment="Left"
