@@ -14,6 +14,14 @@ namespace XboxGameClipLibrary.Views.Pages
         public SettingsPage()
         {
             InitializeComponent();
+            if(Properties.Settings.Default.appTheme.Equals("darkTheme"))
+            {
+                appThemeToggle.IsChecked = true;
+            }
+            else if(Properties.Settings.Default.appTheme.Equals("lightTheme"))
+            {
+                appThemeToggle.IsChecked = false;
+            }
             currentKey.Content = Properties.Settings.Default.xboxApiKey;
         }
 
@@ -57,11 +65,15 @@ namespace XboxGameClipLibrary.Views.Pages
                 if (toggleSwitch.IsChecked == true)
                 {
                     ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseDark"));
+                    Properties.Settings.Default.appTheme = "darkTheme";
+                    Properties.Settings.Default.Save();
                 }
                 // Else if toggleButton is not checked, light theme is enabled
                 else
                 {
                     ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseLight"));
+                    Properties.Settings.Default.appTheme = "lightTheme";
+                    Properties.Settings.Default.Save();
                 }
             }
         }
