@@ -4,9 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              d:DesignHeight="750" d:DesignWidth="600">
+    <UserControl.Resources>
+        <DataTemplate x:Key="CustomNotificationTemplate">
+            <Border Background="White"
+                    BorderThickness="1"
+                    BorderBrush="Black">
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="{Binding Caption}"
+                               Foreground="Blue"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Margin="5" />
+                    <TextBlock HorizontalAlignment="Center"
+                               Text="{Binding Content}"
+                               Foreground="Black"
+                               FontSize="16"
+                               Margin="3" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:NotificationService x:Name="ServiceWithDefaultNotifications"
+                                    ApplicationId="sample_notification_app"
+                                    PredefinedNotificationTemplate="ShortHeaderAndTwoTextFields" />
+        <dxmvvm:NotificationService x:Name="ServiceWithCustomNotifications"
+                                    CustomNotificationTemplate="{StaticResource CustomNotificationTemplate}"
+                                    CustomNotificationPosition="BottomRight" />
+    </dxmvvm:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -32,6 +64,7 @@
             <Button Grid.Column="1"
                     VerticalAlignment="Top"
                     Style="{StaticResource MahApps.Metro.Styles.MetroButton}"
+                    Command="{Binding ShowDefaultNotificationCommand}"
                     Width="40"
                     Height="40"
                     ToolTip="Download"

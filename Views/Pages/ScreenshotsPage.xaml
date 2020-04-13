@@ -12,7 +12,6 @@
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
