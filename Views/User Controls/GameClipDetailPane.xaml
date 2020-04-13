@@ -90,7 +90,7 @@
                                       Width="35"
                                       Background="Transparent"
                                       BorderBrush="Transparent"
-                                      Margin="0 0 15 0">
+                                      Margin="0 0 5 0">
                             <ToggleButton.Style>
                                 <Style TargetType="{x:Type ToggleButton}" 
                                        BasedOn="{StaticResource MahApps.Metro.Styles.MetroToggleButton}">
@@ -148,7 +148,7 @@
                             </ComboBox>
                         </DockPanel>
                     </StatusBarItem>
-                    <StatusBarItem Grid.Column="5">
+                    <StatusBarItem Grid.Column="5" Margin="0 0 10 0">
                         <DockPanel>
                             <ToggleButton Checked="Handle_Volume_Check"
                                           Unchecked="Handle_Volume_Unchecked"
