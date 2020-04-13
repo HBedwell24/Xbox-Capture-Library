@@ -6,12 +6,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:views="clr-namespace:XboxGameClipLibrary.Views"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:vm="clr-namespace:XboxGameClipLibrary.Implementations"
       Title="Captures"
       KeepAlive="True"
       d:DesignHeight="400"
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
+    <Page.Resources>
+        <vm:ViewModelLocator x:Key="ViewModelLocator" />
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,7 +25,8 @@
         </Grid.RowDefinitions>
         <StatusBar x:Name="statusBar"
                    Style="{StaticResource MetroStatusBar}"
-                   Visibility="Collapsed"
+                   Visibility="Visible"
+                   DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DownloadViewModel}"
                    Background="{StaticResource AccentBaseColorBrush}"
                    Grid.Row="0">
             <StatusBar.ItemsPanel>
@@ -28,6 +34,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -37,17 +44,37 @@
                            Margin="15"
                            HorizontalContentAlignment="Center">
                 <DockPanel>
-                    <TextBlock Text="Downloading..." />
+                    <TextBlock>
+                        <Run Text="Downloading " />
+                        <Run Text="{Binding CaptureId}" />
+                    </TextBlock>
                 </DockPanel>
-                
             </StatusBarItem>
-            <StatusBarItem Grid.Column="1" Margin="15">
+            <StatusBarItem Grid.Column="1"
+                           Margin="15">
                 <DockPanel>
-                    <TextBlock Text="40.5MB/50MB"
-                               Margin="0 0 5 0" />
-                    <TextBlock Text="(0%)" />
+                    <TextBlock Margin="0 0 5 0">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}MB/{1}MB">
+                                <Binding Path="DownloadProgressInMb" />
+                                <Binding Path="TotalMb" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="(" />
+                        <Run Text="{Binding PercentageCompleted}" />
+                        <Run Text="%)" />
+                    </TextBlock>
                 </DockPanel>
-                
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2" Margin="15">
+                <Button Style="{StaticResource BaseMetroWindowButtonStyle}"
+                        Click="Close_Banner">
+                    <Button.Content>
+                        <iconPacks:PackIconBoxIcons Kind="RegularWindowClose" />
+                    </Button.Content>
+                </Button>
             </StatusBarItem>
         </StatusBar>
         <StackPanel Orientation="Vertical"
@@ -58,7 +85,6 @@
             <Separator Height="1"
                        Margin="0"></Separator>
         </StackPanel>
-        
         <Grid Grid.Row="2"
               x:Name="progressRingWrapper"
               Visibility="{Binding ProgressRingWrapperVisibility}">

@@ -6,9 +6,24 @@ namespace XboxGameClipLibrary.View_Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string _CaptureId;
         private string _DownloadProgressInMb;
         private string _TotalMb;
         private string _PercentageCompleted;
+
+        public string CaptureId
+        {
+            get
+            {
+                return _CaptureId;
+            }
+
+            set
+            {
+                _CaptureId = value;
+                OnNotifyPropertyChanged("CaptureId");
+            }
+        }
 
         public string DownloadProgressInMb
         {

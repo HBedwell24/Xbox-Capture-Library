@@ -100,6 +100,11 @@ namespace XboxGameClipLibrary.Views
             }
         }
 
+        public void Close_Banner(object sender, RoutedEventArgs e)
+        {
+            statusBar.Visibility = Visibility.Collapsed;
+        }
+
 
     }
 }
