@@ -2,6 +2,7 @@
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using XboxGameClipLibrary.View_Models;
 
 namespace XboxGameClipLibrary.Views
 {
@@ -84,9 +85,18 @@ namespace XboxGameClipLibrary.Views
             set { SetValue(LikesProperty, value); }
         }
 
+        public event EventHandler DownloadButtonClicked;
+        protected virtual void OnDownloadButtonClicked(EventArgs e)
+        {
+            DownloadButtonClicked?.Invoke(this, e);
+        }
+
         void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Console.WriteLine("Download status: {0}%.", e.ProgressPercentage);
+            DownloadViewModel dvm = new DownloadViewModel();
+            dvm.PercentageCompleted = e.ProgressPercentage + '%'.ToString();
+            dvm.TotalMb = e.TotalBytesToReceive.ToString();
+            dvm.DownloadProgressInMb = e.BytesReceived.ToString();
         }
 
         public void Download_Image_Content(object sender, RoutedEventArgs e)
@@ -95,6 +105,7 @@ namespace XboxGameClipLibrary.Views
 
             using (WebClient client = new WebClient())
             {
+                OnDownloadButtonClicked(e);
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }

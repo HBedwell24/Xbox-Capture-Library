@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,6 +19,14 @@ namespace XboxGameClipLibrary.Views
 
             // Bind the capture data to the DataContext
             Loaded += CapturesPage_Loaded;
+
+            //Subscribe for event using designer or in form load
+            screenshotDetailPane.DownloadButtonClicked += DetailPane_DownloadButtonClicked;
+        }
+
+        private void DetailPane_DownloadButtonClicked(object sender, EventArgs e)
+        {
+            statusBar.Visibility = Visibility.Visible;
         }
 
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
@@ -93,5 +99,7 @@ namespace XboxGameClipLibrary.Views
                     break;
             }
         }
+
+
     }
 }
