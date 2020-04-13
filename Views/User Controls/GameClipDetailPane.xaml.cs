@@ -168,8 +168,8 @@ namespace XboxGameClipLibrary.Views
 
         private void SliProgress_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            lblProgressStatus.Text = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"mm\:ss");
-            timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum - sliProgress.Value).ToString(@"mm\:ss");
+            lblTimeElapsed.Content = TimeSpan.FromSeconds(sliProgress.Value).ToString(@"mm\:ss");
+            lblTimeRemaining.Content = TimeSpan.FromSeconds(sliProgress.Maximum - sliProgress.Value).ToString(@"mm\:ss");
             mediaPlayer.Position = TimeSpan.FromSeconds(sliProgress.Value);
         }
 
@@ -222,7 +222,7 @@ namespace XboxGameClipLibrary.Views
         private void Element_MediaOpened(object sender, EventArgs e)
         {
             sliProgress.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-            timeLeft.Text = TimeSpan.FromSeconds(sliProgress.Maximum).ToString(@"mm\:ss");
+            lblTimeRemaining.Content = TimeSpan.FromSeconds(sliProgress.Maximum).ToString(@"mm\:ss");
             playbackToggle.IsChecked = false;
         }
 

@@ -83,7 +83,7 @@
                            FontSize="14"
                            Margin="0 0 5 0">Xbox API Key:</Label>
                     <Label x:Name="currentKey"
-                           Width="260"
+                           Width="310"
                            FontSize="14"
                            VerticalAlignment="Center"
                            Margin="0 0 10 0" />
