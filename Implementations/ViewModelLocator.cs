@@ -4,13 +4,16 @@ namespace XboxGameClipLibrary.Implementations
 {
     public class ViewModelLocator
     {
-        private static readonly DownloadViewModel downloadViewModel;
-
-        static ViewModelLocator()
+        private DownloadViewModel _DownloadViewModel;
+        public DownloadViewModel DownloadViewModel
         {
-            downloadViewModel = new DownloadViewModel();
-        }
+            get
+            {
+                if (_DownloadViewModel == null)
+                    _DownloadViewModel = new DownloadViewModel();
 
-        public static DownloadViewModel DownloadViewModel => downloadViewModel;
+                return _DownloadViewModel;
+            }
+        }
     }
 }

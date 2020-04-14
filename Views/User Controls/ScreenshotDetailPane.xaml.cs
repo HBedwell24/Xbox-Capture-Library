@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Humanizer.Bytes;
+using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using XboxGameClipLibrary.View_Models;
+using XboxGameClipLibrary.Implementations;
 
 namespace XboxGameClipLibrary.Views
 {
@@ -93,10 +94,15 @@ namespace XboxGameClipLibrary.Views
 
         void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            DownloadViewModel dvm = new DownloadViewModel();
-            dvm.PercentageCompleted = e.ProgressPercentage + '%'.ToString();
-            dvm.TotalMb = e.TotalBytesToReceive.ToString();
-            dvm.DownloadProgressInMb = e.BytesReceived.ToString();
+            var progressInMb = ByteSize.FromBytes(e.BytesReceived).Megabytes;
+            string progressInMbRounded = string.Format("{0:0.0}", Math.Truncate(progressInMb * 10) / 10);
+
+            var fileSizeInMb = ByteSize.FromBytes(e.TotalBytesToReceive).Megabytes;
+            string fileSizeInMbRounded = string.Format("{0:0.0}", Math.Truncate(fileSizeInMb * 10) / 10);
+
+            Console.WriteLine(e.ProgressPercentage.ToString() + '%');
+            Console.WriteLine(progressInMbRounded.ToString());
+            Console.WriteLine(fileSizeInMbRounded.ToString());
         }
 
         public void Download_Image_Content(object sender, RoutedEventArgs e)

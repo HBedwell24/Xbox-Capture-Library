@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <StatusBar x:Name="statusBar"
                    Style="{StaticResource MetroStatusBar}"
-                   Visibility="Visible"
+                   Visibility="Collapsed"
                    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DownloadViewModel}"
                    Background="{StaticResource AccentBaseColorBrush}"
                    Grid.Row="0">
