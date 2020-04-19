@@ -69,7 +69,7 @@
     <SolidColorBrush x:Key="AccentSelectedColorBrush"
                      Color="{StaticResource IdealForegroundColor}"
                      options:Freeze="True" />
-
+    
     <!-- Toggle switch brushes -->
     <SolidColorBrush x:Key="MahApps.Metro.Brushes.ToggleSwitchButton.OnSwitchBrush.Win10"
                      Color="{StaticResource AccentColor}"

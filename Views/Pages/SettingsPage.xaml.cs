@@ -64,14 +64,14 @@ namespace XboxGameClipLibrary.Views.Pages
                 // If toggleButton is checked, dark theme is enabled
                 if (toggleSwitch.IsChecked == true)
                 {
-                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseDark"));
+                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("DarkAccent"), ThemeManager.GetAppTheme("BaseDark"));
                     Properties.Settings.Default.appTheme = "darkTheme";
                     Properties.Settings.Default.Save();
                 }
                 // Else if toggleButton is not checked, light theme is enabled
                 else
                 {
-                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("Accent"), ThemeManager.GetAppTheme("BaseLight"));
+                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("LightAccent"), ThemeManager.GetAppTheme("BaseLight"));
                     Properties.Settings.Default.appTheme = "lightTheme";
                     Properties.Settings.Default.Save();
                 }

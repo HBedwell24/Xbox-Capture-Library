@@ -187,6 +187,10 @@
     <Compile Include="Views\User Controls\CaptureListItem.xaml.cs">
       <DependentUpon>CaptureListItem.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Themes\LightAccent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Pages\GameClipsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,7 +220,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\Themes\Accent.xaml">
+    <Page Include="Resources\Themes\DarkAccent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
