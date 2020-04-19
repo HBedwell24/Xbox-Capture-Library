@@ -4,7 +4,6 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="SplashScreen" 
         Height="500" 
         Width="450">
     <Window.Background>

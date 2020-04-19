@@ -1,5 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace XboxGameClipLibrary
 {

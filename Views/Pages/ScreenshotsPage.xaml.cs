@@ -26,7 +26,7 @@ namespace XboxGameClipLibrary.Views
 
         private void DetailPane_DownloadButtonClicked(object sender, EventArgs e)
         {
-            statusBar.Visibility = Visibility.Visible;
+            
         }
 
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)

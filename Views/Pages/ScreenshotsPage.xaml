@@ -24,11 +24,27 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StatusBar x:Name="statusBar"
-                   Style="{StaticResource MetroStatusBar}"
-                   Visibility="Collapsed"
+                   Visibility="Visible"
                    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DownloadViewModel}"
                    Background="{StaticResource AccentBaseColorBrush}"
                    Grid.Row="0">
+            <StatusBar.Style>
+                <Style TargetType="StatusBar">
+                    <Style.Triggers>
+                        <EventTrigger>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="(StatusBar.Height)"
+                                                     From="0"
+                                                     To="50"
+                                                     Duration="0:0:1"
+                                                     AutoReverse="False" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StatusBar.Style>
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
