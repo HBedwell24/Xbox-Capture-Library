@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace XboxGameClipLibrary
 {
@@ -34,6 +35,11 @@ namespace XboxGameClipLibrary
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             contentWrapper.Focus();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
         }
     }
 }
