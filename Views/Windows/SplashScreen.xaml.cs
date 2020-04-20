@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -7,28 +6,22 @@ namespace XboxGameClipLibrary
 {
     public partial class SplashScreen : Window
     {
-        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        private readonly string credential = Properties.Settings.Default.xboxApiKey;
+        private readonly DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        private string credential;
 
         public SplashScreen()
         {
-            if (Debugger.IsAttached)
-            {
-                Properties.Settings.Default.xboxApiKey = "";
-                Properties.Settings.Default.Save();
-            }
-
             InitializeComponent();
 
-            
-
             dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+            dispatcherTimer.Interval = TimeSpan.FromSeconds(2);
             dispatcherTimer.Start();
         }
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
+            credential = Properties.Settings.Default.xboxApiKey;
+
             if (string.IsNullOrEmpty(credential))
             {
                 CredentialWindow credentialWindow = new CredentialWindow();
