@@ -47,7 +47,7 @@ namespace XboxGameClipLibrary.API
         public static async Task<JObject> GetProfileFromStringCallAsync(CancellationToken cancellationToken)
         {
             using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/profile"))
+            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/profile"))
             {
                 request.Headers.Add("X-Auth", Properties.Settings.Default.xboxApiKey);
 
@@ -74,7 +74,7 @@ namespace XboxGameClipLibrary.API
         public static async Task<List<Screenshot>> GetScreenshotsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
             using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/screenshots"))
+            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/" + xuid + "/screenshots"))
             {
                 request.Headers.Add("X-Auth", Properties.Settings.Default.xboxApiKey);
 
@@ -101,7 +101,7 @@ namespace XboxGameClipLibrary.API
         public static async Task<List<GameClip>> GetGameClipsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
             using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xboxapi.com/v2/" + xuid + "/game-clips"))
+            using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/" + xuid + "/game-clips"))
             {
                 request.Headers.Add("X-Auth", Properties.Settings.Default.xboxApiKey);
 

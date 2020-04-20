@@ -14,12 +14,6 @@ namespace XboxGameClipLibrary
         {
             InitializeComponent();
 
-            if (Debugger.IsAttached)
-            {
-                Properties.Settings.Default.xboxApiKey = "";
-                Properties.Settings.Default.Save();
-            }
-
             dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
             dispatcherTimer.Start();

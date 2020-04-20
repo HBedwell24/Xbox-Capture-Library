@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
-using System.Windows.Controls;
+using System.Windows;
 using System.Windows.Input;
 
 namespace XboxGameClipLibrary
@@ -18,7 +18,7 @@ namespace XboxGameClipLibrary
             Properties.Settings.Default.Save();
         }
         
-        private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
             Regex regex = new Regex("^[a-z0-9]*$");
 
@@ -29,6 +29,11 @@ namespace XboxGameClipLibrary
                 mw.Show();
                 Close();
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            contentWrapper.Focus();
         }
     }
 }
