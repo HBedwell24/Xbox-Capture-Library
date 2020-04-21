@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using MahApps.Metro.Controls;
@@ -10,7 +9,7 @@ namespace XboxGameClipLibrary.ViewModels
     {
         private object _icon;
         private string _text;
-        private Uri _navigationDestination;
+        private object _navigationDestination;
 
         public object Icon
         {
@@ -24,7 +23,7 @@ namespace XboxGameClipLibrary.ViewModels
             set { SetProperty(ref _text, value); }
         }
 
-        public Uri NavigationDestination
+        public object NavigationDestination
         {
             get { return _navigationDestination; }
             set { SetProperty(ref _navigationDestination, value); }
