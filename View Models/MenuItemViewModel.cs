@@ -1,10 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using JetBrains.Annotations;
 using MahApps.Metro.Controls;
-using XboxGameClipLibrary.Mvvm;
 
 namespace XboxGameClipLibrary.ViewModels
 {
@@ -12,8 +10,6 @@ namespace XboxGameClipLibrary.ViewModels
     {
         private object _icon;
         private string _text;
-        private bool _isEnabled = true;
-        private DelegateCommand _command;
         private Uri _navigationDestination;
 
         public object Icon
@@ -26,18 +22,6 @@ namespace XboxGameClipLibrary.ViewModels
         {
             get { return _text; }
             set { SetProperty(ref _text, value); }
-        }
-
-        public bool IsEnabled
-        {
-            get { return _isEnabled; }
-            set { SetProperty(ref _isEnabled, value); }
-        }
-
-        public ICommand Command
-        {
-            get { return _command; }
-            set { SetProperty(ref _command, (DelegateCommand)value); }
         }
 
         public Uri NavigationDestination

@@ -169,7 +169,6 @@
     <Compile Include="Models\Screenshots\ScreenshotUri.cs" />
     <Compile Include="Models\Screenshots\Thumbnail.cs" />
     <Compile Include="Implementations\BindableBase.cs" />
-    <Compile Include="Implementations\DelegateCommand.cs" />
     <Compile Include="Extensions\NavigationExtension.cs" />
     <Compile Include="Views\Windows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
