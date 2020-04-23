@@ -39,27 +39,24 @@ namespace XboxGameClipLibrary.API
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    var content = "";
+                    var stream = await response.Content.ReadAsStringAsync();
 
                     try
                     {
-                        var stream = await response.Content.ReadAsStringAsync();
-
                         if (response.IsSuccessStatusCode)
                         {
                             return JObject.Parse(stream);
                         }
                         else
                         {
-                            content = stream;
                             throw new ApiException();
                         }
                     }
-                    catch (ApiException)
+                    catch (ApiException e)
                     {
-                        Navigation.Navigation.Navigate(new ExceptionPage((int) response.StatusCode, content));
+                        var error = JObject.Parse(stream);
+                        Navigation.Navigation.Navigate(new ExceptionPage((int) response.StatusCode, response.ReasonPhrase, error["error_message"].ToString()));
                     }
-
                     return null;
                 }
             }
@@ -80,7 +77,6 @@ namespace XboxGameClipLibrary.API
                     {
                         return DeserializeJsonFromStream<List<Screenshot>>(stream);
                     }
-
                     return null;
                 }
             }
@@ -101,7 +97,6 @@ namespace XboxGameClipLibrary.API
                     {
                         return DeserializeJsonFromStream<List<GameClip>>(stream);
                     }
-
                     return null;
                 }
             }

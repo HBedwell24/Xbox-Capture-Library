@@ -4,11 +4,13 @@ namespace XboxGameClipLibrary.Views.Pages
 {
     public partial class ExceptionPage : Page
     {
-        public ExceptionPage(int statusCode, string content)
+        public ExceptionPage(int statusCode, string reasonPhrase, string errorMessage)
         {
             InitializeComponent();
-            StatusCode.Content = statusCode;
-            Content.Content = content;
+            StatusCode.Text = statusCode.ToString();
+            ReasonPhrase.Text = reasonPhrase;
+            ErrorMessage.Text = errorMessage + ".";
+
         }
     }
 }

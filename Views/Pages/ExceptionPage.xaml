@@ -12,14 +12,23 @@
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Label x:Name="StatusCode"
+            <Label Content="Oops!"
                    HorizontalAlignment="Center"
                    FontWeight="Light"
-                   FontSize="22" />
-            <Label x:Name="Content"
-                   HorizontalAlignment="Center"
-                   FontWeight="Light"
-                   FontSize="18" />
+                   FontSize="38" />
+            <TextBlock HorizontalAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="18">
+                    <Run Text="Error" />
+                    <Run x:Name="StatusCode" />
+                    <Run Text="-" />
+                    <Run x:Name="ReasonPhrase" />
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center"
+                       FontWeight="Light"
+                       FontSize="18">
+                <Run x:Name="ErrorMessage" />
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Page>
