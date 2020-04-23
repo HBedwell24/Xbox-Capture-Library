@@ -13,39 +13,63 @@ namespace XboxGameClipLibrary.API
         public static async Task<List<Screenshot>> GetScreenshots(CancellationToken token)
         {
             var xuid = await GetXuid(token);
-            var screenshots = await XboxApiDataService.GetScreenshotsFromStreamCallAsync(token, xuid);
 
-            // Debug Screenshot response
-            string jsonString = JsonConvert.SerializeObject(screenshots, Formatting.Indented);
-            Console.WriteLine(jsonString);
+            if (xuid != null)
+            {
+                var screenshots = await XboxApiDataService.GetScreenshotsFromStreamCallAsync(token, xuid);
 
-            return screenshots;
+                // Debug Screenshot response
+                string jsonString = JsonConvert.SerializeObject(screenshots, Formatting.Indented);
+                Console.WriteLine(jsonString);
+
+                return screenshots;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static async Task<List<GameClip>> GetGameClips(CancellationToken token)
         {
             var xuid = await GetXuid(token);
-            var gameClips = await XboxApiDataService.GetGameClipsFromStreamCallAsync(token, xuid);
 
-            // Debug GameClip response
-            string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
-            Console.WriteLine(jsonString);
+            if(xuid != null)
+            {
+                var gameClips = await XboxApiDataService.GetGameClipsFromStreamCallAsync(token, xuid);
 
-            return gameClips;
+                // Debug GameClip response
+                string jsonString = JsonConvert.SerializeObject(gameClips, Formatting.Indented);
+                Console.WriteLine(jsonString);
+
+                return gameClips;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static async Task<string> GetXuid(CancellationToken token)
         {
             var profile = await XboxApiDataService.GetProfileFromStringCallAsync(token);
-            var xuid = profile["userXuid"].ToString();
 
-            // Debug Profile response
-            Console.WriteLine(profile);
+            if (profile != null)
+            {
+                var xuid = profile["userXuid"].ToString();
 
-            // Debug Xuid response
-            Console.WriteLine("Xuid: " + xuid);
+                // Debug Profile response
+                Console.WriteLine(profile);
 
-            return xuid;
+                // Debug Xuid response
+                Console.WriteLine("Xuid: " + xuid);
+
+                return xuid;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
