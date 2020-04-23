@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using XboxGameClipLibrary.Models.Screenshots;
+using XboxGameClipLibrary.Views.Pages;
 
 namespace XboxGameClipLibrary.API
 {
@@ -63,13 +64,18 @@ namespace XboxGameClipLibrary.API
                         {
                             return JObject.Parse(stream);
                         }
-
-                        content = stream;
+                        else
+                        {
+                            throw new ApiException();
+                        }
                     }
-                    catch (ApiException e)
+                    catch (ApiException)
                     {
-                        e.StatusCode = (int) response.StatusCode;
-                        e.Content = content;
+                        ExceptionPage exceptionPage = new ExceptionPage();
+                        exceptionPage.StatusCode = (int) response.StatusCode;
+                        exceptionPage.Content = content;
+
+                        Navigation.Navigation.Navigate(exceptionPage);
                     }
 
                     return null;
@@ -96,13 +102,10 @@ namespace XboxGameClipLibrary.API
                         {
                             return DeserializeJsonFromStream<List<Screenshot>>(stream);
                         }
-
                         content = await StreamToStringAsync(stream);
                     }
                     catch (ApiException e)
                     {
-                        e.StatusCode = (int) response.StatusCode;
-                        e.Content = content;
                     }
 
                     return null;
@@ -134,8 +137,6 @@ namespace XboxGameClipLibrary.API
                     }
                     catch (ApiException e)
                     {
-                        e.StatusCode = (int) response.StatusCode;
-                        e.Content = content;
                     }
 
                     return null;

@@ -13,7 +13,7 @@
                     DataContext="{Binding RelativeSource={RelativeSource Self}}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Label Content="{Binding StatusCode, FallbackValue=Status Code}"
+            <Label Content="{Binding StatusCode, FallbackValue=StatusCode}"
                    HorizontalAlignment="Center"
                    FontWeight="Light"
                    FontSize="22" />
