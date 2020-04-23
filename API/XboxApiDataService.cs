@@ -14,11 +14,7 @@ namespace XboxGameClipLibrary.API
 {
     public class XboxApiDataService
     {
-        public class ApiException : Exception
-        {
-            public int StatusCode { get; set; }
-            public string Content { get; set; }
-        }
+        public class ApiException : Exception { }
 
         private static T DeserializeJsonFromStream<T>(Stream stream)
         {
@@ -34,21 +30,8 @@ namespace XboxGameClipLibrary.API
             }
         }
 
-        private static async Task<string> StreamToStringAsync(Stream stream)
-        {
-            string content = null;
-
-            if (stream != null)
-                using (var sr = new StreamReader(stream))
-                    content = await sr.ReadToEndAsync();
-
-            return content;
-        }
-
         public static async Task<JObject> GetProfileFromStringCallAsync(CancellationToken cancellationToken)
         {
-            var content = ""; 
-
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/profile"))
             {
@@ -56,6 +39,8 @@ namespace XboxGameClipLibrary.API
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
+                    var content = "";
+
                     try
                     {
                         var stream = await response.Content.ReadAsStringAsync();
@@ -66,16 +51,13 @@ namespace XboxGameClipLibrary.API
                         }
                         else
                         {
+                            content = stream;
                             throw new ApiException();
                         }
                     }
                     catch (ApiException)
                     {
-                        ExceptionPage exceptionPage = new ExceptionPage();
-                        exceptionPage.StatusCode = (int) response.StatusCode;
-                        exceptionPage.Content = content;
-
-                        Navigation.Navigation.Navigate(exceptionPage);
+                        Navigation.Navigation.Navigate(new ExceptionPage((int) response.StatusCode, content));
                     }
 
                     return null;
@@ -85,8 +67,6 @@ namespace XboxGameClipLibrary.API
 
         public static async Task<List<Screenshot>> GetScreenshotsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
-            var content = "";
-
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/" + xuid + "/screenshots"))
             {
@@ -94,18 +74,11 @@ namespace XboxGameClipLibrary.API
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    try
-                    {
-                        var stream = await response.Content.ReadAsStreamAsync();
+                    var stream = await response.Content.ReadAsStreamAsync();
 
-                        if (response.IsSuccessStatusCode)
-                        {
-                            return DeserializeJsonFromStream<List<Screenshot>>(stream);
-                        }
-                        content = await StreamToStringAsync(stream);
-                    }
-                    catch (ApiException e)
+                    if (response.IsSuccessStatusCode)
                     {
+                        return DeserializeJsonFromStream<List<Screenshot>>(stream);
                     }
 
                     return null;
@@ -115,8 +88,6 @@ namespace XboxGameClipLibrary.API
 
         public static async Task<List<GameClip>> GetGameClipsFromStreamCallAsync(CancellationToken cancellationToken, string xuid)
         {
-            var content = "";
-
             using (var client = new HttpClient())
             using (var request = new HttpRequestMessage(HttpMethod.Get, "https://xapi.us/v2/" + xuid + "/game-clips"))
             {
@@ -124,19 +95,11 @@ namespace XboxGameClipLibrary.API
 
                 using (var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    try
-                    {
-                        var stream = await response.Content.ReadAsStreamAsync();
+                    var stream = await response.Content.ReadAsStreamAsync();
 
-                        if (response.IsSuccessStatusCode)
-                        {
-                            return DeserializeJsonFromStream<List<GameClip>>(stream);
-                        }
-
-                        content = await StreamToStringAsync(stream);
-                    }
-                    catch (ApiException e)
+                    if (response.IsSuccessStatusCode)
                     {
+                        return DeserializeJsonFromStream<List<GameClip>>(stream);
                     }
 
                     return null;

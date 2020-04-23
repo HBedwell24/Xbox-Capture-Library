@@ -10,14 +10,13 @@
 
     <Grid>
         <StackPanel Orientation="Vertical"
-                    DataContext="{Binding RelativeSource={RelativeSource Self}}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Label Content="{Binding StatusCode, FallbackValue=StatusCode}"
+            <Label x:Name="StatusCode"
                    HorizontalAlignment="Center"
                    FontWeight="Light"
                    FontSize="22" />
-            <Label Content="{Binding Content, FallbackValue=Content}"
+            <Label x:Name="Content"
                    HorizontalAlignment="Center"
                    FontWeight="Light"
                    FontSize="18" />
