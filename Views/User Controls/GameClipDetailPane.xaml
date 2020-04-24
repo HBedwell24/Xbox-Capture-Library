@@ -110,7 +110,8 @@
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="1">
                         <Label Name="lblTimeElapsed"
-                                   Style="{StaticResource MetroLabel}">00:00</Label>
+                               Style="{StaticResource MetroLabel}"
+                               Content="00:00" />
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="2"
                                    HorizontalContentAlignment="Stretch">
@@ -123,8 +124,9 @@
                     
                     <StatusBarItem Grid.Column="3" 
                                    Margin="0 0 15 0">
-                        <Label Name="lblTimeRemaining" 
-                                   Style="{StaticResource MetroLabel}">00:00</Label>
+                        <Label Name="lblTimeRemaining"
+                               Style="{StaticResource MetroLabel}"
+                               Content="00:00" />
                     </StatusBarItem>
                     <StatusBarItem Grid.Column="4"
                                    Margin="0 0 15 0">
@@ -176,8 +178,7 @@
                                     Width="75"
                                     Value="1"
                                     Maximum="1"
-                                    ValueChanged="VolSlider_ValueChanged">
-                            </Slider>
+                                    ValueChanged="VolSlider_ValueChanged" />
                         </DockPanel>
                     </StatusBarItem>
                 </StatusBar>
@@ -231,12 +232,12 @@
                 <Label FontSize="18"
                        FontWeight="Light"
                        Content="Screenshot Metrics"
-                       Margin="0 0 0 10"/>
+                       Margin="0 0 0 10" />
                 <Separator Height="2"
                            Margin="0 0 0 10" />
                 <StackPanel>
                     <Label FontFamily="Segoe UI Semilight"
-                               Content="VIEWS" />
+                           Content="VIEWS" />
                     <Label FontFamily="Segoe UI"
                            Content="{Binding Views, FallbackValue=NULL}"
                            Margin="0 0 0 10" />

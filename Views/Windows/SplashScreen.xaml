@@ -5,7 +5,8 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Height="500" 
-        Width="450">
+        Width="450"
+        Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/splash-background.jpg" Stretch="UniformToFill" />
     </Window.Background>

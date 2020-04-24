@@ -10,7 +10,6 @@ namespace XboxGameClipLibrary.Views
     public partial class GameClipsPage : Page
     {
         private bool FilterHandle = true;
-
         private GameClipViewModel gameClipViewModel;
 
         public GameClipsPage()

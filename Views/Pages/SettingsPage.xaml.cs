@@ -6,14 +6,12 @@ using System.Windows.Controls;
 
 namespace XboxGameClipLibrary.Views.Pages
 {
-    /// <summary>
-    /// Interaction logic for SettingsPage.xaml
-    /// </summary>
     public partial class SettingsPage : Page
     {
         public SettingsPage()
         {
             InitializeComponent();
+
             if(Properties.Settings.Default.appTheme.Equals("darkTheme"))
             {
                 appThemeToggle.IsChecked = true;
@@ -59,6 +57,7 @@ namespace XboxGameClipLibrary.Views.Pages
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+
             if (toggleSwitch != null)
             {
                 // If toggleButton is checked, dark theme is enabled

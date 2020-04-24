@@ -149,9 +149,7 @@
     <Compile Include="API\XboxApiImpl.cs" />
     <Compile Include="Extensions\ObservableObject.cs" />
     <Compile Include="Implementations\CredentialValidator.cs" />
-    <Compile Include="Implementations\ViewModelLocator.cs" />
     <Compile Include="View Models\CredentialViewModel.cs" />
-    <Compile Include="View Models\DownloadViewModel.cs" />
     <Compile Include="View Models\GameClipViewModel.cs" />
     <Compile Include="Views\Pages\ExceptionPage.xaml.cs">
       <DependentUpon>ExceptionPage.xaml</DependentUpon>

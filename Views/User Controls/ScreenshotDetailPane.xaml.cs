@@ -86,12 +86,6 @@ namespace XboxGameClipLibrary.Views
             set { SetValue(LikesProperty, value); }
         }
 
-        public event EventHandler DownloadButtonClicked;
-        protected virtual void OnDownloadButtonClicked(EventArgs e)
-        {
-            DownloadButtonClicked?.Invoke(this, e);
-        }
-
         void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             var progressInMb = ByteSize.FromBytes(e.BytesReceived).Megabytes;
@@ -111,7 +105,6 @@ namespace XboxGameClipLibrary.Views
 
             using (WebClient client = new WebClient())
             {
-                OnDownloadButtonClicked(e);
                 client.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 client.DownloadFileAsync(new Uri(ScreenshotUri), downloadPath + ScreenshotId + ".png");
             }

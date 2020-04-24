@@ -4,85 +4,26 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:views="clr-namespace:XboxGameClipLibrary.Views"
-      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      xmlns:vm="clr-namespace:XboxGameClipLibrary.Implementations"
-      Title="Captures"
-      KeepAlive="True"
       d:DesignHeight="400"
       d:DesignWidth="700"
       mc:Ignorable="d"
       Style="{DynamicResource MetroPage}">
-    <Page.Resources>
-        <vm:ViewModelLocator x:Key="ViewModelLocator" />
-    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StatusBar x:Name="statusBar"
-                   Visibility="Collapsed"
-                   DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DownloadViewModel}"
-                   Background="{StaticResource AccentBaseColorBrush}"
-                   Grid.Row="0">
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
-            <StatusBarItem Grid.Column="0"
-                           Margin="15"
-                           HorizontalContentAlignment="Center">
-                <DockPanel>
-                    <TextBlock>
-                        <Run Text="Downloading " />
-                        <Run Text="{Binding CaptureId}" />
-                    </TextBlock>
-                </DockPanel>
-            </StatusBarItem>
-            <StatusBarItem Grid.Column="1"
-                           Margin="15">
-                <DockPanel>
-                    <TextBlock Margin="0 0 5 0">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0}MB/{1}MB">
-                                <Binding Path="DownloadProgressInMb" />
-                                <Binding Path="TotalMb" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                    <TextBlock>
-                        <Run Text="(" />
-                        <Run Text="{Binding PercentageCompleted}" />
-                        <Run Text="%)" />
-                    </TextBlock>
-                </DockPanel>
-            </StatusBarItem>
-            <StatusBarItem Grid.Column="2" Margin="15">
-                <Button Style="{StaticResource BaseMetroWindowButtonStyle}"
-                        Click="Close_Banner">
-                    <Button.Content>
-                        <iconPacks:PackIconBoxIcons Kind="RegularWindowClose" />
-                    </Button.Content>
-                </Button>
-            </StatusBarItem>
-        </StatusBar>
         <StackPanel Orientation="Vertical"
                     Grid.Row="1">
             <TextBlock FontSize="28"
                        FontWeight="Light"
-                       Margin="15 15 0 15">Screenshots</TextBlock>
+                       Margin="15 15 0 15"
+                       Text="Screenshots" />
             <Separator Height="1"
-                       Margin="0"></Separator>
+                       Margin="0" />
         </StackPanel>
         <Grid Grid.Row="2"
               x:Name="progressRingWrapper"
@@ -93,7 +34,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Controls:ProgressRing Grid.Row="0"
+            <controls:ProgressRing Grid.Row="0"
                                    Grid.Column="0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"

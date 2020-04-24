@@ -19,14 +19,6 @@ namespace XboxGameClipLibrary.Views
 
             // Bind the capture data to the DataContext
             Loaded += CapturesPage_Loaded;
-
-            //Subscribe for event using designer or in form load
-            screenshotDetailPane.DownloadButtonClicked += DetailPane_DownloadButtonClicked;
-        }
-
-        private void DetailPane_DownloadButtonClicked(object sender, EventArgs e)
-        {
-            
         }
 
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
@@ -99,12 +91,5 @@ namespace XboxGameClipLibrary.Views
                     break;
             }
         }
-
-        public void Close_Banner(object sender, RoutedEventArgs e)
-        {
-            statusBar.Visibility = Visibility.Collapsed;
-        }
-
-
     }
 }
