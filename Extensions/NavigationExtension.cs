@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace XboxGameClipLibrary.Navigation
 {
@@ -12,11 +13,20 @@ namespace XboxGameClipLibrary.Navigation
             set { _frame = value; }
         }
 
-        public static bool Navigate(object sourcePageUri, object extraData)
+        public static bool Navigate(Uri sourcePageUri, object extraData)
         {
-            if (_frame.NavigationService.Content != sourcePageUri)
+            if (_frame.CurrentSource != sourcePageUri)
             {
                 return _frame.Navigate(sourcePageUri, extraData);
+            }
+            return true;
+        }
+
+        public static bool Navigate(Uri sourcePageUri)
+        {
+            if (_frame.CurrentSource != sourcePageUri)
+            {
+                return _frame.Navigate(sourcePageUri);
             }
             return true;
         }

@@ -52,7 +52,7 @@ namespace XboxGameClipLibrary.API
                             throw new ApiException();
                         }
                     }
-                    catch (ApiException e)
+                    catch (ApiException)
                     {
                         var error = JObject.Parse(stream);
                         Navigation.Navigation.Navigate(new ExceptionPage((int) response.StatusCode, response.ReasonPhrase, error["error_message"].ToString()));
