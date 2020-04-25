@@ -57,6 +57,7 @@
         </Grid.Resources>
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
+                                PaneBackground="{StaticResource AccentColorBrush3}"
                                 IsPaneOpen="False"
                                 ItemsSource="{Binding Menu}"
                                 OptionsItemsSource="{Binding OptionsMenu}"
