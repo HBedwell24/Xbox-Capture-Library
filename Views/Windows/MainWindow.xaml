@@ -5,18 +5,34 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:viewModels="clr-namespace:XboxGameClipLibrary.ViewModels"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:viewModels1="clr-namespace:XboxGameClipLibrary.ViewModels.GameClipViewModel"
                       mc:Ignorable="d"
                       Height="600"
                       Width="1024"
-                      TitleCaps="False"
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       Title="Xbox Game Clip Library"
                       WindowStartupLocation="CenterScreen"
                       Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico">
-
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
     </controls:MetroWindow.DataContext>
+    
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <controls:WindowCommands.DataContext>
+                <viewModels1:MainWindowViewModel />
+            </controls:WindowCommands.DataContext>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconModern Kind="User" />
+                    <TextBlock Text="{Binding GamerTag}"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
 
     <Grid>
         <Grid.Resources>

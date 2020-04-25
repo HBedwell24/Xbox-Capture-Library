@@ -71,5 +71,27 @@ namespace XboxGameClipLibrary.API
                 return null;
             }
         }
+
+        public static async Task<string> GetGamerTag(CancellationToken token)
+        {
+            var profile = await XboxApiDataService.GetProfileFromStringCallAsync(token);
+
+            if (profile != null)
+            {
+                var gamerTag = profile["gamerTag"].ToString();
+
+                // Debug Profile response
+                Console.WriteLine(profile);
+
+                // Debug Xuid response
+                Console.WriteLine("Gamer Tag: " + gamerTag);
+
+                return gamerTag;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
