@@ -288,5 +288,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\login-panel.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
