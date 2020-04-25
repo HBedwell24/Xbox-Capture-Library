@@ -23,7 +23,7 @@
             <controls:WindowCommands.DataContext>
                 <viewModels1:MainWindowViewModel />
             </controls:WindowCommands.DataContext>
-            <Button>
+            <Button Visibility="{Binding GamerTagVisibility}">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Kind="User" />
                     <TextBlock Text="{Binding GamerTag}"

@@ -6,6 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
       xmlns:views="clr-namespace:XboxGameClipLibrary.Views"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       d:DesignHeight="400"
       d:DesignWidth="700"
       mc:Ignorable="d"
@@ -62,16 +63,26 @@
                                 x:Name="screenshotFilter">
                         <Label Content="Filter"
                                FontFamily="Segoe UI Semilight" />
-                        <ComboBox Name="screenshotFilterBox"
-                                  FontFamily="Segoe UI"
-                                  SelectionChanged="ScreenshotFilter_SelectionChanged"
-                                  DropDownClosed="ScreenshotFilter_DropDownClosed">
-                            <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                            <ComboBoxItem>By game</ComboBoxItem>
-                            <ComboBoxItem>By likes</ComboBoxItem>
-                            <ComboBoxItem>By views</ComboBoxItem>
-                        </ComboBox>
+                        <DockPanel>
+                            <ComboBox Name="screenshotFilterBox"
+                                      Margin="0 0 10 0"
+                                      FontFamily="Segoe UI"
+                                      SelectionChanged="ScreenshotFilter_SelectionChanged"
+                                      DropDownClosed="ScreenshotFilter_DropDownClosed">
+                                <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
+                                <ComboBoxItem>By game</ComboBoxItem>
+                                <ComboBoxItem>By likes</ComboBoxItem>
+                                <ComboBoxItem>By views</ComboBoxItem>
+                            </ComboBox>
+                            <Button Style="{StaticResource SquareButtonStyle}" ToolTip="Refresh" Click="Refresh_List_View">
+                                <Button.Content>
+                                    <iconPacks:PackIconBoxIcons Kind="RegularRefresh" />
+                                </Button.Content>
+                            </Button>
+                        </DockPanel>
+                        
                     </StackPanel>
+                    
                 </StackPanel>
                 <Grid Grid.Row="1"
                       Margin="15 0 0 15"

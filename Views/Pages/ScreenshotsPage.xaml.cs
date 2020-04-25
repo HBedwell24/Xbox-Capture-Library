@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,7 +11,6 @@ namespace XboxGameClipLibrary.Views
     public partial class ScreenshotsPage : Page
     {
         private bool FilterHandle = true;
-        private ScreenshotViewModel screenshotViewModel;
 
         public ScreenshotsPage()
         {
@@ -23,11 +23,8 @@ namespace XboxGameClipLibrary.Views
 
         private void CapturesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            // Instantiate ViewModel
-            screenshotViewModel = new ScreenshotViewModel();
-
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
-            DataContext = screenshotViewModel;
+            DataContext = new ScreenshotViewModel();
 
             // Unhook the Loaded method
             Loaded -= CapturesPage_Loaded;
@@ -68,28 +65,36 @@ namespace XboxGameClipLibrary.Views
         // Gets input from comboboxes
         private void HandleScreenshotFilter()
         {
+            var dataContext = screenshotsPage.DataContext as ScreenshotViewModel;
+
             switch (screenshotFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
                 case "By date":
-                    var screenshotByDate = screenshotViewModel.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
-                    screenshotViewModel.Screenshots = screenshotByDate;
+                    var screenshotByDate = dataContext.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
+                    dataContext.Screenshots = screenshotByDate;
                     break;
 
                 case "By game":
-                    var screenshotByGame = screenshotViewModel.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
-                    screenshotViewModel.Screenshots = screenshotByGame;
+                    var screenshotByGame = dataContext.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
+                    dataContext.Screenshots = screenshotByGame;
                     break;
 
                 case "By likes":
-                    var screenshotByLikes = screenshotViewModel.Screenshots.OrderByDescending(o => o.RatingCount).ToList();
-                    screenshotViewModel.Screenshots = screenshotByLikes;
+                    var screenshotByLikes = dataContext.Screenshots.OrderByDescending(o => o.RatingCount).ToList();
+                    dataContext.Screenshots = screenshotByLikes;
                     break;
 
                 case "By views":
-                    var screenshotByViews = screenshotViewModel.Screenshots.OrderByDescending(o => o.Views).ToList();
-                    screenshotViewModel.Screenshots = screenshotByViews;
+                    var screenshotByViews = dataContext.Screenshots.OrderByDescending(o => o.Views).ToList();
+                    dataContext.Screenshots = screenshotByViews;
                     break;
             }
+        }
+
+        public async void Refresh_List_View(object sender, RoutedEventArgs e)
+        {
+            // Bind the Game Clip capture data to the itemssource of the gameClipListView
+            DataContext = new ScreenshotViewModel();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _GamerTag;
+        private string _GamerTagVisibility;
 
         public MainWindowViewModel()
         {
@@ -20,6 +21,8 @@ namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
             // Create a CancellationTokenSource object
             CancellationTokenSource cts = new CancellationTokenSource();
 
+            GamerTagVisibility = "Collapsed";
+
             // Bind the capture data
             GamerTag = await XboxApiImpl.GetGamerTag(cts.Token);
 
@@ -28,6 +31,11 @@ namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
 
             // Cancellation should have happened, so call Dispose
             cts.Dispose();
+
+            if (GamerTag != null)
+            {
+                GamerTagVisibility = "Visible";
+            }
         }
 
         public string GamerTag
@@ -41,6 +49,20 @@ namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
             {
                 _GamerTag = value;
                 OnNotifyPropertyChanged("GamerTag");
+            }
+        }
+
+        public string GamerTagVisibility
+        {
+            get
+            {
+                return _GamerTagVisibility;
+            }
+
+            set
+            {
+                _GamerTagVisibility = value;
+                OnNotifyPropertyChanged("GamerTagVisibility");
             }
         }
 
