@@ -12,8 +12,10 @@
                       Width="1024"
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       Title="Xbox Game Clip Library"
+                      TitleCaps="False"
                       WindowStartupLocation="CenterScreen"
                       Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico">
+    
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
     </controls:MetroWindow.DataContext>
@@ -57,7 +59,8 @@
         </Grid.Resources>
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
-                                PaneBackground="{StaticResource AccentColorBrush3}"
+                                PaneBackground="{DynamicResource AccentColorBrush3}"
+                                PaneForeground="{DynamicResource AccentColorBrush4}"
                                 IsPaneOpen="False"
                                 ItemsSource="{Binding Menu}"
                                 OptionsItemsSource="{Binding OptionsMenu}"

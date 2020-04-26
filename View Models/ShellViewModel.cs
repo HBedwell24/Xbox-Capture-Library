@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
 using MahApps.Metro.IconPacks;
-using XboxGameClipLibrary.Views;
-using XboxGameClipLibrary.Views.Pages;
 
 namespace XboxGameClipLibrary.ViewModels
 {
