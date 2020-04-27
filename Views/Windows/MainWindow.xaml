@@ -5,14 +5,13 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:viewModels="clr-namespace:XboxGameClipLibrary.ViewModels"
-                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:viewModels1="clr-namespace:XboxGameClipLibrary.ViewModels.GameClipViewModel"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
                       Height="600"
                       Width="1024"
                       GlowBrush="{DynamicResource AccentColorBrush}"
                       Title="Xbox Game Clip Library"
-                      TitleCaps="False"
                       WindowStartupLocation="CenterScreen"
                       Icon="pack://application:,,,/XboxGameClipLibrary;component/Resources/Images/logo.ico">
     
@@ -25,14 +24,25 @@
             <controls:WindowCommands.DataContext>
                 <viewModels1:MainWindowViewModel />
             </controls:WindowCommands.DataContext>
-            <Button Visibility="{Binding GamerTagVisibility}">
-                <StackPanel Orientation="Horizontal">
-                    <iconPacks:PackIconModern Kind="User" />
-                    <TextBlock Text="{Binding GamerTag}"
-                               Margin="5 0 0 0"
-                               VerticalAlignment="Center" />
-                </StackPanel>
-            </Button>
+            <Menu>
+                <MenuItem Header="{Binding GamerTag}">
+                    <MenuItem.Icon>
+                        <iconPacks:PackIconBoxIcons Kind="RegularCaretDown" />
+                    </MenuItem.Icon>
+                    <MenuItem Click="Navigate_To_Settings"
+                              Header="Settings">
+                        <MenuItem.Icon>
+                            <iconPacks:PackIconBoxIcons Kind="RegularCog" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Click="Logout" Header="Logout">
+                        <MenuItem.Icon>
+                            <iconPacks:PackIconBoxIcons Kind="RegularLogOut" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 

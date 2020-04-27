@@ -44,5 +44,24 @@ namespace XboxGameClipLibrary
                 addButton.ContextMenu.IsOpen = true;
             }
         }
+
+        private void ClearSettings()
+        {
+            Properties.Settings.Default.xboxApiKey = "";
+            Properties.Settings.Default.Save();
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            ClearSettings();
+            CredentialWindow cw = new CredentialWindow();
+            cw.Show();
+            Close();
+        }
+
+        private void Navigate_To_Settings(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Uri("Views/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
