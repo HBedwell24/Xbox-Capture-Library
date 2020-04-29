@@ -24,25 +24,36 @@
             <controls:WindowCommands.DataContext>
                 <viewModels1:MainWindowViewModel />
             </controls:WindowCommands.DataContext>
-            <Menu>
-                <MenuItem Header="{Binding GamerTag}">
-                    <MenuItem.Icon>
-                        <iconPacks:PackIconBoxIcons Kind="RegularCaretDown" />
-                    </MenuItem.Icon>
-                    <MenuItem Click="Navigate_To_Settings"
-                              Header="Settings">
-                        <MenuItem.Icon>
-                            <iconPacks:PackIconBoxIcons Kind="RegularCog" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <Separator />
-                    <MenuItem Click="Logout" Header="Logout">
-                        <MenuItem.Icon>
-                            <iconPacks:PackIconBoxIcons Kind="RegularLogOut" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
+            <Button Click="Open_Context_Menu"
+                    ContextMenuService.HorizontalOffset="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}"
+                    ContextMenuService.VerticalOffset="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                    ContextMenuService.Placement="Left"
+                    Visibility="{Binding GamerTagVisibility}">
+                <Button.Content>
+                    <DockPanel>
+                        <iconPacks:PackIconBoxIcons Kind="RegularUser" />
+                        <TextBlock Text="{Binding GamerTag}"
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+                </Button.Content>
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="Navigate_To_Settings"
+                                  Header="Settings">
+                            <MenuItem.Icon>
+                                <iconPacks:PackIconBoxIcons Kind="RegularCog" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Click="Logout"
+                                  Header="Logout">
+                            <MenuItem.Icon>
+                                <iconPacks:PackIconBoxIcons Kind="RegularLogOut" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
 

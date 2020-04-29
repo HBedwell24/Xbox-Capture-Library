@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using XboxGameClipLibrary.ViewModels;
@@ -62,6 +63,15 @@ namespace XboxGameClipLibrary
         private void Navigate_To_Settings(object sender, RoutedEventArgs e)
         {
             Navigation.Navigation.Navigate(new Uri("Views/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void Open_Context_Menu(object sender, RoutedEventArgs e)
+        {
+            var addButton = sender as FrameworkElement;
+            if (addButton != null)
+            {
+                addButton.ContextMenu.IsOpen = true;
+            }
         }
     }
 }
