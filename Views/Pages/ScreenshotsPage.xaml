@@ -74,7 +74,7 @@
                                 <ComboBoxItem>By likes</ComboBoxItem>
                                 <ComboBoxItem>By views</ComboBoxItem>
                             </ComboBox>
-                            <Button Style="{StaticResource SquareButtonStyle}" ToolTip="Refresh" Click="Refresh_List_View">
+                            <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}" ToolTip="Refresh" Click="Refresh_List_View">
                                 <Button.Content>
                                     <iconPacks:PackIconBoxIcons Kind="RegularRefresh" />
                                 </Button.Content>
