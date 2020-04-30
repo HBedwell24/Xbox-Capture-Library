@@ -18,6 +18,10 @@ namespace XboxGameClipLibrary.Implementations
             {
                 return new ValidationResult(false, "Value cannot be empty.");
             }
+            else if (Properties.Settings.Default.xboxApiKey != null && string.Equals(charString, Properties.Settings.Default.xboxApiKey)) 
+            {
+                return new ValidationResult(false, "The following API key already exists.");
+            }
             else if (charString.Any(char.IsWhiteSpace))
             {
                 return new ValidationResult(false, "Value must not contain spaces.");
