@@ -65,13 +65,13 @@ namespace XboxGameClipLibrary
             Navigation.Navigation.Navigate(new Uri("Views/Pages/SettingsPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void Open_Context_Menu(object sender, RoutedEventArgs e)
+        private void Open_Context_Menu(object sender, MouseButtonEventArgs e)
         {
             var addButton = sender as FrameworkElement;
             if (addButton != null)
             {
                 addButton.ContextMenu.IsOpen = true;
-            }
+            }            
         }
     }
 }
