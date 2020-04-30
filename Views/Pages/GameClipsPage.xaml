@@ -61,7 +61,7 @@
                             Orientation="Horizontal">
                     <StackPanel Orientation="Vertical"
                                 x:Name="gameClipFilter">
-                        <Label Content="Filter"
+                        <Label Content="Filter By:"
                                FontFamily="Segoe UI Semilight" />
                         <DockPanel>
                             <ComboBox Name="gameClipFilterBox"
@@ -69,11 +69,11 @@
                                       FontFamily="Segoe UI"
                                       SelectionChanged="GameClipFilter_SelectionChanged"
                                       DropDownClosed="GameClipFilter_DropDownClosed">
-                                <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                                <ComboBoxItem>By duration</ComboBoxItem>
-                                <ComboBoxItem>By game</ComboBoxItem>
-                                <ComboBoxItem>By likes</ComboBoxItem>
-                                <ComboBoxItem>By views</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">Date</ComboBoxItem>
+                                <ComboBoxItem>Duration</ComboBoxItem>
+                                <ComboBoxItem>Game</ComboBoxItem>
+                                <ComboBoxItem>Likes</ComboBoxItem>
+                                <ComboBoxItem>Views</ComboBoxItem>
                             </ComboBox>
                             <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}"
                                     ToolTip="Refresh"

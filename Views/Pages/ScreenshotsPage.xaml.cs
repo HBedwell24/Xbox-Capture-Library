@@ -69,22 +69,22 @@ namespace XboxGameClipLibrary.Views
 
             switch (screenshotFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
-                case "By date":
+                case "Date":
                     var screenshotByDate = dataContext.Screenshots.OrderByDescending(o => o.DatePublished).ToList();
                     dataContext.Screenshots = screenshotByDate;
                     break;
 
-                case "By game":
+                case "Game":
                     var screenshotByGame = dataContext.Screenshots.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
                     dataContext.Screenshots = screenshotByGame;
                     break;
 
-                case "By likes":
+                case "Likes":
                     var screenshotByLikes = dataContext.Screenshots.OrderByDescending(o => o.RatingCount).ToList();
                     dataContext.Screenshots = screenshotByLikes;
                     break;
 
-                case "By views":
+                case "Views":
                     var screenshotByViews = dataContext.Screenshots.OrderByDescending(o => o.Views).ToList();
                     dataContext.Screenshots = screenshotByViews;
                     break;

@@ -68,27 +68,27 @@ namespace XboxGameClipLibrary.Views
 
             switch (gameClipFilterBox.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
             {
-                case "By date":
+                case "Date":
                     var gameClipsByDate = dataContext.GameClips.OrderByDescending(o => o.DatePublished).ToList();
                     dataContext.GameClips = gameClipsByDate;
                     break;
 
-                case "By duration":
+                case "Duration":
                     var gameClipsByDuration = dataContext.GameClips.OrderByDescending(o => o.DurationInSeconds).ToList();
                     dataContext.GameClips = gameClipsByDuration;
                     break;
 
-                case "By game":
+                case "Game":
                     var gameClipsByGame = dataContext.GameClips.OrderBy(o => o.TitleName).ThenByDescending(x => x.DatePublished).ToList();
                     dataContext.GameClips = gameClipsByGame;
                     break;
 
-                case "By likes":
+                case "Likes":
                     var gameClipsByLikes = dataContext.GameClips.OrderByDescending(o => o.RatingCount).ToList();
                     dataContext.GameClips = gameClipsByLikes;
                     break;
 
-                case "By views":
+                case "Views":
                     var gameClipsByViews = dataContext.GameClips.OrderByDescending(o => o.Views).ToList();
                     dataContext.GameClips = gameClipsByViews;
                     break;

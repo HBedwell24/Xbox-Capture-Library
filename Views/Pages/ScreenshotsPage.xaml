@@ -61,7 +61,7 @@
                             Orientation="Horizontal">
                     <StackPanel Orientation="Vertical"
                                 x:Name="screenshotFilter">
-                        <Label Content="Filter"
+                        <Label Content="Filter By:"
                                FontFamily="Segoe UI Semilight" />
                         <DockPanel>
                             <ComboBox Name="screenshotFilterBox"
@@ -69,10 +69,10 @@
                                       FontFamily="Segoe UI"
                                       SelectionChanged="ScreenshotFilter_SelectionChanged"
                                       DropDownClosed="ScreenshotFilter_DropDownClosed">
-                                <ComboBoxItem IsSelected="True">By date</ComboBoxItem>
-                                <ComboBoxItem>By game</ComboBoxItem>
-                                <ComboBoxItem>By likes</ComboBoxItem>
-                                <ComboBoxItem>By views</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">Date</ComboBoxItem>
+                                <ComboBoxItem>Game</ComboBoxItem>
+                                <ComboBoxItem>Likes</ComboBoxItem>
+                                <ComboBoxItem>Views</ComboBoxItem>
                             </ComboBox>
                             <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}" ToolTip="Refresh" Click="Refresh_List_View">
                                 <Button.Content>
