@@ -106,6 +106,7 @@
                            Content="Xbox API Key:" />
                     <TextBox Style="{StaticResource MetroTextBox}"
                              Width="310"
+                             HorizontalContentAlignment="Center"
                              Validation.ErrorTemplate="{StaticResource errorTemplate}"
                              Margin="0 0 10 0"
                              VerticalAlignment="Center"
@@ -128,12 +129,37 @@
                             FontFamily="Segoe UI"
                             Margin="0 0 10 0"
                             Content="Cancel" />
-                    <Button Style="{StaticResource MahApps.Metro.Styles.MetroButton}"
+                    <Button Click="Save_Click"
                             Width="50"
                             FontSize="9"
-                            Click="Save_Click"
-                            FontFamily="Segoe UI"
-                            Content="Save" />
+                            FontFamily="Segoe UI">
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MetroButton}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=(Validation.HasError), ElementName=apiKey}"
+                                                       Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled"
+                                                Value="True" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Path=Text.IsEmpty, ElementName=apiKey}"
+                                                       Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        Finish
+                    </Button>
                 </StackPanel>
                 <TextBlock FontSize="20"
                            FontWeight="Light"
