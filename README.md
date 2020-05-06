@@ -6,12 +6,15 @@ A WPF Windows Application written in ASP.NET, which is purposed with pulling and
 * Adjusting the application theme to more adequately compensate for light indifferences in the immediate vicinity.
 
 ## Getting Started
-TO-DO
+To successfully run the application, one will need posession of an "X" API account (for sake of acquiring an API key to access confidential user information), as well as an active Xbox Live profile which has capture data to draw from. 
+For reference purposes, the sign up page for the "X" API service can be found as follows at the https://xapi.us/login domain.
+
+> Once all neccesary resources have been gathered, the application setup wizard will then guide the user in the credential verification process, to which only valid strings will be accepted that abide by the defined ruleset.
 
 ## Technologies Used
-* **MahApps.Metro** - a toolkit for creating metro-style WPF applications.
-* **Newtonsoft.Json** - a popular high-performance JSON framework for .NET.
-* **'X' API** - an unofficial API for retrieving Xbox Live data that is owned and maintained by FriendlyDev Limited.
+- [MahApps.Metro](https://github.com/MahApps/MahApps.Metro) - a toolkit for creating metro-style WPF applications.
+- [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) - a popular high-performance JSON framework for .NET.
+- ["X" API](https://xapi.us/) - an unofficial API for retrieving Xbox Live data that is owned and maintained by FriendlyDev Limited.
 
 ## Gallery
 ![Authentication Page](images/authentication.jpg?raw=true)
