@@ -21,8 +21,7 @@ For reference purposes, the sign up page for the "X" API service can be found as
 ## Contributors
 | <a href="https://christianbedwell.github.io/" target="_blank">**ChristianBedwell**</a> | <a href="https://hbedwell24.github.io/" target="_blank">**HBedwell24**</a> |
 |:---:|:---:|
-| <img src="https://avatars2.githubusercontent.com/u/32681621?s=400&u=68050b900b4a1a7b11844ca8e07ae7a320ad3a47&v=4" data-canonical-src="https://christianbedwell.github.io/" width="200" height="200" /> | 
-<img src="https://avatars2.githubusercontent.com/u/32681500?s=460&u=90c1535bbdedfb1175b2ccc8918b22d132b51a81&v=4" data-canonical-src="https://hbedwell24.github.io/" width="200" height="200" /> |
+| <img src="https://avatars2.githubusercontent.com/u/32681621?s=400&u=68050b900b4a1a7b11844ca8e07ae7a320ad3a47&v=4" data-canonical-src="https://christianbedwell.github.io/" width="200" height="200" /> | <img src="https://avatars2.githubusercontent.com/u/32681500?s=460&u=90c1535bbdedfb1175b2ccc8918b22d132b51a81&v=4" data-canonical-src="https://hbedwell24.github.io/" width="200" height="200" /> |
 | <a href="http://github.com/christianbedwell" target="_blank">`github.com/christianbedwell`</a> | <a href="http://github.com/hbedwell24" target="_blank">`github.com/hbedwell24`</a> |
 
 ## Gallery
