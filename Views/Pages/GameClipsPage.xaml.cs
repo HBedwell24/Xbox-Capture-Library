@@ -3,9 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.GameClipViewModel;
+using XboxCaptureLibrary.ViewModels.GameClipViewModel;
 
-namespace XboxGameClipLibrary.Views
+namespace XboxCaptureLibrary.Views
 {
     public partial class GameClipsPage : Page
     {

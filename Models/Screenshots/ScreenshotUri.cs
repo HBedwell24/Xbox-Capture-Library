@@ -1,4 +1,4 @@
-﻿namespace XboxGameClipLibrary.Models.Screenshots
+﻿namespace XboxCaptureLibrary.Models.Screenshots
 {
     public class ScreenshotUri
     {

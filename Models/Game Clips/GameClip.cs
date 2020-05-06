@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace XboxGameClipLibrary.Models
+namespace XboxCaptureLibrary.Models
 {
     public class GameClip
     {

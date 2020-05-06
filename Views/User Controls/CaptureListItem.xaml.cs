@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace XboxGameClipLibrary.Views
+namespace XboxCaptureLibrary.Views
 {
     public partial class CaptureListItem : UserControl
     {

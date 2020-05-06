@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Threading;
-using XboxGameClipLibrary.API;
+using XboxCaptureLibrary.API;
 
-namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
+namespace XboxCaptureLibrary.ViewModels.GameClipViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {

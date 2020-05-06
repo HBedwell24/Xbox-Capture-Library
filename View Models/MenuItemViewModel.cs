@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using MahApps.Metro.Controls;
 
-namespace XboxGameClipLibrary.ViewModels
+namespace XboxCaptureLibrary.ViewModels
 {
     internal class MenuItemViewModel : HamburgerMenuItem, INotifyPropertyChanged
     {

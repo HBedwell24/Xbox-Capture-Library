@@ -7,7 +7,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace XboxGameClipLibrary.Views
+namespace XboxCaptureLibrary.Views
 {
     public partial class GameClipDetailPane : UserControl
     {

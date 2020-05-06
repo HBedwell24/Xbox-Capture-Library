@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace XboxGameClipLibrary.Mvvm
+namespace XboxCaptureLibrary.Mvvm
 {
     public abstract class BindableBase : INotifyPropertyChanged
     {

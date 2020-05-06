@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace XboxGameClipLibrary.Models.Screenshots
+namespace XboxCaptureLibrary.Models.Screenshots
 {
     public class Screenshot
     {

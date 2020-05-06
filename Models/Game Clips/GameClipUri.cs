@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XboxGameClipLibrary.Models
+namespace XboxCaptureLibrary.Models
 {
     public class GameClipUri
     {

@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using XboxGameClipLibrary.Models;
-using XboxGameClipLibrary.Models.Screenshots;
+using XboxCaptureLibrary.Models;
+using XboxCaptureLibrary.Models.Screenshots;
 
-namespace XboxGameClipLibrary.API
+namespace XboxCaptureLibrary.API
 {
     public class XboxApiImpl
     {

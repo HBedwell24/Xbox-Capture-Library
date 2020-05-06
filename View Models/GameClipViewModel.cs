@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
-using XboxGameClipLibrary.API;
-using XboxGameClipLibrary.Models;
+using XboxCaptureLibrary.API;
+using XboxCaptureLibrary.Models;
 
-namespace XboxGameClipLibrary.ViewModels.GameClipViewModel
+namespace XboxCaptureLibrary.ViewModels.GameClipViewModel
 {
     public class GameClipViewModel : INotifyPropertyChanged
     {

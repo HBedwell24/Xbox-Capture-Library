@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace XboxGameClipLibrary.Views.Pages
+namespace XboxCaptureLibrary.Views.Pages
 {
     public partial class ExceptionPage : Page
     {

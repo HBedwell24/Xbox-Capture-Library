@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
-namespace XboxGameClipLibrary.Implementations
+namespace XboxCaptureLibrary.Implementations
 {
     public class CredentialValidator : ValidationRule
     {

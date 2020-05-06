@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using XboxGameClipLibrary.Mvvm;
+using XboxCaptureLibrary.Mvvm;
 
-namespace XboxGameClipLibrary.ViewModels
+namespace XboxCaptureLibrary.ViewModels
 {
     internal class ViewModelBase : BindableBase
     {

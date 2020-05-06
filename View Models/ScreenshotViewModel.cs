@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
-using XboxGameClipLibrary.API;
-using XboxGameClipLibrary.Models.Screenshots;
+using XboxCaptureLibrary.API;
+using XboxCaptureLibrary.Models.Screenshots;
 
-namespace XboxGameClipLibrary.ViewModels.ScreenshotViewModel
+namespace XboxCaptureLibrary.ViewModels.ScreenshotViewModel
 {
     public class ScreenshotViewModel : INotifyPropertyChanged
     {

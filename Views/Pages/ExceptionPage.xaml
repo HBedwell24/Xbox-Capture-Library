@@ -1,4 +1,4 @@
-﻿<Page x:Class="XboxGameClipLibrary.Views.Pages.ExceptionPage"
+﻿<Page x:Class="XboxCaptureLibrary.Views.Pages.ExceptionPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"

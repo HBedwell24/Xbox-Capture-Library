@@ -2,7 +2,7 @@
 using System.Linq;
 using MahApps.Metro.IconPacks;
 
-namespace XboxGameClipLibrary.ViewModels
+namespace XboxCaptureLibrary.ViewModels
 {
     internal class ShellViewModel : ViewModelBase
     {

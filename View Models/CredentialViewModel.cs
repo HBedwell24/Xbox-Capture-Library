@@ -1,6 +1,6 @@
-﻿using XboxGameClipLibrary.Extensions;
+﻿using XboxCaptureLibrary.Extensions;
 
-namespace XboxGameClipLibrary.View_Models
+namespace XboxCaptureLibrary.View_Models
 {
     public class CredentialViewModel : ObservableObject
     {

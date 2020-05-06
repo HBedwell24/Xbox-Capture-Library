@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace XboxGameClipLibrary.Extensions
+namespace XboxCaptureLibrary.Extensions
 {
     public class ObservableObject : INotifyPropertyChanged
     {

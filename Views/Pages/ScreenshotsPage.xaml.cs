@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using XboxGameClipLibrary.ViewModels.ScreenshotViewModel;
+using XboxCaptureLibrary.ViewModels.ScreenshotViewModel;
 
-namespace XboxGameClipLibrary.Views
+namespace XboxCaptureLibrary.Views
 {
     public partial class ScreenshotsPage : Page
     {

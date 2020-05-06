@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace XboxGameClipLibrary
+namespace XboxCaptureLibrary
 {
     public partial class CredentialWindow : MetroWindow
     {

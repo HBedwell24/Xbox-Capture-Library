@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace XboxGameClipLibrary.Navigation
+namespace XboxCaptureLibrary.Navigation
 {
     public static class Navigation
     {

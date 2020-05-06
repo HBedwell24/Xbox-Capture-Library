@@ -4,9 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
-using XboxGameClipLibrary.ViewModels;
-using MenuItemViewModel = XboxGameClipLibrary.ViewModels.MenuItemViewModel;
-namespace XboxGameClipLibrary
+using XboxCaptureLibrary.ViewModels;
+using MenuItemViewModel = XboxCaptureLibrary.ViewModels.MenuItemViewModel;
+namespace XboxCaptureLibrary
 {
     public partial class MainWindow : MetroWindow
     {

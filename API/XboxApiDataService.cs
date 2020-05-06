@@ -1,4 +1,4 @@
-using XboxGameClipLibrary.Models;
+using XboxCaptureLibrary.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,10 +7,10 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using XboxGameClipLibrary.Models.Screenshots;
-using XboxGameClipLibrary.Views.Pages;
+using XboxCaptureLibrary.Models.Screenshots;
+using XboxCaptureLibrary.Views.Pages;
 
-namespace XboxGameClipLibrary.API
+namespace XboxCaptureLibrary.API
 {
     public class XboxApiDataService
     {

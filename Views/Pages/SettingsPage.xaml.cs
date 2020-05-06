@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace XboxGameClipLibrary.Views.Pages
+namespace XboxCaptureLibrary.Views.Pages
 {
     public partial class SettingsPage : Page
     {

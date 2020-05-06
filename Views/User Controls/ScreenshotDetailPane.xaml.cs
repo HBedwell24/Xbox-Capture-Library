@@ -3,9 +3,8 @@ using System;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using XboxGameClipLibrary.Implementations;
 
-namespace XboxGameClipLibrary.Views
+namespace XboxCaptureLibrary.Views
 {
     public partial class ScreenshotDetailPane : UserControl
     {
