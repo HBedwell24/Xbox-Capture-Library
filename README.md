@@ -1,3 +1,5 @@
+<img src="images/splash_screen.jpg" align="right" />
+
 # Xbox Capture Library
 A WPF Windows Application written in ASP.NET, which is purposed with pulling and displaying a user's videos/screenshots from Xbox Live using the "X" API service. Of the features implemented, all end users are granted the ability of:
 * Filtering displayed captures by various search parameter metrics, including capture duration, like amount, view amount, etc.
@@ -16,9 +18,22 @@ For reference purposes, the sign up page for the "X" API service can be found as
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) - a popular high-performance JSON framework for .NET.
 - ["X" API](https://xapi.us/) - an unofficial API for retrieving Xbox Live data that is owned and maintained by FriendlyDev Limited.
 
+## Contributors
+| <a href="https://github.com/christianbedwell" target="_blank">**ChristianBedwell**</a> | <a href="https://github.com/hbedwell24" target="_blank">**HBedwell24**</a> |
+| :---: |:---:| :---:|
+| [![ChristianBedwell](https://avatars2.githubusercontent.com/u/32681621?s=400&u=68050b900b4a1a7b11844ca8e07ae7a320ad3a47&v=4)](https://github.com/christianbedwell) | [![HBedwell24](https://avatars2.githubusercontent.com/u/32681500?s=460&u=90c1535bbdedfb1175b2ccc8918b22d132b51a81&v=4)](https://github.com/hbedwell24) |
+| <a href="http://github.com/christianbedwell" target="_blank">`github.com/christianbedwell`</a> | <a href="http://github.com/hbedwell24" target="_blank">`github.com/hbedwell24`</a> |
+
 ## Gallery
 ![Authentication Page](images/authentication.jpg?raw=true)
 ![Game Clips Page](images/game_clips.jpg?raw=true)
 ![Screenshots Page](images/screenshots.jpg?raw=true)
 ![Settings Page](images/settings.jpg?raw=true)
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/HBedwell24/Xbox-Capture-Library/blob/master/LICENSE)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2020 © <a href="https://github.com/HBedwell24" target="_blank">HBedwell24</a>.
 
