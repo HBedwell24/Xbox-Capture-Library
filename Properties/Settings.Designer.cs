@@ -37,7 +37,7 @@ namespace XboxCaptureLibrary.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("darkTheme")]
         public string appTheme {
             get {
                 return ((string)(this["appTheme"]));
