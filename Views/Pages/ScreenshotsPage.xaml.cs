@@ -46,7 +46,7 @@ namespace XboxCaptureLibrary.Views
             screenshotDetailPane.Views = screenshot.Views.ToString();
             screenshotDetailPane.Likes = screenshot.RatingCount.ToString();
 
-            capturesDetailView.Visibility = Visibility.Visible;
+            screenshotDetailView.Visibility = Visibility.Visible;
         }
 
         private void ScreenshotFilter_DropDownClosed(object sender, EventArgs e)
@@ -95,6 +95,8 @@ namespace XboxCaptureLibrary.Views
         {
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = new ScreenshotViewModel();
+
+            screenshotDetailView.Visibility = Visibility.Collapsed;
 
             var dataContext = screenshotsPage.DataContext as ScreenshotViewModel;
 

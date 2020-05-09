@@ -111,7 +111,7 @@
             </Grid>
             <Grid Grid.Column="1"
                   Visibility="Collapsed"
-                  x:Name="capturesDetailView">
+                  x:Name="screenshotDetailView">
                 <ScrollViewer>
                     <views:ScreenshotDetailPane x:Name="screenshotDetailPane" />
                 </ScrollViewer>

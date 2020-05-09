@@ -103,6 +103,8 @@ namespace XboxCaptureLibrary.Views
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = new GameClipViewModel();
 
+            gameClipDetailView.Visibility = Visibility.Collapsed;
+
             var dataContext = gameClipsPage.DataContext as GameClipViewModel;
 
             while (dataContext.GameClips == null)
