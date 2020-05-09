@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using XboxCaptureLibrary.ViewModels.GameClipViewModel;
 
 namespace XboxCaptureLibrary.Views
@@ -95,10 +98,19 @@ namespace XboxCaptureLibrary.Views
             }
         }
 
-        public void Refresh_List_View(object sender, RoutedEventArgs e)
+        public async void Refresh_List_View(object sender, RoutedEventArgs e)
         {
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = new GameClipViewModel();
+
+            var dataContext = gameClipsPage.DataContext as GameClipViewModel;
+
+            while (dataContext.GameClips == null)
+            {
+                await Task.Delay(1);
+            }
+
+            HandleGameClipFilter();
         }
     }
 }

@@ -95,6 +95,15 @@ namespace XboxCaptureLibrary.Views
         {
             // Bind the Game Clip capture data to the itemssource of the gameClipListView
             DataContext = new ScreenshotViewModel();
+
+            var dataContext = screenshotsPage.DataContext as ScreenshotViewModel;
+
+            while (dataContext.Screenshots == null)
+            {
+                await Task.Delay(1);
+            }
+
+            HandleScreenshotFilter();
         }
     }
 }
